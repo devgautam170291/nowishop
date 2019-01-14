@@ -1,0 +1,47 @@
+.content-container {
+  padding: 30px;
+}
+
+.active h2 {
+  color: var(--nowishop-red);
+}
+
+.card-header {
+  padding: 0px;
+  border: none;
+  background: transparent;
+}
+
+.card {
+  border: none;
+}
+
+.card-body {
+  background: #e5e5e5;
+  font-size: 14px;
+}
+
+.card-link {
+  color: #444;
+  display: block;
+  position: relative;
+  padding: 10px 0px;
+  font-family: 'Amiri', serif;
+  font-weight: 700;
+  font-size: 17px
+}
+
+.card-link[aria-expanded=true] {
+  color: var(--nowishop-red);
+}
+
+.card-link:after {
+  content: '\f0d7';
+  font-family: FontAwesome;
+  position: absolute;
+  margin-left: 15px;
+}
+
+h2.page-title {
+  font-size: 20px;
+}

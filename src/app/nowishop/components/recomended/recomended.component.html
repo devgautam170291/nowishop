@@ -1,0 +1,42 @@
+<section class="page-section">
+  <div class="container">
+    <app-section-title [titleBg]="'#c170c1'" [titleColor]="'#ffffff'" [value]="'Recommend for you'"></app-section-title>
+    <div class="recommend-container row" *ngIf="recommendProducts.length > 0">
+      <div class="col-md-3" *ngFor="let product of recommendProducts">
+        <div class="recomended-product">
+          <div class="recomended-product-img" [ngStyle]="{'background': 'url('+product.ImageURL+')'}"></div>
+          <div class="recomended-product-price ">
+            <div>Rs</div>
+            <div>{{product.Price}}</div>
+          </div>
+          <div class="recomended-product-name">{{product.ProductName}}</div>
+          <div class="recomended-product-rating d-inline-block">
+            <app-ratings [rating]="product.AvgRating"></app-ratings>
+          </div>
+          <div class="recomended-product-link text-right d-inline-block float-right"><a class="" routerLink="'/product/'{{product.ProductSlug}}">More <i class="fa fa-angle-right"></i></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="recommend-container row" *ngIf="recommendProducts.length == 0">
+      <div class="col-md-3" *ngFor="let product of dummyRecommendProducts">
+        <div class="recomended-product">
+          <div class="recomended-product-img"></div>
+          <div class="load-wrapp">
+            <div class="letter-holder">
+              <div class="l-1 letter">L</div>
+              <div class="l-2 letter">o</div>
+              <div class="l-3 letter">a</div>
+              <div class="l-4 letter">d</div>
+              <div class="l-5 letter">i</div>
+              <div class="l-6 letter">n</div>
+              <div class="l-7 letter">g</div>
+              <div class="l-8 letter">.</div>
+              <div class="l-9 letter">.</div>
+              <div class="l-10 letter">.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

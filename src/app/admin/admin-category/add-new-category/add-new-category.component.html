@@ -1,0 +1,141 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    {{case == 'edit' ? 'Edit' : 'Add New'}} Category
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>
+  <div class="admin-wrapper">
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Category Name</label>
+            <input class="form-control" [(ngModel)]="model.CategoryName">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Category Description</label>
+            <textarea class="form-control" rows="5" cols="2" [(ngModel)]="model.CategoryDescription"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6" *ngIf="model.CategorySlug">
+            <label>Category Slug</label>
+            <input class="form-control" [(ngModel)]="model.CategorySlug" disabled>
+          </div>
+          <div class="col-md-6">
+            <label>Choose Parent Category</label>
+            <select class="form-control" [(ngModel)]="model.ParentCategoryId">
+              <option value="0"> No Parent Category</option>
+              <option *ngFor="let data of catList" value="{{data.CategoryId}}">{{data.CategoryName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <input type="checkbox" class="is-recommended" [(ngModel)]="model.IsRecommended" (click)="makeRecommendedCategory($event)">
+            <label>Is Recommended</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6" *ngIf="model.IsRecommended">
+            <label>Choose category Image</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="catImg" (change)="uploadCatImg($event)" accept="image/png, image/jpeg">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+            <div class="img-preview">
+              <div *ngIf="model.CategoryImageUrl">
+                <img src="{{model.CategoryImageUrl}}" alt="">
+            </div>
+                <div *ngIf="!model.CategoryImageUrl" class="text-center">
+                  No Preview Available
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5 mt-5">
+        <div class="col-md-12 text-right btn-container">
+          <button class="btn btn-static" routerLink="/admin/categories">Cancel</button>
+          <button class="btn btn-success" (click)="addEditCategory()">Upload Category</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title text-light title admin-bold" id="exampleModalLabel">{{case == 'add' ? 'Add New' : 'Edit'}} Category</h5>
+        <button type="button" class="close text-light" (click)="hideAddModel()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Enter Category Name</label>
+          <input class="form-control" [(ngModel)]="model.CatName">
+        </div>
+        <div class="form-group" *ngIf="case != 'add'">
+          <label>Category Slug Name</label>
+          <input class="form-control" [(ngModel)]="model.CategorySlug">
+        </div>
+        <div class="form-group">
+          <label>Choose Parent Category</label>
+          <select class="form-control" [(ngModel)]="model.ParentCategoryId">
+            <option value="0"> No Parent Category</option>
+            <option *ngFor="let data of catList" value="{{data.CategoryId}}">{{data.CategoryName}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" class="is-recommended" [(ngModel)]="model.IsRecommended" (click)="makeRecommendedProduct($event)">
+          <label>Is Recommended</label>
+        </div> 
+        <div class="form-group">
+          <label>Choose category Image</label>
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="catImg" (change)="uploadCatImg($event)" accept="image/png, image/jpeg">
+              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
+          <div class="img-preview">
+            <div *ngIf="model.CategoryImageUrl">
+              <img src="{{model.CategoryImageUrl}}" alt="">
+            </div>
+            <div *ngIf="!model.CategoryImageUrl" class="text-center">
+              No Preview Available
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="hideAddModel()"> Close</button>
+        <button type="button" class="btn btn-success" (click)="addEditCategory()"> {{case == 'add' ? ' Add New' : ' Edit'}} Category</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->

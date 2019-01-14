@@ -1,0 +1,36 @@
+.modal-dialog {
+  width: 100%;
+  max-width: 700px;
+}
+
+.modal-header {
+  background: var(--nowishop-blue);
+}
+
+.modal-header h4 {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.close {
+  color: #fff !important;
+}
+
+.title-container a {
+  font-size: 20px;
+  color: #3e3d3d;
+  text-transform: capitalize;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.title-container {
+  min-height: 300px;
+}
+
+.sell-on-us {
+  text-align: center;
+  position: relative;
+  top: 220px;
+}

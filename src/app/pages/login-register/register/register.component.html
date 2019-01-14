@@ -1,0 +1,61 @@
+<div class="login-container">
+  <div class="login-logo text-center">
+    <a [routerLink]="'/'">
+      <img src="/assets/img/logo.png">
+    </a>
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>
+  <div class="login-wrapper">
+    <div class="top-strip">
+      <div class="top-strip-container bg-red"></div>
+    </div>
+    <div class="bellow-strip bg-red"></div>
+  </div>
+  <div class="form-container">
+    <div class="form-wrapper bg-blue">
+      <div class="field-container">
+        
+        <div class="title text-center text-light">New for NowIShop</div>
+        <div class="msg-popup" [ngClass]="messageClass" *ngIf="showMessage">
+          <span>{{message}}</span>
+        </div>
+        <div class="form-group">
+          <label for="">E-mail </label>
+          <input type="text" class="form-control" placeholder="Enter your E-mail" [(ngModel)]="model.Email">
+          <!-- <span class="error" *ngIf="validationModel.email">{{validationModel.email}}</span> -->
+        </div>
+        <div class="form-group">
+          <label for="">Mobile Number</label>
+          <input type="text" class="form-control" placeholder="Enter your Mobile Number" [(ngModel)]="model.MobileNo">
+          <!-- <span class="error" *ngIf="validationModel.password">{{validationModel.password}}</span> -->
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="password" class="form-control" placeholder="Set Your Password" [(ngModel)]="model.Password">
+          <!-- <span class="error" *ngIf="validationModel.password">{{validationModel.password}}</span> -->
+        </div>
+        <div class="form-group">
+          <label for="">Confirm Password</label>
+          <input type="password" class="form-control" placeholder="Enter Password Again" [(ngModel)]="confirmPassword" (ngModelChange)="confirmPasswordChange($event)">
+          <span class="error" *ngIf="confirmPasswordError">{{confirmPasswordError}}</span>
+        </div>
+        <div class="row">
+          <div class="col-md-1">
+            <div class="form-group text-light">
+              <input type="checkbox" (change)="setTermsAndConditons($event)" class="terms-agree"> 
+            </div>
+          </div>
+          <div class="col-md-11">
+            <div class="term-policy">
+              I have read and agreed to the nowishop <a [routerLink]="'/'">Terms & Conditions</a>. I also agree for my personal information to be collected, processed and transferred in accordance with the terms of the <a [routerLink]="'/'">Privacy Policy</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="register-wrapper text-center bg-red">
+        <a id="register" class="font-weight-bold" href="#" (click)="registerUser($event)">Register</a>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,54 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    Categories
+  </div>
+  <div class="admin-wrapper">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <app-admin-search (filterResult)="getFilterResult($event)" [calledFrom]="'category'" [searchColumns]="searchColumns"></app-admin-search>
+    <div class="add-new-container text-right">
+      <span class="addnew" routerLink="/admin/categories/addnewcategory">
+            <i class="fa fa-plus-circle"></i><span>add new category</span>
+      </span>
+    </div>
+    <div class="records-table">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr class="bg-dark text-light">
+            <th>Category Name</th>
+            <th>Parent Category Name</th>
+            <th>Category Slug</th>
+            <th>Created By</th>
+            <th>Created AT</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="model.length > 0">
+          <tr *ngFor="let row of model; let i = index">
+            <td>{{row.CategoryName}}</td>
+            <td>{{row.ParentCategoryName}}</td>
+            <td>{{row.CategorySlug}}</td>
+            <td>{{row.CreatedBy != '0' ? row.CreatedBy : 'John Doe'}}</td>
+            <td>{{ row.CreatedDate | date:long}}</td>
+            <td class="text-right">
+              <button class="btn btn-primary mr-1" routerLink="/admin/categories/editcategory/{{row.CategoryId}}"><i class="fa fa-edit"></i> Edit</button>
+              <span *ngIf="row.Status">
+                <button class="btn btn-success mr-1" (click)="changeCatstatus(row.CategoryId)"><i class="fa fa-check"></i> Deactive</button>
+              </span>
+              <span *ngIf="!row.Status">
+                <button class="btn btn-warning text-light mr-1" (click)="changeCatstatus(row.CategoryId)"><i class="fa fa-question-circle"></i> Active</button>
+              </span>
+              <button class="btn btn-danger mr-1" (click)="deleteCategory(row.CategoryId)"><i class="fa fa-trash"></i> Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="model.length == 0">
+          <tr class="text-center">
+            <td colspan="6">No Record Found</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <app-admin-pagination></app-admin-pagination> -->
+    </div>
+  </div>
+</div>

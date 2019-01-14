@@ -1,0 +1,53 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    {{case == "add" ? "Add New" : "Edit"}} Product Tag
+  </div>
+  <div class="admin-wrapper">
+    <ngx-loading [show]="loading" [config]=""></ngx-loading>
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Product Tag Name</label>
+            <input class="form-control" [(ngModel)]="model.Deals">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Start Date</label>
+            <div class="form-group">
+              <div class="input-group input-group-sm datetimepicker">
+                <input id='starttime' type="text" class="form-control input-sm" />
+                <span class="input-group-addon calendar">
+              <span class="fa fa-calendar"></span>
+                </span>
+              </div> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>End Date</label>
+            <div class="form-group">
+              <div class="input-group input-group-sm datetimepicker" >
+                <input id='endtime' type="text" class="form-control input-sm" />
+                <span class="input-group-addon calendar">
+              <span class="fa fa-calendar"></span>
+                </span>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-right btn-container">
+        <button class="btn btn-static" routerLink="/admin/products/producttag">Cancel</button>
+        <button class="btn btn-success" (click)="addProductTag()">Upload Product Tag</button>
+      </div>
+    </div>
+  </div>
+</div>

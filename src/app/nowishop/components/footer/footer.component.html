@@ -1,0 +1,121 @@
+<footer class="footer">
+  <div class="why-us">
+    <div class="container">
+      <div class="why-title">why choose us</div>
+      <div class="why-us-feature">
+        <ul class="footer-list why-choose">
+          <li>
+            <div class="footer-why-icon" style="background: url('/assets/img/icons-white.png') 53px -560px"></div>
+            <div>100% Authentic </div>
+            <div>Thai Products</div>
+          </li>
+          <li>
+            <div class="footer-why-icon" style="background: url('/assets/img/icons-white.png') 54px -645px"></div>
+            <div>Secure </div>
+            <div>Payments</div>
+          </li>
+          <li>
+            <div class="footer-why-icon" style="background: url('/assets/img/icons-white.png') 52px -84px"></div>
+            <div>World Wide</div>
+            <div>Free Shipping</div>
+          </li>
+          <li>
+            <div class="footer-why-icon" style="background: url('/assets/img/icons-white.png') 51px -380px"></div>
+            <div>30 Days </div>
+            <div>Return Policy</div>
+          </li>
+          <li>
+            <div class="footer-why-icon" style="background: url('/assets/img/icons-white.png') 58px -473px"></div>
+            <div>24/7 </div>
+            <div>Customer Care</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-container">
+    <div class="container">
+      <ul class="footer-list">
+        <li>
+          <div class="footer-title">Shop By Category</div>
+          <ul class="sub-footer-list" *ngIf="categoryList.length > 0">
+            <li *ngFor="let cat of categoryList">
+              <a href="">{{cat.CategoryName}}</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="footer-title">GET TO KNOW US </div>
+          <ul class="sub-footer-list">
+            <li><a routerLink="/about-us">About Us</a></li>
+            <li><a routerLink="/customer-care">Contact Us</a></li>
+            <li><a routerLink="/customer-care">Registered Office Address</a></li>
+            <li><a routerLink="/career">Careers</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="footer-title">Customer Service</div>
+          <ul class="sub-footer-list">
+            <li><a routerLink="/help-center/payment-policy">Payments</a></li>
+            <li><a routerLink="/help-center/shipping">Shipping</a></li>
+            <li><a routerLink="/help-center/return-policy">Cancellations and returns</a></li>
+            <li><a routerLink="/help-center/privacy-policy">Privacy policy</a></li>
+            <li><a routerLink="/help-center/loyalty-program">Nowmypoints loyalty program</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="footer-title">YOUR WISHLIST</div>
+          <ul class="sub-footer-list">
+            <li><a href="">Recommended for you</a></li>
+            <li><a href="">Best selling</a></li>
+            <li><a href="">New arrival</a></li>
+            <li><a href="">Flash sale</a></li>
+            <li><a href="">Wished by you</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="footer-title">SELLER</div>
+          <ul class="sub-footer-list">
+            <li><a routerLink="/seller">Sell with Nowishop</a></li>
+            <li><a routerLink="/seller">Why Nowishop?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-payments">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="d-table">
+            <div class="d-table-cell" style="vertical-align: middle;">
+              <div class="my-primary d-table-cell pay-with" style="vertical-align: middle;">Pay With : </div>
+              <div class="d-table-cell footer-payment">
+                <ul class="d-inline-block payment-option-list">
+                  <li class="d-inline-block visa"></li>
+                  <li class="d-inline-block master-card"></li>
+                  <li class="d-inline-block maestro"></li>
+                  <li class="d-inline-block american-express"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="subscribe">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Enter your email & get the latest discount" aria-describedby="subscribe">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="subscribe">Subscribe</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-right"><img class="footer-logo" width="85px" src="/assets/img/logo.png"></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        copyright 2018 nowishop
+      </div>
+    </div>
+</footer>

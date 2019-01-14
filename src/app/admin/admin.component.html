@@ -1,0 +1,17 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="dash-wrapper">
+  <div class="dash-nav">
+    <div class="dash-brand">
+      <div class="dash-logo d-inline admin-bold"><a [routerLink]="'/'"><span class="text-light">Nowishop</span></a></div>
+      <div class="dash-hamburger d-inline" (click)="showHideNav()"><i class="fa fa-bars"></i></div>
+    </div>
+    <div class="dash-nav-container float-left">
+      <app-admin-nav (setLoading)="setLoading($event)"></app-admin-nav>
+    </div>
+  </div>
+  <div class="dash-container">
+    <div>
+    <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

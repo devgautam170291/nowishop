@@ -1,0 +1,517 @@
+.font-mont {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.font-opensans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dash-wrapper {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.dash-nav {
+  position: fixed;
+  float: left;
+  width: 250px;
+  background: #282733;
+  height: 100vh;
+  transition: 0.1s ease;
+}
+
+.dash-container {
+  float: left;
+  width: calc(100% - 250px);
+  /*position: fixed;
+    */
+  top: 0;
+  background: #f3f3f3;
+  margin-left: 250px;
+  height: 100vh;
+  overflow: auto;
+  transition: 0.1s ease;
+}
+
+.dash-brand {
+  padding: 20px;
+  background: #201f2b;
+  width: 100%;
+  float: left;
+}
+
+.dash-logo {
+  float: left;
+  color: #fff;
+  font-size: 24px;
+  line-height: 25px;
+
+  opacity: 1;
+  visibility: visible;
+  height: 25px;
+  transition: height 5s, opacity 3s ease;
+}
+
+.dash-logo img {
+  width: 80px;
+}
+
+.dash-hamburger {
+  float: right;
+  color: #b9c0cc;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.dash-nav-collapse {
+  width: 50px !important;
+}
+
+.dash-container-collapse {
+  margin-left: 50px !important;
+  width: calc(100% - 50px);
+}
+
+.hide {
+  visibility: hidden !important;
+  height: 0px !important;
+  opacity: 0 !important;
+  transition: 0s ease !important;
+}
+
+.dash-nav-container {
+  width: 100%;
+}
+
+.dash-nav-container ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.admin-nav li {
+  padding: 8px 45px;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-icon {
+  color: #525672;
+  font-size: 18px;
+}
+
+.nav-name {
+  color: #868aa8;
+  margin-left: 20px;
+  position: relative;
+  top: 4px;
+  font-size: 15px;
+  opacity: 1;
+  font-family: 'Open Sans', sans-serif;
+  visibility: visible;
+  height: 16px;
+  transition: height 5s, opacity 2s ease;
+}
+
+.admin-nav li {
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+}
+
+.admin-nav li:hover .nav-icon {
+  color: #868aa8;
+}
+
+.admin-nav {
+  padding: 40px 0px;
+}
+
+.admin-nav li:hover {
+  background: #292b3a;
+  transition: background .3s;
+}
+
+.dash-nav-collapse .admin-nav li {
+  padding: 8px 12px;
+}
+
+.admin-title {
+  background: #283891;
+  padding: 20px;
+  line-height: 30px;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.admin-wrapper {
+  padding: 20px;
+}
+
+.breadcrumb li {
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.breadcrumb {
+  padding: 0px !important;
+  background: transparent !important;
+}
+
+.admin-search {
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.title {
+
+  font-size: 17px;
+}
+
+.records-table {
+  padding: 10px;
+  background: #fff;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.add-new-container {
+  margin-top: 20px;
+}
+
+.dash-logo a {
+  text-decoration: none !important;
+  text-shadow: 1px 4px 1px #000;
+  font-family: 'Yellowtail', cursive;
+  font-size: 34px;
+  letter-spacing: 2px;
+}
+
+.dash-container button {
+  font-family: 'Nunito', sans-serif;
+}
+
+.admin-title {
+  background: var(--nowishop-blue);
+  padding: 20px;
+  line-height: 30px;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.admin-wrapper {
+  padding: 20px;
+}
+
+.admin-search {
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.admin-bold {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 17px;
+}
+
+select,
+input,
+.custom-file label,
+.dropdown-btn span {
+  font-size: 15px !important;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.form-group input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.form-group input::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.form-group input:-ms-input-placeholder {
+  /* IE 10+ */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.form-group input:-moz-placeholder {
+  /* Firefox 18- */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.btn-success.filter-btn {
+  margin-left: 10px;
+}
+
+.add-new-container {
+  margin-top: 20px;
+}
+
+.addnew {
+  cursor: pointer;
+}
+
+.addnew span {
+  margin-left: 5px;
+  text-transform: capitalize;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.records-table thead th {
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500;
+}
+
+.table thead {
+  text-align: center;
+}
+
+.records-table tbody td {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.form-group label,
+.fields-container label {
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.active-nav:hover,
+.active-nav {
+  background: #db1430 !important;
+}
+
+.active-nav:before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background: #f3f3f3;
+  position: absolute;
+  right: -15px;
+  bottom: 5px;
+  transform: rotate(45deg);
+}
+
+.active-nav .nav-icon,
+.nav-icon:hover {
+  color: #d7d7d7 !important;
+}
+
+.active-nav .nav-name {
+  color: #fff;
+}
+
+.admin-nav li:hover .nav-icon {
+  color: #868aa8;
+}
+
+.dash-logo {
+  float: left;
+  font-size: 24px;
+  line-height: 25px;
+  opacity: 1;
+  visibility: visible;
+  height: 25px;
+  transition: height 5s, opacity 3s ease;
+}
+
+.hide {
+  visibility: hidden !important;
+  height: 0px !important;
+  opacity: 0 !important;
+  transition: 0s ease !important;
+}
+
+.modal-footer button {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px;
+}
+
+table tr button {
+  font-size: 13px !important;
+}
+
+.table {
+  margin: 0px !important;
+}
+
+.btn-container button:first-child {
+  margin-right: 10px;
+}
+
+.btn-container button:last-child {
+  margin-right: 0px !important;
+}
+
+.no-data h5 {
+  font-size: 14px;
+  text-align: center;
+}
+
+.img-preview img {
+  width: 100%;
+  max-height: 200px;
+}
+
+.img-preview {
+  border: 1px solid #cdd3da;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 5px;
+  color: #989696;
+  font-family: 'Montserrat', sans-serif !important;
+  border-radius: 3px;
+}
+
+.product-variations-container {
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.single-product-variation {
+  padding-top: 10px;
+  padding: 10px;
+  background: #f3f3f3;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.single-product-variation:last-child {
+  margin-bottom: 0px;
+}
+
+.size-quantity-container {
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button.close {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 24px !important;
+}
+
+.variation-img-container {
+  margin: 10px 0px;
+}
+
+.variation-img img {
+  width: 100%;
+}
+
+.variation-img img {
+  width: 100%;
+  height: 110px;
+  border: 1px solid #fff;
+}
+
+.variation-img {
+  margin-bottom: 10px;
+}
+
+.img-move-right {
+  border-left: 2px solid #fff;
+  cursor: pointer;
+  background: #282733;
+  color: #fff;
+}
+
+.img-move-left {
+  cursor: pointer;
+  background: #282733;
+  color: #fff;
+}
+
+.timepicker-picker {
+  // border: 1px solid red;
+  // width: 100%;
+  height: 240px;
+  margin: 0 80px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calendar {
+  cursor: pointer;
+}
+
+.timepicker-picker table td {
+  height: 24px;
+  line-height: 24px;
+  width: 24px;
+}
+
+.bootstrap-datetimepicker-widget table td.separator {
+  width: 1px;
+  height: 1px;
+  line-height: 1px;
+}
+
+.bootstrap-datetimepicker-widget .timepicker-hour,
+.bootstrap-datetimepicker-widget .timepicker-minute,
+.bootstrap-datetimepicker-widget .glyphicon-chevron-up,
+.bootstrap-datetimepicker-widget .glyphicon-chevron-down {
+  width: 20px;
+  height: 15px;
+  line-height: 1;
+}
+
+.bootstrap-datetimepicker-widget table td span:hover {
+  background: none;
+}
+
+.calendar {
+  padding: 3px 10px;
+  background: #ccc;
+}
+
+.datetimepicker .up-arrow:before {
+  content: '\f062';
+  font-family: FontAwesome;
+  color: #444;
+}
+
+.datetimepicker .down-arrow:before {
+  content: '\f063';
+  font-family: FontAwesome;
+  color: #444;
+}
+
+.datetimepicker .bootstrap-datetimepicker-widget {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.datetimepicker .bootstrap-datetimepicker-widget table td span {
+  background: #eee !important;
+}
+
+.modal-dialog {
+  width: 100%;
+}
+
+.is-recommended {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  top: 5px;
+  margin-right: 10px;
+}

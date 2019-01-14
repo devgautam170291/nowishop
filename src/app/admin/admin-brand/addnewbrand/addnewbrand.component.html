@@ -1,0 +1,46 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    {{case == 'edit' ? 'Edit' : 'Add New'}} User
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>
+  <div class="admin-wrapper">
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Brand Name</label>
+            <input class="form-control" [(ngModel)]="model.BrandName">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12">
+            <label>Brand Description</label>
+            <textarea class="form-control" rows="5" cols="2" [(ngModel)]="model.BrandDescription"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6" *ngIf="showMultiselect">
+            <label>Select Categories</label>
+            <ng-multiselect-dropdown [placeholder]="'Select Categories'" [data]="dropdownList" [(ngModel)]="model.brandCategories" [settings]="dropdownSettings" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelect)="onDeSelect($event)" (onDeSelectAll)="onDeSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5 mt-5">
+      <div class="col-md-12 text-right btn-container">
+        <button class="btn btn-static" routerLink="/admin/brands">Cancel</button>
+        <button class="btn btn-success" (click)="uploadBrand()">Upload Brand</button>
+      </div>
+    </div>
+  </div>
+</div>

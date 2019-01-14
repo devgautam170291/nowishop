@@ -1,0 +1,9 @@
+.breadcrumb {
+  padding: 0px !important;
+  background: transparent !important;
+}
+
+.breadcrumb li {
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
+}

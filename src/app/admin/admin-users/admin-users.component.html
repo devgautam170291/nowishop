@@ -1,0 +1,51 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    Users
+  </div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <div class="admin-wrapper">
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <app-admin-search (filterResult)="getFilterResult($event)" [calledFrom]="'user'" [searchColumns]="searchColumns"></app-admin-search>
+    <div class="add-new-container text-right">
+      <span class="addnew" [routerLink]="['/admin/users/addnewuser']">
+            <i class="fa fa-plus-circle"></i><span>add new user</span>
+      </span>
+    </div>
+    <div class="records-table">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr class="bg-dark text-light">
+            <th>Username</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th style="min-width: 110px;">Phone No.</th>
+            <th>Role</th>
+            <th>Created At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of model; let i = index">
+            <td>{{user.UserName}}</td>
+            <td>{{user.Email}}</td>
+            <td>{{user.CreatedName}}</td>
+            <td>{{user.MobileNo}}</td>
+            <td>{{user.UserRoleName}}</td>
+            <td>{{user.CreatedDate}}</td>
+            <td class="text-right">
+              <!-- Edit User button : Might need in future -->
+              <!-- <button class="btn btn-primary mr-1" [routerLink]="['edituser', user.UserId]"><i class="fas fa-edit"></i> Edit</button> -->
+              <span *ngIf="user.Status">
+                <button class="btn btn-success mr-1" (click)="changeUserStatus(user.UserId)"><i class="fa fa-check"></i> Deactive</button>
+              </span>
+              <span *ngIf="!user.Status">
+                <button class="btn btn-warning text-light mr-1" (click)="changeUserStatus(user.UserId)"><i class="fa fa-question-circle"></i> Active</button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <app-admin-pagination></app-admin-pagination> -->
+    </div>
+  </div>
+</div>

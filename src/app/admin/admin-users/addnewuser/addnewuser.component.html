@@ -1,0 +1,70 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    {{case == 'edit' ? 'Edit' : 'Add New'}} User
+  </div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <div class="admin-wrapper">
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label>First Name</label>
+            <input class="form-control" [(ngModel)]="model.FirstName">
+          </div>
+          <div class="col-md-6">
+            <label>Middle Name</label>
+            <input class="form-control" [(ngModel)]="model.MiddleName">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Last Name</label>
+            <input class="form-control" [(ngModel)]="model.LastName">
+          </div>
+          <div class="col-md-6">
+            <label>Mobile No.</label>
+            <input class="form-control" [(ngModel)]="model.MobileNo">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Email</label>
+            <input class="form-control" [(ngModel)]="model.Email">
+          </div>
+          <div class="col-md-6">
+            <label>Role</label>
+            <select class="form-control" [(ngModel)]="model.UserRoleId">
+              <option value="0">Select User Role</option>
+              <option *ngFor="let role of userRoles" value="{{role.UserRoleId}}">{{role.UserRoleName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-container">
+        <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Password</label>
+            <input type="text" class="form-control" [(ngModel)]="model.Password">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5 mt-5">
+      <div class="col-md-12 text-right btn-container">
+        <button class="btn btn-static" routerLink="/admin/users">Cancel</button>
+        <button class="btn btn-success" (click)="uploadUser()">Upload User</button>
+      </div>
+    </div>
+  </div>
+</div>

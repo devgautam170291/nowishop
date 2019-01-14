@@ -1,0 +1,99 @@
+<div id="customer-care">
+  <div class="breedcrumb-wrap">
+    <div class="container">
+      <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    </div>
+  </div>
+  <div class="customer-care page-section">
+    <div class="container">
+      <div class="title">
+        <div class="row">
+          <div class="col-md-8">
+            <h2 class="page-title">Customer Care</h2>
+          </div>
+          <div class="col-md-4 text-right small-title">
+            <app-section-title [titleBg]="'#be1e2d'" [titleColor]="'#ffffff'" [value]="'contact@nowishop.com'" [dimention]="''"></app-section-title>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-container">
+              We look forward to assisting you with any of your shopping queries. If you can't find your expected answers here, such as Order Inquiries, Payment, Shipping & Delivery, Return & Refunds and General Post-sales Inquiries.
+              Our Customer Service Team will be available. Our working hours are 9:00 to 24:00 (GMT +8) daily, during which we will endeavor to respond to your email within 24 hours. Please feel free to contact us!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="title-with-line">
+          <h3>Business Development Contact</h3>
+        </div>
+        <div class="text-container">
+          <ul>
+            <li><span class="list-heading">Email:</span><span class="list-content">customer-care@nowishop.com</span></li>
+            <li><span class="list-heading">Address:</span><span class="list-content"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="section">
+        <div class="title-with-line">
+          <h3>media contact</h3>
+        </div>
+        <div class="text-container">
+          If you are interested in speaking to someone at nowishop.com, please contact Bob via (<span>bob@nowishop.com</span>)
+        </div>
+      </div>
+      <div class="section">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="bold-msg">
+              Still need help? Feel free to contact us. We will respond within 24 hours.
+              Or find the answer in <span>Help Center</span>
+            </div>
+          </div>
+          <div class="col-md-5 text-right">
+            <button class="btn text-uppercase btn-red" data-toggle="modal" data-target="#customerCareModal">Contact us now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="customerCareModal" tabindex="-1" role="dialog" aria-labelledby="customerCareModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="customer-modal-container text-center">
+            <h3>How can we help you?</h3>
+            <div class="customer-email-container ">
+              <div class="form-group">
+                <select type="text" class="form-control">
+                  <option value="">Choose Topic</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Comment"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Your Email">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Your Mobile Number">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Your Order Number (IF)">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          Send to us
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

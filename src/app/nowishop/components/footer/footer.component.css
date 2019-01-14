@@ -1,0 +1,181 @@
+.why-title {
+  padding: 10px 10px 10px 0px;
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: var(--nowishop-blue);
+  width: 100%;
+  max-width: 210px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer {
+  background: var(--nowishop-blue);
+  position: relative;
+  margin-top: 50px;
+}
+
+.why-us {
+  position: relative;
+}
+
+.why-us .container {
+  position: relative;
+}
+
+.why-title:before {
+  content: '';
+  height: 50px;
+  width: 80px;
+  background: var(--nowishop-blue);
+  position: absolute;
+  right: -51px;
+  top: 21px;
+  transform: rotate(45deg);
+}
+
+.why-us-feature {
+  padding: 40px 0px;
+}
+
+.footer-container {
+  padding: 40px 0px;
+  background: #f9f9f9;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-list li {
+  list-style: none;
+}
+
+ul.footer-list li div {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.footer-container ul.footer-list li div {
+  color: #000;
+}
+
+.footer-payments {
+  padding: 15px 0px;
+  background: #fff;
+}
+
+.footer-copyright {
+  padding: 10px 0px;
+  text-align: center;
+  font-size: 14px;
+  background: var(--nowishop-red);
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.why-us .container:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background: var(--nowishop-blue);
+  top: -50px;
+  right: 100%;
+}
+
+.payment-option-list li {
+  width: 50px;
+  height: 30px;
+  background-size: 85px;
+  background-repeat: no-repeat;
+}
+
+.visa {
+  background: url(/assets/img/icons-white.png);
+  background-position: 0px -525px;
+}
+
+.master-card {
+  background: url(/assets/img/icons-white.png);
+  background-position: 0px -489px;
+}
+
+.maestro {
+  background: url(/assets/img/icons-white.png);
+  background-position: 0px -400px;
+}
+
+.american-express {
+  background: url(/assets/img/icons-white.png);
+  background-position: 0px -444px;
+}
+
+.payment-option-list {
+  position: relative;
+  top: 2px;
+}
+
+.why-choose li {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  background-size: 135px !important;
+  background-repeat: no-repeat !important;
+  width: 100%;
+}
+
+.footer-why-icon {
+  width: 100%;
+  height: 90px;
+  background-repeat: no-repeat !important;
+  background-size: 160px !important;
+}
+
+.footer-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.sub-footer-list li a {
+  font-family: futura-light;
+  color: #000;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.pay-with {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--nowishop-blue);
+  font-size: 16px;
+}
+
+.footer-logo {
+  position: relative;
+  top: 15px;
+}
+
+.subscribe .input-group-append button {
+  background: var(--nowishop-blue);
+  border: 1px solid var(--nowishop-blue);
+  color: #fff !important;
+}
+
+.coupon-msg {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.coupon-msg span {
+  color: #969292;
+  text-transform: capitalize;
+  font-family: 'Amiri', serif;
+}

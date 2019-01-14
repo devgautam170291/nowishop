@@ -1,0 +1,53 @@
+<div id="home">
+  <div class="slider-wrapper">
+    <div class="container">
+      <div class="slider">
+        <div class="slider-contaier">
+          <!-- slider code start -->
+          <app-home-slider></app-home-slider>
+          <!-- Slider code end -->
+        </div>
+        <div class="our-services">
+          <ul>
+            <li style="background: #fff url(/assets/img/icons.png) 49px -313px" class="my-primary">
+              100% Authentic Thai Products</li>
+            <li style="background: #fff url(/assets/img/icons.png) 46px -362px" class="my-primary">Secure Payments</li>
+            <li style="background: #fff url(/assets/img/icons.png) 46px -47px" class="my-primary">World Wide Free Shipping</li>
+            <li style="background: #fff url(/assets/img/icons.png) 49px -212px" class="my-primary">30 Days Return Policy</li>
+            <li style="background: #fff url(/assets/img/icons.png) 45px  -265px" class="my-primary">24/7 Customer Care</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Flash Deals -->
+  <app-home-section [type]="'flashDeals'" [titleBg]="'#b60c2b'"></app-home-section>
+  
+  <!-- show Categories -->
+  <section class="page-section" style="background: #f1f1f1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <app-section-title [titleBg]="'#ff7bac'" [titleColor]="'#ffffff'" [value]="'Popular Categories'"></app-section-title>
+          <app-show-categories></app-show-categories>
+        </div>
+        <div class="col-md-4">
+          <app-section-title [titleBg]="'#39b54a'" [titleColor]="'#ffffff'" [value]="'Lowest price within $5'"></app-section-title>
+          <div class="banner-container">
+            <div class="banner-img" style="background: url('/assets/img/with-in-5-dollars.jpg');"></div>
+            <div class="view-btn"><a class="btn btn-primary">See All</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- New Arrivals -->
+  <app-home-section [type]="'newArrivals'" [titleBg]="'#f5d000'"></app-home-section>
+  
+  <!-- Best Selling -->
+  <app-home-section [type]="'bestSelling'" [titleBg]="'#71a4d7'"></app-home-section>
+  
+  <!-- Recommend For You -->
+  <app-recomended></app-recomended>
+</div>

@@ -1,0 +1,52 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    Products
+  </div>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <div class="admin-wrapper">
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <app-admin-search (filterResult)="getFilterResult($event)" [calledFrom]="'producttags'" [searchColumns]="searchColumns"></app-admin-search>
+    <div class="add-new-container text-right">
+      <span class="addnew" [routerLink]="['/admin/products/producttag/addproducttag']">
+            <i class="fa fa-plus-circle"></i><span>add product tag</span>
+      </span>
+    </div>
+    <div class="records-table">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr class="bg-dark text-light">
+            <th>Product Tag Name</th>
+            <th>Product Tag Start Date</th>
+            <th>Product Tag End Date</th>
+            <th>Created AT</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="model.length > 0">
+          <tr *ngFor="let row of model; let i = index">
+            <td>{{row.DealName}}</td>
+            <td>{{row.DealStartTime | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+            <td>{{row.DealEndTime | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+            <td>{{row.CreatedDate | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+            <td class="text-right">
+              <!-- <button class="btn btn-primary mr-1" [routerLink]="['editproduct', row.ID]"><i class="fa fa-edit"></i> Edit</button> -->
+              <span *ngIf="row.Status">
+                <button class="btn btn-success mr-1" (click)="changeProductTagStatus(row.ID)"><i class="fa fa-check"></i> Deactive</button>
+              </span>
+              <span *ngIf="!row.Status">
+                <button class="btn btn-warning text-light mr-1" (click)="changeProductTagStatus(row.ID)"><i class="fa fa-question-circle"></i> Active</button>
+              </span>
+              <button class="btn btn-danger mr-1" (click)="deleteProductTag(row.ID)"><i class="fa fa-trash"></i> Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="model.length == 0">
+          <tr class="text-center">
+            <td colspan="6">No Record Found</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <app-admin-pagination></app-admin-pagination> -->
+    </div>
+  </div>
+</div>

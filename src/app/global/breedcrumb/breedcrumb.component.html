@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li *ngFor="let info of breedcrumb" class="breadcrumb-item" [ngClass]="info.active ? 'active' : ''">
+      <span *ngIf="!info.active">
+    	<a [routerLink]="info.url ? info.url : '#'"> {{info.name}} </a>
+		</span>
+		<span *ngIf="info.active">
+			{{info.name}}
+		</span>
+    </li>
+  </ol>
+</nav>

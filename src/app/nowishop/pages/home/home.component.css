@@ -1,0 +1,62 @@
+.slider-wrapper {
+  position: relative;
+  min-height: 330px;
+  background: var(--nowishop-red);
+}
+
+.carousel-item {
+  max-height: 310px;
+}
+
+.slider-contaier {
+  float: left;
+  width: 100%;
+  max-width: 715px;
+}
+
+#homeslider {
+  max-width: 715px;
+}
+
+.our-services {
+  float: left;
+  width: calc(100% - 715px);
+}
+
+.our-services li {
+  width: 100%;
+  background: #fff;
+  background-size: 90px !important;
+  background-repeat: no-repeat !important;
+  padding: 15px 20px 15px 120px;
+  margin-bottom: 10px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  font-family: futura-light;
+  font-size: 16px;
+  color: var(--nowishop-light-blue);
+}
+
+#homeslider img {
+  width: 100%;
+  height: 400px;
+  background: rgb(204, 204, 204);
+}
+
+.view-btn {
+  text-align: center;
+  margin-top: 283px;
+}
+
+.view-btn a {
+  color: #ffffff;
+}
+
+.banner-container {
+  padding: 5px;
+  margin-top: 20px;
+  background: #fff url(/assets/img/with-in-5-dollars.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  min-height: 350px;
+}

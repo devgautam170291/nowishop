@@ -1,0 +1,66 @@
+.product-list {
+  min-height: 200px;
+  cursor: pointer;
+}
+
+.product-discount {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding-top: 5px;
+  width: 56px;
+  font-family: 'Montserrat', sans-serif;
+  height: 68px;
+  line-height: 19px;
+  background: url(/assets/img/icons.png) -57px -1421px;
+  text-align: center;
+  color: #fff;
+  background-repeat: no-repeat;
+}
+
+.product-img {
+  width: 100%;
+  height: 130px;
+  background-position: center center !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  margin: 5px;
+}
+
+.product-name {
+  float: left;
+  width: 100%;
+  max-width: 195px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  min-height: 40px;
+}
+
+.product-price {
+  float: right;
+  width: calc(100% - 195px);
+  color: #a5a3a3;
+  font-family: futura-light;
+  line-height: 18px;
+}
+
+.product-rating {
+  float: left;
+  width: 100%;
+  max-width: 150px;
+}
+
+.product-link {
+  float: left;
+  width: calc(100% - 150px);
+  font-family: futura-light;
+}
+
+.product-discount span {
+  display: block;
+}
+
+.product-link a {
+  color: var(--nowishop-light-blue);
+}

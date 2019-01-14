@@ -1,0 +1,54 @@
+<section class="page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="product-banner position-relative">
+          <div [ngClass]="type">
+            <div *ngIf="type.toLowerCase() == 'flashdeals'" class="text-center">
+              <img src="/assets/img/flash-deal-watch.png" alt="">
+              </div>
+              <app-section-title [titleBg]="titleBg" [titleColor]="'#ffffff'" [value]="dynamicTitle" [dimention]="'full-width'"></app-section-title>
+            </div>
+            <div *ngIf="type.toLowerCase() == 'newarrivals'" class="img-container">
+              <img src="/assets/img/new-arrivals.jpg" alt="">
+            </div>
+              <div *ngIf="type.toLowerCase() == 'bestselling'" class="img-container">
+                <img src="/assets/img/best-dealing.jpg" alt="">
+            </div>
+                <div *ngIf="type.toLowerCase() == 'flashdeals'" class="flash-deal-watch">
+                  <div class="flash-msg">
+                    These Deals End in
+                  </div>
+                  <div class="flash-watch">
+                    <div class="d-inline-block showtime text-center">
+                      <div class="time">{{flashDealTimerObj['hours']}}</div>
+                      <div class="unit">Hrs</div>
+                    </div>
+                    <div class="d-inline-block showtime text-center">
+                      <div class="time">{{flashDealTimerObj['minutes']}}</div>
+                      <div class="unit">Mins</div>
+                    </div>
+                    <div class="d-inline-block showtime text-center">
+                      <div class="time">{{flashDealTimerObj['seconds']}}</div>
+                      <div class="unit">Sec</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="view-btn"><a href="#" class="btn btn-primary">See All</a></div>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row" *ngIf="productList.length > 0">
+                <div class="col-md-4 product-container position-relative" *ngFor="let product of productList">
+                  <app-show-product [product]="product"></app-show-product>
+                </div>
+              </div>
+              <div class="row" *ngIf="productList.length == 0">
+                <div class="col-md-4 product-container" *ngFor="let product of dummyProducts">
+                  <app-dummy-products></app-dummy-products>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</section>

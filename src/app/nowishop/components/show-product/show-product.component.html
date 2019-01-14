@@ -1,0 +1,14 @@
+<div class="product-list" routerLink="/product/{{product.ProductSlug}}">
+  <div class="product-discount" *ngIf="product.DiscountedPrice">
+    <span>Rs</span> <span>{{product.DiscountedPrice}}</span></div>
+  <div class="product-img" [ngStyle]="{'background': 'url('+product.ImageURL+')'}"></div>
+  <div class="product-name">{{product.ProductName}}</div>
+  <div class="product-price text-right">
+    <div>Rs</div>
+    <div [ngStyle]=" product.DiscountedPrice ? {'text-decoration': 'line-through'} : none">{{product.Price}}</div>
+  </div>
+  <div class="product-rating">
+    <app-ratings [rating]="product.AvgRating"></app-ratings>
+  </div>
+  <div class="product-link text-right"><a class="" routerLink="/product/{{product.ProductSlug}}">More <i class="fa fa-angle-right"></i></a></div>
+</div>

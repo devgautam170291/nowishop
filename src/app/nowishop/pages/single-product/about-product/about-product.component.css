@@ -1,0 +1,45 @@
+.product-detail-info .title {
+  padding: 10px 15px;
+  background: #37588d;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.detail-tab {
+  padding: 20px;
+  background: #e5e6e1;
+}
+
+.nav-tabs .nav-link {
+  flex-grow: unset;
+  border: none;
+  border-right: 1px solid #37588d;
+  color: #37588d;
+  text-transform: uppercase;
+  padding: 0px 15px;
+  font-size: 14px;
+  border-radius: 0;
+  position: relative;
+  font-family: futura-light;
+}
+
+.nav-tabs .nav-link:last-child {
+  border: none;
+}
+
+.nav-link.active {
+  background: transparent !important;
+  border: none;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.nav-link.active:after {
+  content: '';
+  width: 80%;
+  position: absolute;
+  height: 2px;
+  left: 10%;
+  background: #37588d;
+  bottom: 0;
+}

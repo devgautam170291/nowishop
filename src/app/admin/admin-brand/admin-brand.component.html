@@ -1,0 +1,52 @@
+<div class="container-fluid p-0 m-0">
+  <div class="admin-title">
+    Brands
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>
+  <div class="admin-wrapper">
+    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    <app-admin-search (filterResult)="getFilterResult($event)" [calledFrom]="'brand'" [searchColumns]="searchColumns"></app-admin-search>
+    <div class="add-new-container text-right">
+      <span class="addnew" [routerLink]="['/admin/brands/addnewbrand']">
+            <i class="fa fa-plus-circle"></i><span>add new brand</span>
+      </span>
+    </div>
+    <div class="records-table">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr class="bg-dark text-light">
+            <th>Brand Name</th>
+            <th>Brand Description</th>
+            <th>Product Slug</th>
+            <th>Created AT</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="model.length > 0">
+          <tr *ngFor="let row of model; let i = index">
+            <td>{{row.BrandName}}</td>
+            <td>{{row.BrandDescription}}</td>
+            <td>{{row.BrandSlug}}</td>
+            <td>{{row.CreatedDate | date:long}}</td>
+            <td class="text-right">
+              <button class="btn btn-primary mr-1" [routerLink]="['editbrand', row.ID]"><i class="fa fa-edit"></i> Edit</button>
+              <span *ngIf="row.Status">
+                <button class="btn btn-success mr-1" (click)="changeBrandStatus(row.ID)"><i class="fa fa-check"></i> Deactive</button>
+              </span>
+              <span *ngIf="!row.Status">
+                <button class="btn btn-warning text-light mr-1" (click)="changeBrandStatus(row.ID)"><i class="fa fa-question-circle"></i> Active</button>
+              </span>
+              <button class="btn btn-danger mr-1" (click)="deleteBrand(row.ID)"><i class="fa fa-trash"></i> Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="model.length == 0">
+          <tr class="text-center">
+            <td colspan="5">No Record Found</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <app-admin-pagination></app-admin-pagination> -->
+    </div>
+  </div>
+</div>
