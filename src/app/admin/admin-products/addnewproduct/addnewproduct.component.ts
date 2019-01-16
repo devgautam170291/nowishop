@@ -94,7 +94,6 @@ export class AddnewproductComponent implements OnInit {
     this.loading = true;
     this.dataService.get('Brand/GetAllBrand').subscribe(
       res=>{
-        debugger
         this.loading = false;
         this.brandList = res['Data'];
       }
@@ -129,7 +128,6 @@ export class AddnewproductComponent implements OnInit {
   }
 
   removeVariation(index){    
-    debugger
     this.model.product_Variations.splice(index, 1);
     if(this.model.product_Variations.length == 0){
       this.addMoreVariation();
@@ -137,7 +135,6 @@ export class AddnewproductComponent implements OnInit {
   }
 
   uploadImages(event, variation){
-    debugger
     if(event.target.files.length){
       var formData = new FormData();
       for(let i=0; i<event.target.files.length; i++){
@@ -145,7 +142,6 @@ export class AddnewproductComponent implements OnInit {
       }    
       this.dataService.post('Product/SaveImage', formData).subscribe(
         res => {
-          debugger;
           if(res['IsSuccess']){
             var urls = res['Data'];
             if(urls.includes(',')){

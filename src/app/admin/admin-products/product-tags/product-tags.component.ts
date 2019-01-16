@@ -106,8 +106,6 @@ export class ProductTagsComponent implements OnInit {
 
   getFilterResult(data){
     this.model = data;
-    console.log('check data');
-    console.log(this.model);
   }
 
 }

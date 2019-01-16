@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-img-slider',
@@ -9,7 +9,14 @@ export class ProductImgSliderComponent implements OnInit {
 
   constructor() { }
 
+  @Input() variationImages;
+
   ngOnInit() {
+  	if(!this.variationImages){
+  		this.variationImages = [];
+  	}
+  	console.log('check info');
+  	console.log(this.variationImages);
   }
 
 }

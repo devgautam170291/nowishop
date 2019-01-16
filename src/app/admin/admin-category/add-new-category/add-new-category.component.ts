@@ -86,8 +86,7 @@ export class AddNewCategoryComponent implements OnInit {
           this.model = res['Data'];
         }
         else {
-          alert('Something went wrong!!!, check console for error message');
-          console.log(res['Message']);
+          Swal("OOPS!", "Something went wrong.", "warning");
         }
       }
     )
@@ -97,9 +96,10 @@ export class AddNewCategoryComponent implements OnInit {
     if(e.currentTarget.files.length){
       var formData = new FormData();
       formData.append('UploadedImage', e.target.files[0]);
-
+      this.loading = true;
       this.dataService.post('Product/SaveImage', formData).subscribe(
         res => {
+          this.loading = false;
           if(res['IsSuccess']){
             this.model['CategoryImageUrl'] = this.dataService.imageUrl + res['Data'];
           }
@@ -123,15 +123,15 @@ export class AddNewCategoryComponent implements OnInit {
   		if(this.case == "add"){
         this.model['CreatedDate'] = new Date();
         this.model['CreatedBy'] = this.nowishopGlobal.getUserInfo().userId; 
-
+        this.loading = true;
   			this.dataService.post('Category/AddCategory', this.model).subscribe(
 	  			res => {
+            this.loading = false;
             if(res['IsSuccess']){
               Swal("Success!", "Product successfully uploaded", "success");
             }
             else {
-              alert('Something went wrong!!!, check console for error message');
-              console.log(res['Message']);
+              Swal("OOPS!", "Something went wrong.", "warning");
             }
 	  			}
 	  		)
@@ -140,15 +140,15 @@ export class AddNewCategoryComponent implements OnInit {
   		else {
         this.model['ModifiedDate'] = new Date(); 
         this.model['ModifiedBy'] = this.nowishopGlobal.getUserInfo().userId;
-
+        this.loading = true;
   			this.dataService.post('Category/EditCategory', this.model).subscribe(
 	  			res => {
+            this.loading = false;
             if(res['IsSuccess']){
               Swal("Success!", "Product successfully uploaded", "success");
             }
 	  				else {
-              alert('Something went wrong!!!, check console for error message');
-              console.log(res['Message']);
+              Swal("OOPS!", "Something went wrong.", "warning");
             }
 	  			}
 	  		)

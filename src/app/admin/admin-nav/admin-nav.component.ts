@@ -25,7 +25,6 @@ export class AdminNavComponent implements OnInit {
   }
 
   logoutAdmin(){
-    debugger
   	if(this.nowishopGlobal.isUserInfo()){
       var userInfo = this.nowishopGlobal.getUserInfo();
       var model = {

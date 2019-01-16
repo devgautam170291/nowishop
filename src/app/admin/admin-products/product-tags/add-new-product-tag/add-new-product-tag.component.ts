@@ -49,11 +49,10 @@ export class AddNewProductTagComponent implements OnInit {
     $('.datetimepicker').find('.fa-arrow-down').addClass('glyphicon-chevron-down');
   }
 
-  checkCase(){ 
-  debugger   
+  checkCase(){    
     if(this.route.snapshot.params.id){
       this.case = 'edit';
-      // this.getEditProductTagData(this.route.snapshot.params.id);
+      this.getEditProductTagData(this.route.snapshot.params.id);
     }
     else{
       this.case = 'add';
@@ -101,7 +100,6 @@ export class AddNewProductTagComponent implements OnInit {
   }
 
   addProductTag(){
-    debugger
     this.loading = true;
     var startTime = $('#starttime').val();
     var endTime = $('#endtime').val();

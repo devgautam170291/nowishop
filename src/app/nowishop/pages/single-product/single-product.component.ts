@@ -19,8 +19,8 @@ export class SingleProductComponent implements OnInit {
   wishlist: any = true;
   productMoreInfo: any = [];
   loading: any = false;
-  showProductInfo: any = false;
   selectedVariation: any;
+  loadDummy: any = true;
 
   ngOnInit() {
   	this.showBreedcrumb();
@@ -59,7 +59,7 @@ export class SingleProductComponent implements OnInit {
   					this.productInfo = res['Data'];
   					this.productMoreInfo = JSON.parse(this.productInfo.more_Data);
   					this.setVariation(this.productInfo.productVariation[0]);
-  					this.showProductInfo = true;
+  					this.loadDummy = false;
   				}
   			}
   		)
