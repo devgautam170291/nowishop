@@ -2,7 +2,7 @@
   <div class="admin-title">
     Orders
   </div>
-  <ngx-loading [show]="loading" [config]=""></ngx-loading>
+  <!-- <ngx-loading [show]="loading" [config]=""></ngx-loading> -->
   <div class="admin-wrapper">
     <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
     <app-admin-search (filterResult)="getFilterResult($event)" [calledFrom]="'user'" [searchColumns]="searchColumns"></app-admin-search>

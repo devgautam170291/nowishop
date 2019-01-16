@@ -10,6 +10,7 @@ export class AdminOrdersComponent implements OnInit {
   constructor() { }
   breedcrumb: any;
   searchColumns: any;
+  model: any;
 
   ngOnInit() {
   	this.showBreedcrumb();
@@ -35,6 +36,10 @@ export class AdminOrdersComponent implements OnInit {
     this.searchColumns = [
       {name: 'Order Name', value: 'orderName'}
     ];
+  }
+
+  getFilterResult(data){
+    this.model = data;
   }
 
 }

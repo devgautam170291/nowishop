@@ -18,7 +18,6 @@ export class SingleProductComponent implements OnInit {
   quantity: any;
   wishlist: any = true;
   productMoreInfo: any = [];
-  loading: any = false;
   selectedVariation: any;
   loadDummy: any = true;
 
@@ -51,15 +50,13 @@ export class SingleProductComponent implements OnInit {
   getProductInfo(){
   	var productSlug = this.route.snapshot.params.product_slug;
   	if(productSlug){
-  		this.loading = true;
   		this.http.get(this.dataService.baseUrl + 'Home/SingleProduct/'+productSlug).subscribe(
   			res => {
-  				this.loading = false;
   				if(res['IsSuccess']){
   					this.productInfo = res['Data'];
   					this.productMoreInfo = JSON.parse(this.productInfo.more_Data);
   					this.setVariation(this.productInfo.productVariation[0]);
-  					this.loadDummy = false;
+  					// this.loadDummy = false;
   				}
   			}
   		)

@@ -1,122 +1,157 @@
 <div id="single-product">
-  <ngx-loading [show]="loading"></ngx-loading>
-  <div class="breedcrumb-wrap">
-    <div class="container">
-      <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
-    </div>
-  </div>
-  <div class="single-product page-section" >
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <app-product-img-slider [variationImages]="null"></app-product-img-slider>
+    <div class="breedcrumb-wrap">
+        <div class="container">
+            <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
         </div>
-        <div class="col-md-6">
-          <div class="product-info">
-            <div class="product-title">
-              <h2>{{productInfo.productName}}</h2>
-            </div>
-            <div class="rating-container">
-              <div class="rating d-inline-block">
-                <app-ratings [rating]="productInfo.rating ? productInfo.rating : '5'"></app-ratings>
-              </div>
-              <div class="review d-inline-block">
-                <i class="fa fa-caret-down" aria-hidden="true"></i>{{productInfo.ratingCount}} reviews
-              </div>
-            </div>
-            <div class="product-type">
-              <div class="product-type-header" [ngClass]="productInfo.productType">
-                Product Price
-                <!-- {{productInfo.productType == 'flash-deal' ? 'Flash Deal' : 'Product Price'}} -->
-              </div>
-              <div class="product-type-price">
-                <ul>
-                  <li>
-                    <div class="title d-inline-block">Rs</div>
-                    <div class="desc d-inline-block">
-                      <span class="price">{{selectedVariation.price}}</span>
-                      <span class="discounted-price">Rs {{selectedVariation.DiscountedPrice}}</span>
+    </div>
+    <div class="single-product page-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div *ngIf="loadDummy" style="height: 450px; background: #e7e7e7;">
+                        <div class="load-wrapp">
+                            <div class="letter-holder">
+                                <div class="l-1 letter">L</div>
+                                <div class="l-2 letter">o</div>
+                                <div class="l-3 letter">a</div>
+                                <div class="l-4 letter">d</div>
+                                <div class="l-5 letter">i</div>
+                                <div class="l-6 letter">n</div>
+                                <div class="l-7 letter">g</div>
+                                <div class="l-8 letter">.</div>
+                                <div class="l-9 letter">.</div>
+                                <div class="l-10 letter">.</div>
+                            </div>
+                        </div>
                     </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="product-details">
-                <table>
-                  <tr *ngFor="let data of productMoreInfo">
-                    <td>{{data.key}}</td>
-                    <td>{{data.value}}</td>
-                  </tr>
-                  <tr>
-                    <td>colors</td>
-                    <td>
-                      <ul class="product-variations">
-                        <li *ngFor="let variation of productInfo.productVariation" [ngClass]="variation.variationColor.toLowerCase() == productInfo.featuredColor.toLowerCase() ? 'active': ''" (click)="setVariation(variation, $event)">
-                          <img src="{{variation['variationColorURL'][0]['imageURL']}}" alt="">
-                    		</li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Size</td>
-                    <td>
-                      <ul class="available-size">
-                        <li *ngFor="let variationSize of selectedVariation.variationSizes; let i = index" [ngClass]="i==0 ? 'active': ''" (click)="changeVariationSize(selectedVariation, variationSize )">
-                          <div class="size-wrapper" [ngClass]="variationSize.Quantity ? 'in-stock' : 'out-of-stock'">
-                            {{variationSize.size}}
-                          </div>
+                    <div *ngIf="!loadDummy">
+                    </div>
+                    <!-- <app-product-img-slider [variationImages]="null"></app-product-img-slider> -->
+                </div>
+                <div class="col-md-6">
+                    <div *ngIf="loadDummy">
+                        <div class="load-wrapp">
+                            <div class="letter-holder">
+                                <div class="l-1 letter">L</div>
+                                <div class="l-2 letter">o</div>
+                                <div class="l-3 letter">a</div>
+                                <div class="l-4 letter">d</div>
+                                <div class="l-5 letter">i</div>
+                                <div class="l-6 letter">n</div>
+                                <div class="l-7 letter">g</div>
+                                <div class="l-8 letter">.</div>
+                                <div class="l-9 letter">.</div>
+                                <div class="l-10 letter">.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!loadDummy">
+                        <div class="product-info">
+                            <div class="product-title">
+                                <h2>{{productInfo.productName}}</h2>
+                            </div>
+                            <div class="rating-container">
+                                <div class="rating d-inline-block">
+                                    <app-ratings [rating]="productInfo.rating ? productInfo.rating : '5'"></app-ratings>
+                                </div>
+                                <div class="review d-inline-block">
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i>{{productInfo.ratingCount}} reviews
+                                </div>
+                            </div>
+                            <div class="product-type">
+                                <div class="product-type-header" [ngClass]="productInfo.productType">
+                                    Product Price
+                                    <!-- {{productInfo.productType == 'flash-deal' ? 'Flash Deal' : 'Product Price'}} -->
+                                </div>
+                                <div class="product-type-price">
+                                    <ul>
+                                        <li>
+                                            <div class="title d-inline-block">Rs</div>
+                                            <div class="desc d-inline-block">
+                                                <span class="price">{{selectedVariation.price}}</span>
+                                                <span class="discounted-price">Rs {{selectedVariation.DiscountedPrice}}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="product-details">
+                                    <table>
+                                        <tr *ngFor="let data of productMoreInfo">
+                                            <td>{{data.key}}</td>
+                                            <td>{{data.value}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>colors</td>
+                                            <td>
+                                                <ul class="product-variations">
+                                                    <li *ngFor="let variation of productInfo.productVariation" [ngClass]="variation.variationColor.toLowerCase() == productInfo.featuredColor.toLowerCase() ? 'active': ''" (click)="setVariation(variation, $event)">
+                                                        <img src="{{variation['variationColorURL'][0]['imageURL']}}" alt="">
                         </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr class="quantity-manager">
-                    <td>QTY</td>
-                    <td>
-                      <div class="d-inline-block">
-                        <i class="fa fa-minus-circle" aria-hidden="true" (click)="decreaseQuantity()"></i>
-                      </div>
-                      <span class="quantity">{{quantity}}</span>
-                      <div class="d-inline-block">
-                        <i class="fa fa-plus-circle" aria-hidden="true" (click)="increaseQuantity()"></i>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Payment</td>
-                    <td>
-                      <ul class="payment-option-list">
-                        <li class="d-inline-block visa"></li>
-                        <li class="d-inline-block master-card"></li>
-                        <li class="d-inline-block maestro"></li>
-                        <li class="d-inline-block american-express"></li>
-                      </ul>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="product-info-btn">
-                <button class="btn cart-btn">Add to cart</button>
-                <button class="btn buy-btn">Buy It now</button>
-              </div>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Size</td>
+                                            <td>
+                                                <ul class="available-size">
+                                                    <li *ngFor="let variationSize of selectedVariation.variationSizes; let i = index" [ngClass]="i==0 ? 'active': ''" (click)="changeVariationSize(selectedVariation, variationSize )">
+                                                        <div class="size-wrapper" [ngClass]="variationSize.Quantity ? 'in-stock' : 'out-of-stock'">
+                                                            {{variationSize.size}}
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr class="quantity-manager">
+                                            <td>QTY</td>
+                                            <td>
+                                                <div class="d-inline-block">
+                                                    <i class="fa fa-minus-circle" aria-hidden="true" (click)="decreaseQuantity()"></i>
+                                                </div>
+                                                <span class="quantity">{{quantity}}</span>
+                                                <div class="d-inline-block">
+                                                    <i class="fa fa-plus-circle" aria-hidden="true" (click)="increaseQuantity()"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Payment</td>
+                                            <td>
+                                                <ul class="payment-option-list">
+                                                    <li class="d-inline-block visa"></li>
+                                                    <li class="d-inline-block master-card"></li>
+                                                    <li class="d-inline-block maestro"></li>
+                                                    <li class="d-inline-block american-express"></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="product-info-btn">
+                                    <button class="btn cart-btn">Add to cart</button>
+                                    <button class="btn buy-btn">Buy It now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="share-wishlist">
+                <div class="d-inline-block product-wishlist" *ngIf="wishlist">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    Remove from wishlist
+                </div>
+                <div class="d-inline-block product-wishlist" *ngIf="!wishlist">
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    Add to wishlist
+                </div>
+                <div class="d-inline-block product-share">
+                    <i class="fa fa-share" aria-hidden="true"></i>
+                    share</div>
+            </div>
         </div>
-      </div>
-      <div class="share-wishlist">
-        <div class="d-inline-block product-wishlist" *ngIf="wishlist">
-          <i class="fa fa-heart" aria-hidden="true"></i>
-          Remove from wishlist
-        </div>
-        <div class="d-inline-block product-wishlist" *ngIf="!wishlist">
-          <i class="fa fa-heart-o" aria-hidden="true"></i>
-          Add to wishlist
-        </div>
-        <div class="d-inline-block product-share">
-          <i class="fa fa-share" aria-hidden="true"></i>
-          share</div>
-      </div>
-      <app-similar-products></app-similar-products>
-      <app-about-product></app-about-product>
-      <app-browsing-history></app-browsing-history>
+        <app-similar-products [category]="null"></app-similar-products>
+        <app-about-product></app-about-product>
+        <app-browsing-history></app-browsing-history>
     </div>
-  </div>
 </div>

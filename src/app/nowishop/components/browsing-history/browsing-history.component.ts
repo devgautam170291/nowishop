@@ -9,10 +9,18 @@ export class BrowsingHistoryComponent implements OnInit {
 
   constructor() { }
 
-  browsingHistoryProducts: any;
+  browsingHistoryProducts: any = [];
+  dummyProducts: any = [];
 
   ngOnInit() {
-  	this.getHistoryProducts();
+    this.loadDummy();
+  	// this.getHistoryProducts();
+  }
+
+  loadDummy(){
+    for(let i=0; i<6; i++){
+      this.dummyProducts.push({});
+    }
   }
 
   getHistoryProducts(){

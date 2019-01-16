@@ -1,24 +1,44 @@
 <section class="home-section">
-  <div class="container">
-    <app-section-title [titleBg]="'#e5e6e1'" [titleColor]="'#000000'" [value]="'Browsing History'"></app-section-title>
-    <div class="recommend-container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="" id="similarProductsCarousel">
-            <div class=" row">
-              <div class="col-md-2 " [ngClass]="i==0 ? 'active' : ''" *ngFor="let product of browsingHistoryProducts; let i = index">
-                <div class="recomended-product">
-                  <div class="recomended-product-img">{{product.image}}</div>
-                  <div class="recomended-product-name text-center">{{product.name}}</div>
-                  <div class="recomended-product-price text-center">
-                    <div>US$ {{product.price}}</div>
-                  </div>
+    <div class="container">
+        <app-section-title [titleBg]="'#e5e6e1'" [titleColor]="'#000000'" [value]="'Browsing History'"></app-section-title>
+        <div class="recommend-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="" id="similarProductsCarousel">
+                        <div class="row" *ngIf="browsingHistoryProducts.length == 0">
+                            <div class="col-md-2" *ngFor="let product of dummyProducts">
+                                <div class="recomended-product" style="height: 200px;position: relative; padding: 0px;">
+                                    <div class="load-wrapp">
+                                        <div class="letter-holder">
+                                            <div class="l-1 letter">L</div>
+                                            <div class="l-2 letter">o</div>
+                                            <div class="l-3 letter">a</div>
+                                            <div class="l-4 letter">d</div>
+                                            <div class="l-5 letter">i</div>
+                                            <div class="l-6 letter">n</div>
+                                            <div class="l-7 letter">g</div>
+                                            <div class="l-8 letter">.</div>
+                                            <div class="l-9 letter">.</div>
+                                            <div class="l-10 letter">.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="browsingHistoryProducts.length > 0">
+                            <div class="col-md-2 " [ngClass]="i==0 ? 'active' : ''" *ngFor="let product of browsingHistoryProducts; let i = index">
+                                <div class="recomended-product">
+                                    <div class="recomended-product-img">{{product.image}}</div>
+                                    <div class="recomended-product-name text-center">{{product.name}}</div>
+                                    <div class="recomended-product-price text-center">
+                                        <div>US$ {{product.price}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>

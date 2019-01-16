@@ -12,11 +12,7 @@ export class ProductImgSliderComponent implements OnInit {
   @Input() variationImages;
 
   ngOnInit() {
-  	if(!this.variationImages){
-  		this.variationImages = [];
-  	}
-  	console.log('check info');
-  	console.log(this.variationImages);
+    
   }
 
 }

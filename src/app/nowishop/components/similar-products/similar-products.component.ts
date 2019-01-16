@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 declare let $: any;
 
 @Component({
@@ -10,10 +10,20 @@ export class SimilarProductsComponent implements OnInit {
 
   constructor() { }
 
+  @Input() category;
+
   similarProducts: any = [];
+  dummyProducts:any = [];
 
   ngOnInit() {
-  	this.getSimilarProducts();
+    this.loadDummy();
+  	// this.getSimilarProducts();
+  }
+
+  loadDummy(){
+    for(let i=0; i<4; i++){
+      this.dummyProducts.push({});
+    }
   }
 
   getSimilarProducts(){
@@ -50,9 +60,9 @@ export class SimilarProductsComponent implements OnInit {
   }
 
   ngAfterViewChecked(){
-  	$('.carousel').carousel({
-      interval: 6000
-    })
+  	// $('.carousel').carousel({
+   //    interval: 6000
+   //  })
   }
 
 }

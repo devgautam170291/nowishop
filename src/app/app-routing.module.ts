@@ -9,6 +9,7 @@ import { CommingSoonComponent } from './pages/comming-soon/comming-soon.componen
 const routes: Routes = [
 	{ path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
 	{ path:'', loadChildren: './nowishop/nowishop.module#NowishopModule'},
+	// {path: '', component: CommingSoonComponent},
 	{ path: 'login', component: LoginComponent },
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'forget-password', component: ForgetPasswordComponent },
