@@ -53,6 +53,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [],
+  providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AdminRoutingModule { }

@@ -101,7 +101,7 @@ export class HomeSectionComponent implements OnInit {
   showTimer(){
     var thisobj = this;
     var interval = setInterval(function(){
-      var output = thisobj.nowishopGlobal.showTimer(new Date(), new Date('01-9-2019'));
+      var output = thisobj.nowishopGlobal.showTimer(new Date(), new Date('02-9-2019'));
 
       thisobj.flashDealTimerObj['hours'] = output['hours'] + (24 * output['days']);
       thisobj.flashDealTimerObj['minutes'] = output['minutes'];

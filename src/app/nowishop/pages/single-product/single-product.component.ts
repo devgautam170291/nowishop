@@ -18,6 +18,7 @@ export class SingleProductComponent implements OnInit {
   quantity: any;
   wishlist: any = true;
   productMoreInfo: any = [];
+  sliderImages: any = [];
   selectedVariation: any;
   loadDummy: any = true;
 
@@ -55,16 +56,30 @@ export class SingleProductComponent implements OnInit {
   				if(res['IsSuccess']){
   					this.productInfo = res['Data'];
   					this.productMoreInfo = JSON.parse(this.productInfo.more_Data);
-  					this.setVariation(this.productInfo.productVariation[0]);
-  					// this.loadDummy = false;
+            this.checkFeaturedVariation(this.productInfo);
+  					this.loadDummy = false;
   				}
   			}
   		)
   	}
   }
 
+  checkFeaturedVariation(obj){
+    if(obj.featuredColor){
+      if(obj.productVariation.length){
+        obj.productVariation.forEach((data)=>{
+          if(data.variationColor.toLowerCase() == obj.featuredColor.toLowerCase()){
+            this.setVariation(data);
+            return false;
+          }
+        })
+      }
+    }
+  }
+
   setVariation(obj, e = null){
   	this.selectedVariation = obj;
+    this.sliderImages = obj.variationColorURL;
   	if(e){
   		$(e.target).closest('.product-variations').find('li').each(function(){
   			$(this).removeClass('active');

@@ -31,7 +31,7 @@ export class AdminNavComponent implements OnInit {
         "UserId": userInfo['userId']
       }
       this.setLoading.emit(true);
-      this.http.post(this.dataService.baseUrl + 'User/Logout', model).subscribe(
+      this.dataService.post('User/Logout', model).subscribe(
         res => {
           this.setLoading.emit(false);
           if(res['IsSuccess']){

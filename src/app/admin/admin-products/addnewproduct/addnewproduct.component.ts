@@ -163,8 +163,20 @@ export class AddnewproductComponent implements OnInit {
     }
   }
 
+  setFeaturedImages(model){
+    if(this.model.product_Variations.length){
+      this.model.product_Variations.forEach((data)=>{
+        if(data.uploadedImages.length){
+          data.uploadedImages[0].IsFeatured_VariationImage = true;
+        }
+      })
+    }
+    return model;
+  }
+
   uploadProduct(){
     this.model.More_Data = JSON.stringify(this.moreProductInfo);
+    this.model = this.setFeaturedImages(this.model);
     this.loading = true;
     if(this.case == "add"){
       this.addEditProduct('Product/AddProduct',this.model);

@@ -1,0 +1,11 @@
+.account-list li.active {
+    color: var(--nowishop-red);
+}
+
+.account-list li {
+    cursor: pointer;
+}
+
+.content-section {
+    padding: 20px;
+}

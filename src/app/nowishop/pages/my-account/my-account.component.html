@@ -1,3 +1,104 @@
-<p>
-  my-account works!
-</p>
+<div id="my-account">
+    <div class="breedcrumb-wrap">
+        <div class="container">
+            <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+        </div>
+    </div>
+    <div class="page-section">
+        <div class="container">
+            <div class="sidebar-content-template">
+                <div class="row">
+                    <div class="col-md-3 sidebar-wrapper">
+                        <div class="sidebar">
+                            <div class="sidebar-container">
+                                <div class="sidebar-list">
+                                    <ul class="sidebar-list">
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
+                                                <li class="title text-uppercase" [ngClass]="content == 'my-nowishop' ? 'active' : ''" (click)="changeContent('my-nowishop')">My Nowishop</li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
+                                                <h2>orders</h2>
+                                                <li [ngClass]="content == 'my-orders' ? 'active' : ''" (click)="changeContent('my-orders')">My orders</li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
+                                                <h2>my favorites</h2>
+                                                <li [ngClass]="content == 'my-wishlist' ? 'active' : ''" (click)="changeContent('my-wishlist')">Wishlist</li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
+                                                <h2>wallet</h2>
+                                                <li [ngClass]="content == 'nowishop-points' ? 'active' : ''" (click)="changeContent('nowishop-points')">nowmypoint</li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
+                                                <h2>Message Center</h2>
+                                                <li [ngClass]="content == 'notifications' ? 'active' : ''" (click)="changeContent('notifications')">Notifications</li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
+                                                <h2>My Profile</h2>
+                                                <li [ngClass]="content == 'personal-information' ? 'active' : ''" (click)="changeContent('personal-information')">Personal Information</li>
+                                                <li [ngClass]="content == 'shipping-address' ? 'active' : ''" (click)="changeContent('shipping-address')">Shipping Address</li>
+                                                <li [ngClass]="content == 'security-setting' ? 'active' : ''" (click)="changeContent('security-setting')">Security Setting</li>
+                                                <li [ngClass]="content == 'account-binding' ? 'active' : ''" (click)="changeContent('account-binding')">Account Binding</li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
+                                                <li class="title text-uppercase" [ngClass]="content == 'logout' ? 'active' : ''" (click)="changeContent('logout')">Logout</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 content-wrapper">
+                        <div class="content">
+                            <div class="content-title-container">
+                            	{{this.content ? this.content.split('-').join(' ') : ''}}
+                            </div>
+                            <div class="content-section">
+                                <div *ngIf="content == 'my-nowishop'">
+                                    <app-my-nowishop></app-my-nowishop>
+                                </div>
+                                <div *ngIf="content == 'my-orders'">
+                                    <app-my-orders></app-my-orders>
+                                </div>
+                                <div *ngIf="content == 'my-wishlist'">
+                                    <app-my-wishlist></app-my-wishlist>
+                                </div>
+                                <div *ngIf="content == 'nowishop-points'">
+                                    <app-my-points></app-my-points>
+                                </div>
+                                <div *ngIf="content == 'notifications'">
+                                    <app-my-notifications></app-my-notifications>
+                                </div>
+                                <div *ngIf="content == 'personal-information'">
+                                    <app-my-personal-info></app-my-personal-info>
+                                </div>
+                                <div *ngIf="content == 'shipping-address'">
+                                    <app-my-shipping-address></app-my-shipping-address>
+                                </div>
+                                <div *ngIf="content == 'security-setting'">
+                                    <app-my-security-setting></app-my-security-setting>
+                                </div>
+                                <div *ngIf="content == 'account-binding'">
+                                    <app-my-account-binding></app-my-account-binding>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

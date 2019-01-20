@@ -55,8 +55,10 @@ export class SizeQuantity {
 export class ImagePath {
 	"name": any;
 	"url": any;
+	"IsFeatured_VariationImage": any
 	constructor(){
 		this.name = "";
 		this.url = "";
+		this.IsFeatured_VariationImage = false;
 	}
 }

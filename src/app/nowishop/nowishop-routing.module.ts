@@ -28,13 +28,14 @@ const routes: Routes = [
 			{path: 'shipping-payment', component: ShippingPaymentComponent},
 			{path: 'cart', component: MyCartComponent},
 			{path: 'search/:search_value', component: SearchResultComponent},
-			{path: 'account', component: MyAccountComponent},
-			{path: 'account/:name', component: MyAccountComponent}
+			{path: 'account', canActivate: [AuthGuard], component: MyAccountComponent},
+			{path: 'account/:name', canActivate: [AuthGuard], component: MyAccountComponent}
 	]}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class NowishopRoutingModule { }

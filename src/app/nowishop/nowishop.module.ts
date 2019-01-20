@@ -39,6 +39,15 @@ import { ShippingPaymentComponent } from './pages/shipping-payment/shipping-paym
 import { SingleCategoryComponent } from './pages/single-category/single-category.component';
 import { ProductImgSliderComponent } from './pages/single-product/product-img-slider/product-img-slider.component';
 import { AboutProductComponent } from './pages/single-product/about-product/about-product.component';
+import { MyNowishopComponent } from './pages/my-account/my-nowishop/my-nowishop.component';
+import { MyOrdersComponent } from './pages/my-account/my-orders/my-orders.component';
+import { MyWishlistComponent } from './pages/my-account/my-wishlist/my-wishlist.component';
+import { MyPointsComponent } from './pages/my-account/my-points/my-points.component';
+import { MyNotificationsComponent } from './pages/my-account/my-notifications/my-notifications.component';
+import { MyPersonalInfoComponent } from './pages/my-account/my-personal-info/my-personal-info.component';
+import { MyShippingAddressComponent } from './pages/my-account/my-shipping-address/my-shipping-address.component';
+import { MySecuritySettingComponent } from './pages/my-account/my-security-setting/my-security-setting.component';
+import { MyAccountBindingComponent } from './pages/my-account/my-account-binding/my-account-binding.component';
 
 @NgModule({
   imports: [
@@ -79,7 +88,16 @@ import { AboutProductComponent } from './pages/single-product/about-product/abou
     ShippingPaymentComponent,
     SingleCategoryComponent,
     ProductImgSliderComponent,
-    AboutProductComponent
+    AboutProductComponent,
+    MyNowishopComponent,
+    MyOrdersComponent,
+    MyWishlistComponent,
+    MyPointsComponent,
+    MyNotificationsComponent,
+    MyPersonalInfoComponent,
+    MyShippingAddressComponent,
+    MySecuritySettingComponent,
+    MyAccountBindingComponent
   ],
   providers: [
     HttpService,

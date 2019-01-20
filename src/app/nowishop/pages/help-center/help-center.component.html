@@ -1,58 +1,60 @@
 <div id="help-center">
-  <div class="breedcrumb-wrap">
-    <div class="container">
-      <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
-    </div>
-  </div>
-  <div class="page-section">
-    <div class="container">
-      <div class="sidebar-content-template">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="sidebar">
-              <div class="sidebar-container">
-                <div class="sidebar-title-container">
-                  <h1 class="sidebar-title">help center</h1>
-                </div>
-                <div class="sidebar-subtitle-container" [ngClass]="content == 'payment-policy' ? 'active' : ''">
-                  <h2 class="sidebar-subtitle" (click)="changeContent('payment-policy')">payment policy</h2>
-                </div>
-                <div class="sidebar-subtitle-container" [ngClass]="content == 'privacy-policy' ? 'active' : ''">
-                  <h2 class="sidebar-subtitle" (click)="changeContent('privacy-policy')">privacy policy</h2>
-                </div>
-                <div class="sidebar-subtitle-container" [ngClass]="content == 'shipping' ? 'active' : ''">
-                  <h2 class="sidebar-subtitle" (click)="changeContent('shipping')">shipping</h2>
-                </div>
-                <div class="sidebar-subtitle-container" [ngClass]="content == 'return-policy' ? 'active' : ''">
-                  <h2 class="sidebar-subtitle" (click)="changeContent('return-policy')">returns policy</h2>
-                </div>
-                <div class="sidebar-subtitle-container" [ngClass]="content == 'loyalty-program' ? 'active' : ''">
-                  <h2 class="sidebar-subtitle" (click)="changeContent('loyalty-program')">Loyalty program</h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-9 content">
-            <div class="content-container">
-              <div *ngIf="content == 'payment-policy'">
-                <app-payment-policy></app-payment-policy>
-              </div>
-              <div *ngIf="content == 'privacy-policy'">
-                <app-privacy-policy></app-privacy-policy>
-              </div>
-              <div *ngIf="content == 'shipping'">
-                <app-shipping></app-shipping>
-              </div>
-              <div *ngIf="content == 'return-policy'">
-                <app-return-policy></app-return-policy>
-              </div>
-              <div *ngIf="content == 'loyalty-program'">
-                <app-loyalty-program></app-loyalty-program>
-              </div>
-            </div>
-          </div>
+    <div class="breedcrumb-wrap">
+        <div class="container">
+            <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
         </div>
-      </div>
     </div>
-  </div>
+    <div class="page-section">
+        <div class="container">
+            <div class="sidebar-content-template">
+                <div class="row">
+                    <div class="col-md-3 sidebar-wrapper">
+                        <div class="sidebar">
+                            <div class="sidebar-container">
+                                <div class="sidebar-title-container">
+                                    <h1 class="sidebar-title">help center</h1>
+                                </div>
+                                <div class="sidebar-subtitle-container" [ngClass]="content == 'payment-policy' ? 'active' : ''">
+                                    <h2 class="sidebar-subtitle" (click)="changeContent('payment-policy')">payment policy</h2>
+                                </div>
+                                <div class="sidebar-subtitle-container" [ngClass]="content == 'privacy-policy' ? 'active' : ''">
+                                    <h2 class="sidebar-subtitle" (click)="changeContent('privacy-policy')">privacy policy</h2>
+                                </div>
+                                <div class="sidebar-subtitle-container" [ngClass]="content == 'shipping' ? 'active' : ''">
+                                    <h2 class="sidebar-subtitle" (click)="changeContent('shipping')">shipping</h2>
+                                </div>
+                                <div class="sidebar-subtitle-container" [ngClass]="content == 'return-policy' ? 'active' : ''">
+                                    <h2 class="sidebar-subtitle" (click)="changeContent('return-policy')">returns policy</h2>
+                                </div>
+                                <div class="sidebar-subtitle-container" [ngClass]="content == 'loyalty-program' ? 'active' : ''">
+                                    <h2 class="sidebar-subtitle" (click)="changeContent('loyalty-program')">Loyalty program</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 content-wrapper">
+                        <div class="content">
+                            <div class="content-container">
+                                <div *ngIf="content == 'payment-policy'">
+                                    <app-payment-policy></app-payment-policy>
+                                </div>
+                                <div *ngIf="content == 'privacy-policy'">
+                                    <app-privacy-policy></app-privacy-policy>
+                                </div>
+                                <div *ngIf="content == 'shipping'">
+                                    <app-shipping></app-shipping>
+                                </div>
+                                <div *ngIf="content == 'return-policy'">
+                                    <app-return-policy></app-return-policy>
+                                </div>
+                                <div *ngIf="content == 'loyalty-program'">
+                                    <app-loyalty-program></app-loyalty-program>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

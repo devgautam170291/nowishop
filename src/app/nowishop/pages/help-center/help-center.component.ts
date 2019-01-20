@@ -22,7 +22,6 @@ export class HelpCenterComponent implements OnInit {
   }
 
   checkParams(){
-    debugger
     var val = this.route.snapshot.params.name;
     if(val){
       this.content = val;
@@ -49,7 +48,6 @@ export class HelpCenterComponent implements OnInit {
 
   changeContent(val){
   	this.content = val;
-    debugger
     switch (val) {
       case "payment-policy":
          this.router.navigate(['/help-center/payment-policy']);

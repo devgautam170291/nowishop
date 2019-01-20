@@ -2,12 +2,12 @@
   
   <div class="carousel-inner" *ngIf="variationImages.length > 0">
     <div class="carousel-item" *ngFor="let variationImg of variationImages; let i = index" [ngClass]="i == 0 ? 'active': ''">
-      <img class="d-block w-100" src={{variationImg.url}}>
+      <img class="d-block w-100" src={{variationImg.imageURL}}>
     </div>
   </div>
-  <ol class="carousel-indicators" *ngIf="variationImages.lenght > 0">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-      <img class="d-block w-100" src="/assets/img/p1.jpg" alt="First slide">
+  <ol class="carousel-indicators" *ngIf="variationImages.length > 0">
+    <li data-target="#carouselExampleIndicators" *ngFor="let variationImg of variationImages; let i = index" [ngClass]="i == 0 ? 'active': ''" [attr.data-slide-to]="i">
+      <img class="d-block w-100" src={{variationImg.imageURL}} >
     </li>
   </ol>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
