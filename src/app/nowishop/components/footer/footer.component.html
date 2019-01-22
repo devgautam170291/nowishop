@@ -40,7 +40,7 @@
           <div class="footer-title">Shop By Category</div>
           <ul class="sub-footer-list" *ngIf="categoryList.length > 0">
             <li *ngFor="let cat of categoryList">
-              <a href="">{{cat.CategoryName}}</a>
+              <a routerLink="/category/{{cat.CategorySlug}}">{{cat.CategoryName}}</a>
             </li>
           </ul>
         </li>

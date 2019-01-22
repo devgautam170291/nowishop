@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
+import { NowishopService } from '../../../services/nowishop.service';
+import { AddToCart } from './single-product-model';
 declare let $: any;
 
 @Component({
@@ -11,21 +13,31 @@ declare let $: any;
 })
 export class SingleProductComponent implements OnInit {
 
-  constructor(private http: HttpClient, private dataService: HttpService, private route: ActivatedRoute) { }
+  constructor(
+    private http: HttpClient, 
+    private dataService: HttpService, 
+    private route: ActivatedRoute,
+    private nowishopGlobal: NowishopService
+    ) { }
 
   breedcrumb: any;
-  productInfo: any = [];
-  quantity: any;
+  productInfo: any = {};
   wishlist: any = true;
   productMoreInfo: any = [];
   sliderImages: any = [];
-  selectedVariation: any;
+  addToCartModel: any;  
   loadDummy: any = true;
+  selectedVariation: any;
+  selectedSizeQuantity: any;
+  similarProductCategorySlug: any = null;
 
   ngOnInit() {
-  	this.showBreedcrumb();
-    this.getProductInfo();
-    this.setDefaultQuantity();
+    this.loadModel();
+    this.getProductInfo(); 
+  }
+
+  loadModel(){
+    this.addToCartModel = new AddToCart(this.nowishopGlobal);
   }
 
   showBreedcrumb(){
@@ -41,7 +53,7 @@ export class SingleProductComponent implements OnInit {
         "active": false
       },
       {
-        "name": "Produc Name",
+        "name": this.productInfo['productName'] ? this.productInfo['productName'] : 'Product Name Loading...',
         "url": "#",
         "active": true
       }
@@ -55,6 +67,7 @@ export class SingleProductComponent implements OnInit {
   			res => {
   				if(res['IsSuccess']){
   					this.productInfo = res['Data'];
+            this.showBreedcrumb();
   					this.productMoreInfo = JSON.parse(this.productInfo.more_Data);
             this.checkFeaturedVariation(this.productInfo);
   					this.loadDummy = false;
@@ -80,27 +93,35 @@ export class SingleProductComponent implements OnInit {
   setVariation(obj, e = null){
   	this.selectedVariation = obj;
     this.sliderImages = obj.variationColorURL;
+    if(obj.variationSizes.length){
+      this.selectedSizeQuantity = obj.variationSizes[0];
+    }
+    
   	if(e){
   		$(e.target).closest('.product-variations').find('li').each(function(){
   			$(this).removeClass('active');
 	  	})
 	  	$(e.target).closest('li').addClass('active');
-  	}
-  	
+  	}  	
   }
 
-  setDefaultQuantity(){
-    this.quantity = 1;
+  changeVariationSize(variation, size, e){
+    this.selectedSizeQuantity = size;
+    if(e){
+      $(e.target).closest('.available-size').find('li').each(function(){
+        $(this).removeClass('active');
+      })
+      $(e.target).closest('li').addClass('active');
+    } 
   }
 
   increaseQuantity(){
-    debugger
-    this.quantity += 1;
+    this.addToCartModel.ProductCount += 1;
   }
 
   decreaseQuantity(){
-    if(this.quantity > 1){
-      this.quantity -= 1;
+    if(this.addToCartModel.ProductCount > 1){
+      this.addToCartModel.ProductCount -= 1;
     }
   }
 

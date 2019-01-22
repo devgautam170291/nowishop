@@ -66,10 +66,10 @@
                                 <div class="product-type-price">
                                     <ul>
                                         <li>
-                                            <div class="title d-inline-block">Rs</div>
+                                            <div class="title d-inline-block">INR</div>
                                             <div class="desc d-inline-block">
-                                                <span class="price">{{selectedVariation.price}}</span>
-                                                <span class="discounted-price">Rs {{selectedVariation.DiscountedPrice}}</span>
+                                                <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{selectedSizeQuantity.Price}}</span>
+                                                <span *ngIf="selectedSizeQuantity.DiscountedPrice" class="discounted-price"><i class="fa fa-inr" aria-hidden="true"></i>  {{selectedSizeQuantity.DiscountedPrice}}</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -86,7 +86,7 @@
                                                 <ul class="product-variations">
                                                     <li *ngFor="let variation of productInfo.productVariation" [ngClass]="variation.variationColor.toLowerCase() == productInfo.featuredColor.toLowerCase() ? 'active': ''" (click)="setVariation(variation, $event)">
                                                         <img src="{{variation['variationColorURL'][0]['imageURL']}}" alt="">
-                        </li>
+                                                    </li>
                                                 </ul>
                                             </td>
                                         </tr>
@@ -94,7 +94,7 @@
                                             <td>Size</td>
                                             <td>
                                                 <ul class="available-size">
-                                                    <li *ngFor="let variationSize of selectedVariation.variationSizes; let i = index" [ngClass]="i==0 ? 'active': ''" (click)="changeVariationSize(selectedVariation, variationSize )">
+                                                    <li *ngFor="let variationSize of selectedVariation.variationSizes; let i = index" [ngClass]="i==0 ? 'active': ''" (click)="changeVariationSize(selectedVariation, variationSize, $event )">
                                                         <div class="size-wrapper" [ngClass]="variationSize.Quantity ? 'in-stock' : 'out-of-stock'">
                                                             {{variationSize.size}}
                                                         </div>
@@ -108,7 +108,7 @@
                                                 <div class="d-inline-block">
                                                     <i class="fa fa-minus-circle" aria-hidden="true" (click)="decreaseQuantity()"></i>
                                                 </div>
-                                                <span class="quantity">{{quantity}}</span>
+                                                <span class="quantity">{{addToCartModel.ProductCount}}</span>
                                                 <div class="d-inline-block">
                                                     <i class="fa fa-plus-circle" aria-hidden="true" (click)="increaseQuantity()"></i>
                                                 </div>
@@ -150,7 +150,7 @@
                     share</div>
             </div>
         </div>
-        <app-similar-products [category]="null"></app-similar-products>
+        <app-similar-products [category]="similarProductCategorySlug"></app-similar-products>
         <app-about-product></app-about-product>
         <app-browsing-history></app-browsing-history>
     </div>

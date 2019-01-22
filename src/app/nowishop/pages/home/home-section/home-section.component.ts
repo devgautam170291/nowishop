@@ -29,7 +29,9 @@ export class HomeSectionComponent implements OnInit {
   ngOnInit() {
     this.loadModel();
     this.getAllProductTags();
-    this.flashDealTimer();
+    if(this.type == 'flashDeals'){
+      this.flashDealTimer();
+    }    
     this.loadDummyProducts();
   }
 
@@ -40,6 +42,7 @@ export class HomeSectionComponent implements OnInit {
       "minutes": 0,
       "seconds": 0
     }
+    this.dynamicTitleHandler();
   }
 
   loadDummyProducts(){
@@ -53,7 +56,7 @@ export class HomeSectionComponent implements OnInit {
       res => {
         if(res['IsSuccess']){
           this.productTagList = res['Data'];
-          this.dynamicTitleHandler();
+          this.dynamicContentHandler();
         }
       }
     )
@@ -67,14 +70,25 @@ export class HomeSectionComponent implements OnInit {
     if(this.type){
       if(this.type.toLowerCase() == 'flashdeals'){
         this.dynamicTitle = "Flash Deal";
-        this.getProductList('flash');
       }
       else if(this.type.toLowerCase() == 'newarrivals'){
         this.dynamicTitle = "New Arrivals";
-        this.getProductList('arrival');
       }
       else if(this.type.toLowerCase() == 'bestselling'){
         this.dynamicTitle = "Best Selling";
+      }
+    }
+  }
+
+  dynamicContentHandler(){
+    if(this.type){
+      if(this.type.toLowerCase() == 'flashdeals'){
+        this.getProductList('flash');
+      }
+      else if(this.type.toLowerCase() == 'newarrivals'){
+        this.getProductList('arrival');
+      }
+      else if(this.type.toLowerCase() == 'bestselling'){
         this.getProductList('best');
       }
     }

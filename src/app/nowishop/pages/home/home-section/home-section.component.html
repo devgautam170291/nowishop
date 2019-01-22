@@ -39,12 +39,12 @@
             </div>
             <div class="col-md-9">
               <div class="row" *ngIf="productList.length > 0">
-                <div class="col-md-4 product-container position-relative" *ngFor="let product of productList">
+                <div class="col-md-4 col-sm-6 product-container position-relative" *ngFor="let product of productList">
                   <app-show-product [product]="product"></app-show-product>
                 </div>
               </div>
               <div class="row" *ngIf="productList.length == 0">
-                <div class="col-md-4 product-container" *ngFor="let product of dummyProducts">
+                <div class="col-md-4 col-sm-6 product-container" *ngFor="let product of dummyProducts">
                   <app-dummy-products></app-dummy-products>
                 </div>
               </div>

@@ -1,243 +1,267 @@
 <div class="container-fluid p-0 m-0">
-  <div class="admin-title">
-    {{case == "add" ? "Add New" : "Edit"}} Product
-  </div>
-  <div class="admin-wrapper">
-    <ngx-loading [show]="loading"></ngx-loading>
-    <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
-    <div class="fields-container">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-12">
-            <label>Product Name</label>
-            <input class="form-control" [(ngModel)]="model.ProductName">
-          </div>
-        </div>
-      </div>
+    <div class="admin-title">
+        {{case == "add" ? "Add New" : "Edit"}} Product
     </div>
-    <div class="fields-container">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-12">
-            <label>Product Description</label>
-            <textarea class="form-control" rows="5" cols="2" [(ngModel)]="model.ProductDescription"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="fields-container">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-12">
-            <label>Product Additional Info</label>
-            <div class="row" *ngFor="let info of moreProductInfo; let i = index">
-              <div class="col-md-4">
-                <label>Key</label>
-                <input type="text" class="form-control" [(ngModel)]="info.key">
-              </div>
-              <div class="col-md-4 form-group">
-                <label>Value</label>
-                <input type="text" class="form-control" [(ngModel)]="info.value">
-              </div>
-              <div class="col-md-4 text-right form-group">
-                <button class="btn btn-danger color-light mt-3" (click)="removeProductInfo(i)" title="Remove"><i class="fa fa-trash"></i> Remove Product Info</button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 text-left">
-                <button class="btn btn-primary" (click)="addMoreProductInfo()"><i class="fa fa-plus"></i> Add Product Info</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="fields-container">
-      <!-- Category & SKU -->
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Choose Category</label>
-            <select class="form-control" [(ngModel)]="model.ProductCategoryId">
-              <option value="0">Choose Category</option>
-              <option *ngFor="let cat of categoriesList" value="{{cat.CategoryId}}">{{cat.CategoryName}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>SKU</label>
-            <input class="form-control" [(ngModel)]="model.SkuDetails">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="fields-container">
-      <label>Product Variations</label>
-      <div class="product-variations-container form-group">
-        <div class="product-variations">
-          <div class="single-product-variation" *ngFor="let variation of model.product_Variations; let i = index">
-            <div class="fields-container">
-              <div class="form-group">
+    <div class="admin-wrapper">
+        <ngx-loading [show]="loading"></ngx-loading>
+        <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+        <div class="fields-container">
+            <div class="form-group">
                 <div class="row">
-                  <div class="col-md-4">
-                    <label>Colour Name</label>
-                    <div id="" class="input-group">
-                      <input type="text" class="form-control" [(ngModel)]="variation.Color" />
+                    <div class="col-md-12">
+                        <label>Product Name</label>
+                        <input class="form-control" [(ngModel)]="model.ProductName">
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="fields-container">
-              <div class="form-group">
-                <label for="">Add Sizes & Quantity</label>
-                <div class="size-quantity-container p-2">
-                  <div class="size-quantity-wrapper" *ngFor="let sizerow of variation.size_Quantities; let sizequantityIndex = index">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Size</label>
-                          <input class="form-control" [(ngModel)]="sizerow.Size" />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Quantity</label>
-                          <input type="number" min="0" class="form-control" [(ngModel)]="sizerow.Quantity" />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Price</label>
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text">&#8377;</div>
+        </div>
+        <div class="fields-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Product Description</label>
+                        <textarea class="form-control" rows="5" cols="2" [(ngModel)]="model.ProductDescription"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Product Additional Info</label>
+                        <div class="row" *ngFor="let info of moreProductInfo; let i = index">
+                            <div class="col-md-4">
+                                <label>Key</label>
+                                <input type="text" class="form-control" [(ngModel)]="info.key">
                             </div>
-                            <input type="text" class="form-control" [(ngModel)]="sizerow.Price">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Discounted Price</label>
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text">&#8377;</div>
+                            <div class="col-md-4 form-group">
+                                <label>Value</label>
+                                <input type="text" class="form-control" [(ngModel)]="info.value">
                             </div>
-                            <input type="text" class="form-control" [(ngModel)]="sizerow.DiscountedPrice">
-                          </div>
+                            <div class="col-md-4 text-right form-group">
+                                <button class="btn btn-danger color-light mt-3" (click)="removeProductInfo(i)" title="Remove"><i class="fa fa-trash"></i> Remove Product Info</button>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 text-right btn-container">
-                        <button class="btn btn-danger text-light" (click)="removeSizeQuantity(i, sizequantityIndex)"><i class="fa fa-trash" aria-hidden="true"></i> Remove Size & Quantity</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12 text-left btn-container" style="padding-top: 10px;">
-                      <button class="btn btn-warning text-light" (click)="addSizeQuantity(i)"><i class="fa fa-plus"></i> Add More Size & Quantity</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="fields-container">
-                <label for="">Upload Product Images</label>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="productImgs" (change)="uploadImages($event, variation)" accept="image/png, image/jpeg" multiple>
-                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="variation-img-container">
-                  <div class="row">
-                    <div class="col-md-2 variation-img" *ngFor="let img of variation.uploadedImages; let j = index">
-                      <a href="{{img.url}}" target="_blank"><img src="{{img.url}}" alt=""></a>
-                      <div class="img-move">
-                        <div class="col-md-12">
-                          <div class="row">
-                            <div class="col-md-6 img-move-left" (click)="imgMoveLeft(j, variation.uploadedImages)"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
-                            <div class="col-md-6 img-move-right text-right" (click)="imgMoveRight(j, variation.uploadedImages)"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
-                          </div>
+                        <div class="row">
+                            <div class="col-md-12 text-left">
+                                <button class="btn btn-primary" (click)="addMoreProductInfo()"><i class="fa fa-plus"></i> Add Product Info</button>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="fields-container mt-3">
-                <div class="row">
-                  <div class="col-md-12 text-right btn-container">
-                    <button class="btn btn-danger" (click)="removeVariation(i)"><i class="fa fa-trash" aria-hidden="true"></i> Remove Product Variation</button>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-          <div class="fields-container">
+        </div>
+        <div class="fields-container">
+            <!-- Category & SKU -->
             <div class="row">
-              <div class="col-md-12 text-left btn-container">
-                <button class="btn btn-primary" (click)="addMoreVariation()"><i class="fa fa-plus"></i> Add More Product Variation</button>
-              </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Choose Category</label>
+                        <select class="form-control" [(ngModel)]="model.ProductCategoryId">
+                            <option value="0">Choose Category</option>
+                            <option *ngFor="let cat of categoriesList" value="{{cat.CategoryId}}">{{cat.CategoryName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>SKU</label>
+                        <input class="form-control" [(ngModel)]="model.SkuDetails">
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="fields-container">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-4">
-            <label>Choose Featured Colour</label>
-            <div class="form-group">
-              <select class="form-control" [(ngModel)]="model.FeaturedColor">
-                <option value="0">Choose Featured Colour</option>
-                <option *ngFor="let variation of model.product_Variations" value="{{variation.Color}}">{{variation.Color}}</option>
-              </select>
+        <div class="fields-container">
+            <label>Product Variations</label>
+            <div class="product-variations-container form-group">
+                <div class="product-variations">
+                    <div class="single-product-variation" *ngFor="let variation of model.product_Variations; let i = index">
+                        <div class="fields-container">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>Colour Name</label>
+                                        <div id="" class="input-group">
+                                            <input type="text" class="form-control" [(ngModel)]="variation.Color" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields-container">
+                            <div class="form-group">
+                                <label for="">Add Sizes & Quantity</label>
+                                <div class="size-quantity-container p-2">
+                                    <div class="size-quantity-wrapper" *ngFor="let sizerow of variation.size_Quantities; let sizequantityIndex = index">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Size</label>
+                                                    <input class="form-control" [(ngModel)]="sizerow.Size" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Quantity</label>
+                                                    <input type="number" min="0" class="form-control" [(ngModel)]="sizerow.Quantity" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Price</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">&#8377;</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" [(ngModel)]="sizerow.Price">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Discounted Price</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">&#8377;</div>
+                                                        </div>
+                                                        <input type="text" class="form-control" [(ngModel)]="sizerow.DiscountedPrice">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 text-right btn-container">
+                                                <button class="btn btn-danger text-light" (click)="removeSizeQuantity(i, sizequantityIndex)"><i class="fa fa-trash" aria-hidden="true"></i> Remove Size & Quantity</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 text-left btn-container" style="padding-top: 10px;">
+                                            <button class="btn btn-warning text-light" (click)="addSizeQuantity(i)"><i class="fa fa-plus"></i> Add More Size & Quantity</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fields-container">
+                                <label for="">Upload Product Images</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="productImgs" (change)="uploadImages($event, variation)" accept="image/png, image/jpeg" multiple>
+                                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="variation-img-container">
+                                    <div class="row">
+                                        <div class="col-md-2 variation-img" *ngFor="let img of variation.uploadedImages; let j = index">
+                                            <span class="deleteImg" (click)="deleteImage(j, variation.uploadedImages)">
+                                              <i class="fa fa-times" aria-hidden="true"></i>
+                                            </span>
+                                            <a href="{{img.url}}" target="_blank"><img src="{{img.url}}" alt=""></a>
+                                            <div class="img-move">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-6 img-move-left" (click)="imgMoveLeft(j, variation.uploadedImages)"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                                                        <div class="col-md-6 img-move-right text-right" (click)="imgMoveRight(j, variation.uploadedImages)"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fields-container mt-3">
+                                <div class="row">
+                                    <div class="col-md-12 text-right btn-container">
+                                        <button class="btn btn-danger" (click)="removeVariation(i)"><i class="fa fa-trash" aria-hidden="true"></i> Remove Product Variation</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fields-container">
+                        <div class="row">
+                            <div class="col-md-12 text-left btn-container">
+                                <button class="btn btn-primary" (click)="addMoreVariation()"><i class="fa fa-plus"></i> Add More Product Variation</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <label>Choose Product Tag</label>
-            <div class="form-group">
-              <select class="form-control" [(ngModel)]="model.SelectedDeal">
-                <option value="0">Choose Product Tag</option>
-                <option *ngFor="let tag of productTagList" value="{{tag.ID}}">{{tag.Deals}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <label>Choose Product Brand</label>
-            <div class="form-group">
-              <select class="form-control" [(ngModel)]="model.BrandID">
-                <option value="0">Choose Product Brand</option>
-                <option *ngFor="let brand of brandList" value="{{brand.ID}}">{{brand.BrandName}}</option>
-              </select>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <div class="fields-container">
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-6">
-            <input type="checkbox" class="is-recommended" [(ngModel)]="model.IsRecommended" (click)="makeRecommendedProduct($event)">
-            <label>Is Recommended</label>
-          </div>
+        <div class="fields-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Choose Featured Colour</label>
+                        <div class="form-group">
+                            <select class="form-control" [(ngModel)]="model.FeaturedColor">
+                                <option value="0">Choose Featured Colour</option>
+                                <option *ngFor="let variation of model.product_Variations" value="{{variation.Color}}">{{variation.Color}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Choose Product Tag</label>
+                        <div class="form-group">
+                            <select class="form-control" [(ngModel)]="model.SelectedDeal">
+                                <option value="0">Choose Product Tag</option>
+                                <option *ngFor="let tag of productTagList" value="{{tag.ID}}">{{tag.Deals}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Choose Product Brand</label>
+                        <div class="form-group">
+                            <select class="form-control" [(ngModel)]="model.BrandID">
+                                <option value="0">Choose Product Brand</option>
+                                <option *ngFor="let brand of brandList" value="{{brand.ID}}">{{brand.BrandName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="fields-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Product Search Keys</label>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" [(ngModel)]="model.ProductSearch" />
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary" (click)="addSearchKey()">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="searchkey" *ngFor="let searchkey of productSearchKeys; let i = index;">
+                            {{searchkey}}
+                            <span (click)="deleteSearchKey(i)">
+                              <i class="fa fa-times" aria-hidden="true"></i>
+                            </span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="checkbox" class="is-recommended" [(ngModel)]="model.IsRecommended" (click)="makeRecommendedProduct($event)">
+                        <label>Is Recommended</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5 mt-5">
+            <div class="col-md-12 text-right btn-container">
+                <button class="btn btn-static" routerLink="/admin/products">Cancel</button>
+                <button class="btn btn-success" (click)="uploadProduct()">Upload Product</button>
+            </div>
+        </div>
     </div>
-    <div class="row mb-5 mt-5">
-      <div class="col-md-12 text-right btn-container">
-        <button class="btn btn-static" routerLink="/admin/products">Cancel</button>
-        <button class="btn btn-success" (click)="uploadProduct()">Upload Product</button>
-      </div>
-    </div>
-  </div>
 </div>

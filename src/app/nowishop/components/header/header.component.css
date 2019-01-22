@@ -33,7 +33,6 @@
   line-height: 18px;
   border-radius: 10px;
   border: 2px solid #f9f9f9;
-  min-width: 100px;
   font-family: futura-light;
 }
 
@@ -141,7 +140,7 @@
 .ship-to-selected {
   padding-left: 45px;
   background-repeat: no-repeat;
-  background-size: 25%;
+  background-size: 12%;
   background-position: 5px 7px;
   background-color: #fff;
   color: var(--nowishop-light-blue);
@@ -211,3 +210,39 @@ ul.second-child li {
 .sub-cat-container {
   padding: 15px 10px;
 }
+
+.sub-cat-container li span {
+    cursor: pointer;
+}
+
+.sub-cat-container li span:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1200px){
+  .ship-to-selected {
+    background-size: 30px !important;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .social,
+  .user-profile {
+    width: auto;
+    height: auto;
+    padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 580px){
+  .site-nav li.d-inline-block {
+    padding-right: 0px !important;
+    margin-right: 0px !important;
+    border-right: 0px solid #fff !important;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+

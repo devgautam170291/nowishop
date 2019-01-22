@@ -10,6 +10,7 @@ export class AddProductModal {
 	"SelectedDeal": any;
 	"IsRecommended": any;
 	"BrandID": any;
+	"ProductSearch": any;
 
 	constructor(){
 		this.ProductID = 0;
@@ -23,6 +24,7 @@ export class AddProductModal {
 		this.SelectedDeal = "0";
 		this.IsRecommended = false;
 		this.BrandID = "0";
+		this.ProductSearch = "";
 	}
 }
 

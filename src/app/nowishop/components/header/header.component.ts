@@ -36,6 +36,10 @@ export class HeaderComponent implements OnInit {
     $('.dropdown-menu.keep-open').on('click', function (e) {
       e.stopPropagation();
     });
+
+    $('body').on('click', function (e) {
+      debugger
+    });
   }
 
   changeShipping(country){

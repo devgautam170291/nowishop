@@ -60,3 +60,19 @@
   background-repeat: no-repeat;
   min-height: 350px;
 }
+
+
+@media screen and (max-width: 1200px) {
+  .our-services li {
+    padding: 10px;
+    font-size: 14px;
+    min-height: 54px;
+    background: #fff !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .our-services li {
+    display: none;
+  }
+}

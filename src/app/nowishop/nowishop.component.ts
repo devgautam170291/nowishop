@@ -27,7 +27,9 @@ export class NowishopComponent implements OnInit {
         res => {
           if(res['IsSuccess']){
             this.categoryList = res['Data'];
-            this.selectedCategory = this.categoryList[0]['FirstLevelSubCategory'];
+            if(this.categoryList.length){
+              this.selectedCategory = this.categoryList[0]['FirstLevelSubCategory'];
+            }
           }
         }
       )

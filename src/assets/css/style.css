@@ -112,6 +112,10 @@ h2.page-title {
     z-index: 99999;
 }
 
+body .mobile {
+    display: none;
+}
+
 /*-----------------------------------*/
 /*------ Dashboard ------------------*/
 
@@ -227,6 +231,14 @@ li.sidebar-single-list li {
     margin-right: 0px !important;
 }
 
+.sidebar-single-list input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    position: relative;
+    top: 2px;
+}
+
 /*------ Loading Animation --------*/
 .load-wrapp .letter {
     animation-name: loadingF;
@@ -240,6 +252,7 @@ li.sidebar-single-list li {
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0;
 }
 
 .l-1 {
@@ -304,4 +317,24 @@ li.sidebar-single-list li {
     display: inline;
 }
 
+.container .social.mobile {
+    display: none;
+}
+
 /*------------------------------*/
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 960px !important;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .mobile{
+        display: block !important;
+    }
+
+    .desktop {
+        display: none;
+    }
+}

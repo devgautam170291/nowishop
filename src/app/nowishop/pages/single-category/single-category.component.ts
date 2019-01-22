@@ -19,8 +19,8 @@ export class SingleCategoryComponent implements OnInit {
   dummyProducts: any = [];
 
   ngOnInit() {
-  	this.showBreedcrumb();
-  	this.laodModel();
+    this.laodModel();
+  	this.showBreedcrumb();  	
   	this.getCategoryInfo();
     this.loadDummyProducts();
   }
@@ -43,7 +43,7 @@ export class SingleCategoryComponent implements OnInit {
         "active": false
       },
       {
-        "name": "Category",
+        "name": this.dataRequestModel.DealSlug ? this.dataRequestModel.DealSlug : "Category",
         "url": "#",
         "active": true
       }
@@ -52,6 +52,7 @@ export class SingleCategoryComponent implements OnInit {
 
   getCategoryInfo(){
   	this.dataRequestModel.DealSlug = this.route.snapshot.params.cat_slug;
+    this.showBreedcrumb();
   	this.http.post(this.dataService.baseUrl + 'Home/DealWiseProductList', this.dataRequestModel).subscribe(
         res=>{
             this.productList = res['Dt'];

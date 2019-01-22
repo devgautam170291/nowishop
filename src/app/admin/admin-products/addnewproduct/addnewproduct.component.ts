@@ -24,6 +24,7 @@ export class AddnewproductComponent implements OnInit {
   brandList: any = [];
   productTagList: any = [];
   moreProductInfo: any = [];
+  productSearchKeys: any = []; 
 
   ngOnInit() {	
     this.loading = false;
@@ -177,6 +178,9 @@ export class AddnewproductComponent implements OnInit {
   uploadProduct(){
     this.model.More_Data = JSON.stringify(this.moreProductInfo);
     this.model = this.setFeaturedImages(this.model);
+    if(this.productSearchKeys.length){
+      this.model.ProductSearch = this.productSearchKeys.join('|');
+    }
     this.loading = true;
     if(this.case == "add"){
       this.addEditProduct('Product/AddProduct',this.model);
@@ -216,6 +220,10 @@ export class AddnewproductComponent implements OnInit {
     }
   }
 
+  deleteImage(index, obj){
+    obj.splice(index, 1);
+  }
+
   addMoreProductInfo(){
     var obj = {
       "key": "",
@@ -233,5 +241,16 @@ export class AddnewproductComponent implements OnInit {
     if( event.target.checked ) {
       this.model['IsRecommended'] = true;
     }
+  }
+
+  addSearchKey(){
+    if(this.model.ProductSearch){
+      this.productSearchKeys.push(this.model.ProductSearch);
+      this.model.ProductSearch = "";
+    }
+  }
+
+  deleteSearchKey(index){
+    this.productSearchKeys.splice(index, 1);
   }
 }
