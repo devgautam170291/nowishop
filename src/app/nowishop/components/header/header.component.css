@@ -199,6 +199,12 @@ ul.second-child li {
   font-size: 14px;
   font-family: futura-light;
   text-transform: capitalize;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.second-child li:hover {
+  text-decoration: underline;
 }
 
 .col-md-3.first-child {
@@ -234,7 +240,7 @@ ul.second-child li {
   }
 }
 
-@media screen and (max-width: 580px){
+@media screen and (max-width: 600px){
   .site-nav li.d-inline-block {
     padding-right: 0px !important;
     margin-right: 0px !important;
