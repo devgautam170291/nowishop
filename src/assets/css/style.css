@@ -323,9 +323,9 @@ li.sidebar-single-list li {
 
 /*------------------------------*/
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
     .container {
-        max-width: 960px !important;
+        max-width: 100% !important;
     }
 }
 
