@@ -33,12 +33,13 @@ export class HeaderComponent implements OnInit {
     $('.dropdown-toggle.shopbycat').on('click', function (e) {
       $(this).next().toggle();
     });
-    $('.dropdown-menu.keep-open').on('click', function (e) {
-      e.stopPropagation();
-    });
 
-    $('body').on('click', function (e) {
-      debugger
+    $('body').click(function(event){
+      
+      if ($(event.target).closest('.cat-container').length) {
+      } else {
+        $('#shopbycategory').hide();
+      }
     });
   }
 
