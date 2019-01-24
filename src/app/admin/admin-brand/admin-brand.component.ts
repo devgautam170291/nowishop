@@ -102,4 +102,7 @@ export class AdminBrandComponent implements OnInit {
     this.model = data;
   }
 
+  changePageNumber(pageNumber){
+    this.search.checkPaginationValue(pageNumber);
+  }
 }

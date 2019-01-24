@@ -51,7 +51,9 @@
           </tr>
         </tbody>
       </table>
-      <!-- <app-admin-pagination></app-admin-pagination> -->
+      <div *ngIf="model.length > 0">
+        <app-admin-pagination [totalCount]="this.search.totalRecords" [countToShow]="this.search.searchParameter.PageSize" (changePageNumber)="changePageNumber($event)"></app-admin-pagination>
+      </div>
     </div>
   </div>
 </div>

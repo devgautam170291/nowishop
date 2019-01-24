@@ -17,7 +17,7 @@ export class PaginationModal {
 	OrderBy: any;
 
 	constructor(){
-		this.PageSize = 20;
+		this.PageSize = 10;
 		this.PageNumber = 1;
 		this.Order = "UserId";
 		this.OrderBy = "asc";

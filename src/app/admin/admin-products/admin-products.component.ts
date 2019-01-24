@@ -65,6 +65,10 @@ export class AdminProductsComponent implements OnInit {
     this.model = data;
   }
 
+  changePageNumber(pageNumber){
+    this.search.checkPaginationValue(pageNumber);
+  }
+
   deleteProduct(id){
     swal({
       title: 'Are you sure?',

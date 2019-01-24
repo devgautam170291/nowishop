@@ -107,4 +107,8 @@ export class AdminCategoryComponent implements OnInit {
     this.search.resetSearchFilter();
   }
 
+  changePageNumber(pageNumber){
+    this.search.checkPaginationValue(pageNumber);
+  }
+
 }

@@ -546,3 +546,7 @@ button.close {
     text-align: center;
     background: #fff;
 }
+
+.pagination-container {
+    padding: 15px 0px;
+}

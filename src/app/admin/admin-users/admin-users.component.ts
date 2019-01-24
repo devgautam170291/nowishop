@@ -68,4 +68,8 @@ export class AdminUsersComponent implements OnInit {
       )
   }
 
+  changePageNumber(pageNumber){
+    this.search.checkPaginationValue(pageNumber);
+  }
+
 }

@@ -108,4 +108,8 @@ export class ProductTagsComponent implements OnInit {
     this.model = data;
   }
 
+  changePageNumber(pageNumber){
+    this.search.checkPaginationValue(pageNumber);
+  }
+
 }

@@ -18,6 +18,7 @@ export class AdminSearchComponent implements OnInit {
   filterJson: any = [];
   loading: any;
   searchParameter: any;
+  totalRecords: any;
 
   ngOnInit() {
     this.searchParameter = new PaginationModal();
@@ -74,14 +75,19 @@ export class AdminSearchComponent implements OnInit {
       res => {
         this.loading = false;
         if(res['IsSuccess']){
+          this.totalRecords = res['TotalRecords'];
           this.filterResult.emit(res['Dt']);
         }
       }
     )
   }
 
-  checkPaginationValue(paginationInfo){
-    // return data;
+  checkPaginationValue(pageNumber){
+    debugger
+    if(pageNumber){
+      this.searchParameter.PageNumber = pageNumber;
+      this.searchFilter();
+    }
   }
 
 }
