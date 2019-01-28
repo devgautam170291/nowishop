@@ -15,7 +15,8 @@ export class AddToCart {
 	}
 
 	setUserId(nowishopGlobal){
-		if(nowishopGlobal.isUserInfo){
+		debugger
+		if(nowishopGlobal.isUserInfo()){
 			var userInfo = nowishopGlobal.getUserInfo();
 			return userInfo.userId;
 		}

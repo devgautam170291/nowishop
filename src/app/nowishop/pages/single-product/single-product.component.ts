@@ -92,7 +92,7 @@ export class SingleProductComponent implements OnInit {
 
   setVariation(obj, e = null){
   	this.selectedVariation = obj;
-    this.sliderImages = obj.variationColorURL;
+    this.sliderImages = obj.UploadedImages;
     if(obj.variationSizes.length){
       this.selectedSizeQuantity = obj.variationSizes[0];
     }

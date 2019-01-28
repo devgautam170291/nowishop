@@ -172,6 +172,7 @@ ul.available-size li {
     height: 30px;
     margin-right: 5px;
     text-align: center;
+    cursor: pointer;
 }
 
 .available-size li .size-wrapper {

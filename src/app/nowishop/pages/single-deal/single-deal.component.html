@@ -1,4 +1,4 @@
-<div id="single-category">
+<div id="single-deal">
     <div class="breedcrumb-wrap">
         <div class="container">
             <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
@@ -46,7 +46,7 @@
                         <div class="content">
                             <div class="content-container">
                                 <div class="content-title-container">
-                                     {{dataRequestModel.CategorySlug ? this.dataRequestModel.CategorySlug.split('_').join(' ') : 'Loading...'}}
+                                     {{dataRequestModel.DealSlug ? this.dataRequestModel.DealSlug.split('_').join(' ') : 'Loading...'}}
                                 </div>
                                 <div class="content-section">
                                     <div class="row" *ngIf="productList.length > 0">

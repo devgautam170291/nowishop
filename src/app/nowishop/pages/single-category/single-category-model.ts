@@ -1,15 +1,27 @@
-export class SingleCategoryModel {
-	DealSlug:any;
+export class SingleCategoryModel{
 	PageSize:any;
 	PageNumber:any;
-	OrderBy:any;
-	Order:any;
+	CategorySlug:any;
+	Search: any;
 
 	constructor(){
-		this.DealSlug = "";
 		this.PageNumber = 1;
-		this.PageSize = 18;
-		this.OrderBy = "ModifiedDate";
-		this.Order = "desc";
+		this.PageSize = 3;
+		this.CategorySlug = "";
+		this.Search = [new SearchParams()];
+	}
+}
+
+class SearchParams {
+	ColumnName:any;
+	Operator:any;
+	ColumnValue:any;
+	LogicalOperator:any;
+
+	constructor(){
+		this.ColumnName = "";
+		this.Operator = "";
+		this.ColumnValue = "";
+		this.LogicalOperator = "";
 	}
 }

@@ -88,8 +88,8 @@
                                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ship to</button>
                                         <div class="dropdown-menu ship-to">
                                             <span class="dropdown-item" (click)="changeShipping('India')"><img src="/assets/img/india-flag.jpg"> India</span>
-                                            <span class="dropdown-item" (click)="changeShipping('Thailand')"><img src="/assets/img/thailand-flag.jpg"> Thailand</span>
-                                            <span class="dropdown-item" (click)="changeShipping('USA')"><img src="/assets/img/usa-flag.jpg"> USA</span>
+                                            <!-- <span class="dropdown-item" (click)="changeShipping('Thailand')"><img src="/assets/img/thailand-flag.jpg"> Thailand</span>
+                                            <span class="dropdown-item" (click)="changeShipping('USA')"><img src="/assets/img/usa-flag.jpg"> USA</span> -->
                                         </div>
                                     </div>
                                     <input type="text" class="form-control ship-to-selected" [ngClass]="shipTo" aria-label="Text input with dropdown button" [(ngModel)]="shipTo">
@@ -125,7 +125,7 @@
                                                         <li class="col-md-3 first-child" *ngFor="let subCat of selectedCategory">
                                                             <span class="first-child-title" routerLink="/category/{{subCat.CategorySlug}}">{{subCat.CategoryName}}</span>
                                                             <ul class="second-child" *ngIf="subCat.secondLevelSubCategories">
-                                                                <li class="second-child-title" *ngFor="let nestCat of subCat.secondLevelSubCategories" routerLink="nestCat.CategorySlug">{{nestCat.CategoryName}}</li>
+                                                                <li class="second-child-title" *ngFor="let nestCat of subCat.secondLevelSubCategories" routerLink="/category/{{nestCat.CategorySlug}}">{{nestCat.CategoryName}}</li>
                                                             </ul>
                                                         </li>
                                                     </ul>

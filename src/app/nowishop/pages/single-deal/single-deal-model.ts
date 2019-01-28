@@ -1,11 +1,13 @@
-export class RecommendedModel{
+export class SingleDealModel{
 	PageSize:any;
 	PageNumber:any;
+	DealSlug:any;
 	Search: any;
 
 	constructor(){
 		this.PageNumber = 1;
-		this.PageSize = 1;
+		this.PageSize = 3;
+		this.DealSlug = "";
 		this.Search = [new SearchParams()];
 	}
 }

@@ -9,11 +9,12 @@ import { CustomerCareComponent } from './pages/customer-care/customer-care.compo
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { HelpCenterComponent } from './pages/help-center/help-center.component';
 import { SingleProductComponent } from './pages/single-product/single-product.component';
-import { SearchResultComponent } from './pages/search-result/search-result.component';
+// import { SearchResultComponent } from './pages/search-result/search-result.component';
 import { MyAccountComponent } from './pages/my-account/my-account.component';
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { ShippingPaymentComponent } from './pages/shipping-payment/shipping-payment.component';
 import { SingleCategoryComponent } from './pages/single-category/single-category.component';
+import { SingleDealComponent } from './pages/single-deal/single-deal.component';
 
 const routes: Routes = [
 	{
@@ -25,9 +26,10 @@ const routes: Routes = [
 			{path: 'help-center/:name', component: HelpCenterComponent},
 			{path: 'product/:product_slug', component: SingleProductComponent},
 			{path: 'category/:cat_slug', component: SingleCategoryComponent},
+			{path: 'deal/:deal_slug', component: SingleDealComponent},
+			{path: 'search/:search_value', component: SingleCategoryComponent},
 			{path: 'shipping-payment', component: ShippingPaymentComponent},
 			{path: 'cart', component: MyCartComponent},
-			{path: 'search/:search_value', component: SearchResultComponent},
 			{path: 'account', canActivate: [AuthGuard], component: MyAccountComponent},
 			{path: 'account/:name', canActivate: [AuthGuard], component: MyAccountComponent}
 	]}

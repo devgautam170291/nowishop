@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
-import { SingleCategoryModel } from './single-category-model';
+import { SingleDealModel } from './single-deal-model';
 declare let $: any;
 
 @Component({
-  selector: 'app-single-category',
-  templateUrl: './single-category.component.html',
-  styleUrls: ['./single-category.component.css']
+  selector: 'app-single-deal',
+  templateUrl: './single-deal.component.html',
+  styleUrls: ['./single-deal.component.css']
 })
-export class SingleCategoryComponent implements OnInit {
+export class SingleDealComponent implements OnInit {
 
   constructor(private http: HttpClient, private dataService: HttpService, 
     private route: ActivatedRoute,
@@ -32,8 +32,8 @@ export class SingleCategoryComponent implements OnInit {
   }
 
   laodModel(){
-  	this.dataRequestModel = new SingleCategoryModel();
-    this.dataRequestModel.CategorySlug = this.route.snapshot.params.cat_slug;
+  	this.dataRequestModel = new SingleDealModel();
+    this.dataRequestModel.DealSlug = this.route.snapshot.params.deal_slug;
   }
 
   loadDummyProducts(){
@@ -50,7 +50,7 @@ export class SingleCategoryComponent implements OnInit {
         "active": false
       },
       {
-        "name": this.dataRequestModel.CategorySlug ? this.dataRequestModel.CategorySlug.split('_').join(' ') : 'Loading...',
+        "name": this.dataRequestModel.DealSlug ? this.dataRequestModel.DealSlug.split('_').join(' ') : 'Loading...',
         "url": "#",
         "active": true
       }
@@ -59,7 +59,7 @@ export class SingleCategoryComponent implements OnInit {
 
   getCategoryInfo(){
     this.dataRequestModel.PageSize = 30;
-  	this.http.post(this.dataService.baseUrl + 'Home/SimilarProduct', this.dataRequestModel).subscribe(
+  	this.http.post(this.dataService.baseUrl + 'Home/DealWiseProductList', this.dataRequestModel).subscribe(
         res=>{
             this.productList = res['Dt'];
         }

@@ -69,7 +69,7 @@
                                             <div class="title d-inline-block">INR</div>
                                             <div class="desc d-inline-block">
                                                 <span class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{selectedSizeQuantity.Price}}</span>
-                                                <span *ngIf="selectedSizeQuantity.DiscountedPrice" class="discounted-price"><i class="fa fa-inr" aria-hidden="true"></i>  {{selectedSizeQuantity.DiscountedPrice}}</span>
+                                                <span *ngIf="selectedSizeQuantity && selectedSizeQuantity.DiscountedPrice" class="discounted-price"><i class="fa fa-inr" aria-hidden="true"></i>  {{selectedSizeQuantity.DiscountedPrice}}</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -85,7 +85,7 @@
                                             <td>
                                                 <ul class="product-variations">
                                                     <li *ngFor="let variation of productInfo.productVariation" [ngClass]="variation.variationColor.toLowerCase() == productInfo.featuredColor.toLowerCase() ? 'active': ''" (click)="setVariation(variation, $event)">
-                                                        <img src="{{variation['variationColorURL'][0]['imageURL']}}" alt="">
+                                                        <img src="{{variation['UploadedImages'][0]['imageURL']}}" alt="">
                                                     </li>
                                                 </ul>
                                             </td>

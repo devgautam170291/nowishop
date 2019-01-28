@@ -142,7 +142,7 @@ export class AddnewbrandComponent implements OnInit {
         url = "Brand/AddBrand";
       }
       else{
-        url = "";
+        url = "Brand/EditBrand";
       }
       this.dataService.post(url, this.model).subscribe(
         res=> {

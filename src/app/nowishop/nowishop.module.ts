@@ -48,6 +48,7 @@ import { MyPersonalInfoComponent } from './pages/my-account/my-personal-info/my-
 import { MyShippingAddressComponent } from './pages/my-account/my-shipping-address/my-shipping-address.component';
 import { MySecuritySettingComponent } from './pages/my-account/my-security-setting/my-security-setting.component';
 import { MyAccountBindingComponent } from './pages/my-account/my-account-binding/my-account-binding.component';
+import { SingleDealComponent } from './pages/single-deal/single-deal.component';
 
 @NgModule({
   imports: [
@@ -97,7 +98,8 @@ import { MyAccountBindingComponent } from './pages/my-account/my-account-binding
     MyPersonalInfoComponent,
     MyShippingAddressComponent,
     MySecuritySettingComponent,
-    MyAccountBindingComponent
+    MyAccountBindingComponent,
+    SingleDealComponent
   ],
   providers: [
     HttpService,

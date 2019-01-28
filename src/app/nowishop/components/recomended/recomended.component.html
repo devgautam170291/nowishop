@@ -3,7 +3,7 @@
     <app-section-title [titleBg]="'#c170c1'" [titleColor]="'#ffffff'" [value]="'Recommend for you'"></app-section-title>
     <div class="recommend-container row" *ngIf="recommendProducts.length > 0">
       <div class="col-md-3" *ngFor="let product of recommendProducts">
-        <div class="recomended-product">
+        <div class="recomended-product" routerLink="/product/{{product.ProductSlug}}">
           <div class="recomended-product-img" [ngStyle]="{'background': 'url('+product.ImageURL+')'}"></div>
           <div class="recomended-product-price ">
             <div>Rs</div>
@@ -13,7 +13,7 @@
           <div class="recomended-product-rating d-inline-block">
             <app-ratings [rating]="product.AvgRating"></app-ratings>
           </div>
-          <div class="recomended-product-link text-right d-inline-block float-right"><a class="" routerLink="'/product/'{{product.ProductSlug}}">More <i class="fa fa-angle-right"></i></a></div>
+          <div class="recomended-product-link text-right d-inline-block float-right"><a class="" routerLink="/product/{{product.ProductSlug}}">More <i class="fa fa-angle-right"></i></a></div>
         </div>
       </div>
     </div>
