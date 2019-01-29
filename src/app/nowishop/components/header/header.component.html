@@ -72,9 +72,9 @@
                                             <span class="dropdown-item" *ngFor="let cat of categoryList" (click)="changeSearchCategory(cat)">{{cat.CategoryName}}</span>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" [(ngModel)]="searchText">
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="search"><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-outline-secondary" type="button" id="search" (click)="searchProducts()"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                             </div>

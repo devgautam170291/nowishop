@@ -1,13 +1,15 @@
-export class SingleCategoryModel{
+export class SearchResultModel{
+	SearchBar: any;
+	ProductList: any;
 	PageSize:any;
 	PageNumber:any;
-	CategorySlug:any;
 	Search: any;
 
 	constructor(){
 		this.PageNumber = 1;
+		this.ProductList = "";
 		this.PageSize = 3;
-		this.CategorySlug = "";
+		this.SearchBar = "";
 		this.Search = [];
 	}
 }

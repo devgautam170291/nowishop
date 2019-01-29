@@ -32,6 +32,8 @@ import { ProductTagsComponent } from './admin-products/product-tags/product-tags
 import { AddNewProductTagComponent } from './admin-products/product-tags/add-new-product-tag/add-new-product-tag.component';
 import { AdminBrandComponent } from './admin-brand/admin-brand.component';
 import { AddnewbrandComponent } from './admin-brand/addnewbrand/addnewbrand.component';
+import { AdminNotificationComponent } from './admin-notification/admin-notification.component';
+import { AddNewNotificationComponent } from './admin-notification/add-new-notification/add-new-notification.component';
 
 @NgModule({
   imports: [
@@ -58,7 +60,7 @@ import { AddnewbrandComponent } from './admin-brand/addnewbrand/addnewbrand.comp
     AddNewCategoryComponent, 
     AddnewproductComponent, 
     AddnewuserComponent, 
-    AdminPaginationComponent, ProductTagsComponent, AddNewProductTagComponent, AdminBrandComponent, AddnewbrandComponent
+    AdminPaginationComponent, ProductTagsComponent, AddNewProductTagComponent, AdminBrandComponent, AddnewbrandComponent, AdminNotificationComponent, AddNewNotificationComponent
   ],
   providers: [
     HttpService,

@@ -48,8 +48,8 @@ export class SingleProductComponent implements OnInit {
         "active": false
       },
       {
-        "name": "Flash Deals",
-        "url": "#",
+        "name": this.productInfo['productCategoryName'] ? this.productInfo['productCategoryName'] : 'Product Category Loading...',
+        "url": this.productInfo['productCategorySlug'] ? '/category/'+this.productInfo['productCategorySlug']: '#',
         "active": false
       },
       {
@@ -67,6 +67,8 @@ export class SingleProductComponent implements OnInit {
   			res => {
   				if(res['IsSuccess']){
   					this.productInfo = res['Data'];
+            console.log('check response');
+            console.log(this.productInfo);
             this.showBreedcrumb();
   					this.productMoreInfo = JSON.parse(this.productInfo.more_Data);
             this.checkFeaturedVariation(this.productInfo);
@@ -78,11 +80,13 @@ export class SingleProductComponent implements OnInit {
   }
 
   checkFeaturedVariation(obj){
+    debugger
+    var that = this;
     if(obj.featuredColor){
       if(obj.productVariation.length){
         obj.productVariation.forEach((data)=>{
           if(data.variationColor.toLowerCase() == obj.featuredColor.toLowerCase()){
-            this.setVariation(data);
+            that.setVariation(data);
             return false;
           }
         })
@@ -91,6 +95,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   setVariation(obj, e = null){
+    debugger
   	this.selectedVariation = obj;
     this.sliderImages = obj.UploadedImages;
     if(obj.variationSizes.length){

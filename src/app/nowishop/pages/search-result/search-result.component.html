@@ -1,3 +1,83 @@
-<p>
-  search-result works!
-</p>
+<div id="single-category">
+    <div class="breedcrumb-wrap">
+        <div class="container">
+        <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+    </div>
+</div>
+<div class="page-section">
+    <div class="container">
+        <div class="sidebar-content-template">
+            <div class="row">
+                <div class="col-md-3 sidebar-wrapper">
+                    <div class="sidebar">
+                        <div class="sidebar-container">
+                            <div class="sidebar-list">
+                                <ul class="sidebar-list">
+                                    <li class="sidebar-single-list">
+                                        <h2>Categories</h2>
+                                        <ul *ngIf="categoryList.length">
+                                            <li *ngFor="let category of categoryList">
+                                                <input type="checkbox" value="{{category.CategorySlug}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{category.CategoryName}}
+                                                <ul class="first-level-cat" *ngIf="category.FirstLevelSubCategory.length">
+                                                    <li *ngFor="let firstLevelCat of category.FirstLevelSubCategory">
+                                                        <input type="checkbox" value="{{firstLevelCat.CategorySlug}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
+                                                        <!-- <ul class="second-level-cat" *ngIf="firstLevelCat.secondLevelSubCategories.length">
+                                                            <li *ngFor="let secondLevelCat of firstLevelCat.secondLevelSubCategories">
+                                                                <input type="checkbox" value="{{secondLevelCat.CategorySlug}}"> {{secondLevelCat.CategoryName}}
+                                                            </li>
+                                                        </ul> -->
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="sidebar-single-list">
+                                        <h2>Brands</h2>
+                                        <ul>
+                                            <li><input type="checkbox"> Adidas</li>
+                                            <li><input type="checkbox"> Fast Track</li>
+                                            <li><input type="checkbox"> Fila</li>
+                                        </ul>
+                                    </li>
+                                    <li class="sidebar-single-list">
+                                        <h2>Price</h2>
+                                        <ul>
+                                            <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="less|1000">less than &#8377;1000</li>
+                                            <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|1000 and 5000">between &#8377;1000 and &#8377;5000</li>
+                                            <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|5000 and 15000">between &#8377;5000 and &#8377;15000</li>
+                                            <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|15000 and 25000">between &#8377;15000 and &#8377;25000</li>
+                                            <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|25000 and 50000">between &#8377;25000 and &#8377;50000</li>
+                                            <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="above|50000"> Above &#8377;50000</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 content-wrapper">
+                    <div class="content">
+                        <div class="content-container">
+                            <div class="content-title-container">
+                                {{dataRequestModel.SearchBar ? this.dataRequestModel.SearchBar.split('_').join(' ') : 'Loading...'}}
+                            </div>
+                            <div class="content-section">
+                                <div class="row" *ngIf="productList.length > 0">
+                                    <div class="col-md-4 product-container position-relative" *ngFor="let product of productList">
+                                    <app-show-product [product]="product"></app-show-product>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="productList.length == 0">
+                                <div class="col-md-4 product-container" *ngFor="let product of dummyProducts">
+                                <app-dummy-products></app-dummy-products>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

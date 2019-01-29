@@ -116,6 +116,16 @@ body .mobile {
     display: none;
 }
 
+.sidebar-single-list li {
+    text-transform: capitalize;
+    font-size: 14px;
+    margin: 8px 0px;
+}
+
+.sidebar-single-list ul {
+    margin-left: 15px !important;
+}
+
 /*-----------------------------------*/
 /*------ Dashboard ------------------*/
 

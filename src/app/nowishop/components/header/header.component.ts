@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectorRef  } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
@@ -17,10 +18,12 @@ export class HeaderComponent implements OnInit {
     private http: HttpClient, 
     private dataService: HttpService, 
     private nowishopGlobal: NowishopService,
-    private ref: ChangeDetectorRef ) { }
+    private ref: ChangeDetectorRef,
+    private router: Router ) { }
 
   shipTo: any;
   searchCat: any;
+  searchText: any;
   defaultSearch: any = {"CategoryId": 0, "CategoryName": "All"};
 
   ngOnInit() {
@@ -59,5 +62,9 @@ export class HeaderComponent implements OnInit {
       $(e.target).addClass('active');
     }    
     this.selectedCategory = cat['FirstLevelSubCategory'];
+  }
+
+  searchProducts(){
+    this.router.navigate(['/search/',this.searchText]);
   }
 }

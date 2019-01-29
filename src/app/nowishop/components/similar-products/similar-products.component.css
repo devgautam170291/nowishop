@@ -142,3 +142,12 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
 }
+
+.similar-product-img {
+    width: 100%;
+    min-height: 170px;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    margin-bottom: 10px;
+}

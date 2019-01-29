@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../../../services/http.service';
+import { SimilarProductModel } from './Similar-product-model';
+import { Router } from '@angular/router';
 declare let $: any;
 
 @Component({
@@ -8,16 +12,20 @@ declare let $: any;
 })
 export class SimilarProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private dataService: HttpService) { }
 
   @Input() category;
 
   similarProducts: any = [];
+  dataRequestModel: any;
   dummyProducts:any = [];
 
   ngOnInit() {
     this.loadDummy();
-  	// this.getSimilarProducts();
+    this.dataRequestModel = new SimilarProductModel();
+    if(this.category){
+      this.getSimilarProducts();
+    }
   }
 
   loadDummy(){
@@ -27,36 +35,15 @@ export class SimilarProductsComponent implements OnInit {
   }
 
   getSimilarProducts(){
-  	this.similarProducts = [
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		}
-  	];
+  	
+    this.dataRequestModel.CategorySlug = this.category;
+    this.http.post(this.dataService.baseUrl + 'Home/SimilarProduct', this.dataRequestModel).subscribe(
+        res=>{
+          if(res['IsSuccess']){
+            this.similarProducts = res['Dt'];
+          }
+        }
+      )
   }
 
   ngAfterViewChecked(){

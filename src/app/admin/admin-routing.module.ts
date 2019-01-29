@@ -20,6 +20,8 @@ import { ProductTagsComponent } from './admin-products/product-tags/product-tags
 import { AddNewProductTagComponent } from './admin-products/product-tags/add-new-product-tag/add-new-product-tag.component';
 import { AdminBrandComponent } from './admin-brand/admin-brand.component';
 import { AddnewbrandComponent } from './admin-brand/addnewbrand/addnewbrand.component';
+import { AdminNotificationComponent } from './admin-notification/admin-notification.component';
+import { AddNewNotificationComponent } from './admin-notification/add-new-notification/add-new-notification.component';
 
 const routes: Routes = [
 	{path: '', component: AdminComponent, canActivate: [AuthGuard], children: [
@@ -38,6 +40,9 @@ const routes: Routes = [
 		{path: 'products/producttag', component: ProductTagsComponent},
 		{path: 'products/producttag/addproducttag', component: AddNewProductTagComponent},
 		{path: 'products/producttag/editproduct/:id', component: AddNewProductTagComponent},
+		{path: 'notifications', component: AdminNotificationComponent},
+		{path: 'notifications/addnewnotification', component: AddNewNotificationComponent},
+		{path: 'notifications/editnotification/:id', component: AddNewNotificationComponent},
 		{path: 'users', component: AdminUsersComponent},
 		{path: 'users/addnewuser', component: AddnewuserComponent},
 		{path: 'users/edituser/:id', component: AddnewuserComponent},

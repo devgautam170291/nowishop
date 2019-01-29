@@ -62,6 +62,10 @@ export class AdminSearchComponent implements OnInit {
       case "producttags":
         url = "Deal/SearchDealsList";
         break;
+
+      case "notification":
+        url = "";
+        break;  
       
       default:
         // code...

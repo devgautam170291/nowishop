@@ -27,17 +27,19 @@
                         </div>
                         <div class="row" *ngIf="similarProducts.length > 0">
                             <div class="col-md-3" [ngClass]="i==0 ? 'active' : ''" *ngFor="let product of similarProducts; let i = index">
-                                <div class="recomended-product">
-                                    <div class="recomended-product-img">{{product.image}}</div>
+                                <div class="recomended-product" routerLink="/product/{{product.ProductSlug}}">
+                                    <div class="similar-product-img" [ngStyle]="{'background': 'url('+product.ImageURL+')'}">
+                                        
+                                    </div>
                                     <div class="recomended-product-price ">
-                                        <div>US$</div>
-                                        <div>{{product.price}}</div>
+                                        <div>INR</div>
+                                        <div>{{product.Price}}</div>
                                     </div>
-                                    <div class="recomended-product-name">{{product.name}}</div>
+                                    <div class="recomended-product-name">{{product.ProductName}}</div>
                                     <div class="recomended-product-rating d-inline-block">
-                                        <app-ratings [rating]="'3.4'"></app-ratings>
+                                        <app-ratings [rating]="product.AvgRating ? product.AvgRating : '3.4'"></app-ratings>
                                     </div>
-                                    <div class="recomended-product-link text-right d-inline-block float-right"><a class="my-primary" href="{{product.link}}">More <i class="fa fa-angle-right"></i></a></div>
+                                    <div class="recomended-product-link text-right d-inline-block float-right"><a class="my-primary" routerLink="/product/{{product.ProductSlug}}">More <i class="fa fa-angle-right"></i></a></div>
                                 </div>
                             </div>
                         </div>
