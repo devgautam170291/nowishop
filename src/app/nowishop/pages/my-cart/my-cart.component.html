@@ -1,3 +1,69 @@
-<p>
-  my-cart works!
-</p>
+<div id="my-cart">
+    <div class="breedcrumb-wrap">
+        <div class="container">
+            <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+        </div>
+    </div>
+    <div class="my-cart page-section">
+        <div class="container">
+            <div class="cart-header">
+                <div class="row">
+                    <div class="col-md-6">My Cart</div>
+                    <div class="col-md-6">
+                        <div class="membership-logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-cart-container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Items</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th style="min-width: 200px;">
+                                <div class="item-desc">
+                                    <div class="item-title"></div>
+                                    <div class="item-deal"></div>
+                                    <div class="item-size">
+                                        Size: L
+                                    </div>
+                                    <div class="item-variation">
+                                        Color: 
+                                    </div>
+                                </div>
+                            </th>
+                            <td>
+                                <div class="item-price">
+                                    <div class="discount-price">INR  </div>
+                                    <div class="actual-price">INR </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="quantity-raiser">
+                                    <div class="d-inline-block quantity-decrease" (click)="decreaseQuantity()"> - </div>
+                                    <div class="d-inline-block quantity-val">{{quantity}}</div>
+                                    <div class="d-inline-block quantity-increase" (click)="increaseQuantity()"> + </div>
+                                </div>
+                            </td>
+                            <td style="width: 50px;">
+                                <div class="remove-item">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="continue-payment text-right">
+                <button class="btn btn-primary">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
