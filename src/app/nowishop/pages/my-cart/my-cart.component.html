@@ -8,7 +8,7 @@
         <div class="container">
             <div class="cart-header">
                 <div class="row">
-                    <div class="col-md-6">My Cart</div>
+                    <div class="col-md-6 title">My Cart</div>
                     <div class="col-md-6">
                         <div class="membership-logo">
                         </div>
@@ -16,45 +16,65 @@
                 </div>
             </div>
             <div class="my-cart-container">
-                <table class="table table-hover">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Items</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
+                            <th class="text-center" scope="col">Price</th>
+                            <th class="text-center" scope="col">Quantity</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th style="min-width: 200px;">
+                            <div class="product-desc-container">
                                 <div class="item-desc">
-                                    <div class="item-title"></div>
-                                    <div class="item-deal"></div>
+                                    <div class="item-title">Adiddas product Adiddas product Adiddas product</div>
+                                    <div class="item-deal">Flash Deal</div>
                                     <div class="item-size">
                                         Size: L
                                     </div>
                                     <div class="item-variation">
-                                        Color: 
+                                        Color: red
                                     </div>
                                 </div>
-                            </th>
+                            </div>
                             <td>
                                 <div class="item-price">
-                                    <div class="discount-price">INR  </div>
-                                    <div class="actual-price">INR </div>
+                                    <div class="discount-price">INR 32,000 </div>
+                                    <div class="actual-price">INR 44,000</div>
                                 </div>
                             </td>
                             <td>
                                 <div class="quantity-raiser">
-                                    <div class="d-inline-block quantity-decrease" (click)="decreaseQuantity()"> - </div>
+                                    <div class="d-inline-block quantity-decrease" (click)="decreaseQuantity()"><i class="fa fa-minus" aria-hidden="true"></i></div>
                                     <div class="d-inline-block quantity-val">{{quantity}}</div>
-                                    <div class="d-inline-block quantity-increase" (click)="increaseQuantity()"> + </div>
+                                    <div class="d-inline-block quantity-increase" (click)="increaseQuantity()"><i class="fa fa-plus" aria-hidden="true"></i></div>
                                 </div>
                             </td>
                             <td style="width: 50px;">
                                 <div class="remove-item">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="clear-button">
+                                    <button class="btn">Clear Cart</button>
+                                </div>
+                            </td>
+                            <td colspan="2">
+                                <div class="cart-total text-right">
+                                    <div>
+                                        <span>Discount</span>: <span class="discount-price">3,100</span>
+                                    </div>
+                                    <div>
+                                        <span>Total</span>: <span>1 item</span>
+                                    </div>
+                                    <div>
+                                        <span>Add Point</span>: <span>21 point</span>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

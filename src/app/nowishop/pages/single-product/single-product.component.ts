@@ -80,11 +80,11 @@ export class SingleProductComponent implements OnInit {
   }
 
   checkFeaturedVariation(obj){
-    debugger
     var that = this;
     if(obj.featuredColor){
       if(obj.productVariation.length){
         obj.productVariation.forEach((data)=>{
+          debugger
           if(data.variationColor.toLowerCase() == obj.featuredColor.toLowerCase()){
             that.setVariation(data);
             return false;
@@ -99,7 +99,7 @@ export class SingleProductComponent implements OnInit {
   	this.selectedVariation = obj;
     this.sliderImages = obj.UploadedImages;
     if(obj.variationSizes.length){
-      this.selectedSizeQuantity = obj.variationSizes[0];
+      this.selectedSizeQuantity = obj.variationSizes[0];    
     }
     
   	if(e){
@@ -127,6 +127,23 @@ export class SingleProductComponent implements OnInit {
   decreaseQuantity(){
     if(this.addToCartModel.ProductCount > 1){
       this.addToCartModel.ProductCount -= 1;
+    }
+  }
+
+  addToCart(){
+    
+    if(this.productInfo){
+      this.addToCartModel.ProductID = this.productInfo.productCategoryId;
+      this.addToCartModel.ProductVariactionID = this.selectedVariation.ProductVariactionID;
+      this.addToCartModel.ProductSizeID = this.selectedSizeQuantity.length ? this.selectedSizeQuantity.ProductSizeID : 0;
+    
+      this.http.post(this.dataService.baseUrl + 'UserAccount/AddUserCard', this.addToCartModel).subscribe(
+        res => {
+          if(res['IsSuccess']){
+            alert('added');
+          }
+        }
+      )
     }
   }
 

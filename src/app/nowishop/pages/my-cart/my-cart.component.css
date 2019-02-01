@@ -1,4 +1,104 @@
 .quantity-raiser div {
-    padding: 5px;
     border: 1px solid #ccc;
+}
+
+.continue-payment button,
+.continue-payment button:hover {
+    background: var(--nowishop-blue);
+    border: 1px solid var(--nowishop-blue);
+    padding: 14px 30px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.quantity-decrease,
+.quantity-increase {
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.quantity-val {
+    width: 75px;
+    text-align: center;
+    padding: 4px 0px;
+}
+
+.discount-price {
+    font-size: 22px;
+    color: var(--nowishop-red);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.actual-price {
+    font-size: 17px;
+    color: #adadad;
+    text-decoration: line-through;
+}
+
+.item-price {
+    text-align: center;
+}
+
+.quantity-raiser {
+    text-align: center;
+}
+
+.remove-item {
+    text-align: center;
+    cursor: pointer;
+}
+
+.remove-item .fa {
+    font-size: 18px;
+    margin-top: 10px;
+}	
+
+.quantity-decrease .fa, .quantity-increase .fa {
+    display: block;
+    padding: 8px 0px;
+}
+
+.item-deal {
+    min-height: 25px;
+    font-family: futura-light;
+}
+
+.item-title, thead th {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.item-size, .item-variation {
+	font-family: futura-light;
+	font-size: 14px;
+}
+
+.cart-header {
+    padding: 20px 10px;
+}
+
+.cart-header .title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+}
+
+.my-cart-container thead {
+    background: #e7e7e7;
+}
+
+.product-desc-container {
+    padding: 10px 0px;
+}
+
+.clear-button .btn {
+    padding: 14px 30px;
+    background: #fff;
+    border: 2px solid #ccc;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cart-total span:first-child {
+    font-family: futura-light;
 }
