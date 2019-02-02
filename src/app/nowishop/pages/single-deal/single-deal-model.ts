@@ -12,7 +12,7 @@ export class SingleDealModel{
 	}
 }
 
-class SearchParams {
+export class SearchParams {
 	ColumnName:any;
 	Operator:any;
 	ColumnValue:any;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
-import { SingleDealModel } from './single-deal-model';
+import { SingleDealModel, SearchParams } from './single-deal-model';
 declare let $: any;
 
 @Component({
@@ -23,10 +23,13 @@ export class SingleDealComponent implements OnInit {
   dataRequestModel: any;
   productList: any = [];
   dummyProducts: any = [];
+  categoryList: any = [];
+  searchObj: any = [];
 
   ngOnInit() {
     this.laodModel();
   	this.showBreedcrumb();  	
+    this.getCategoryList();
   	this.getCategoryInfo();
     this.loadDummyProducts();
   }
@@ -42,6 +45,16 @@ export class SingleDealComponent implements OnInit {
     }
   }
 
+  getCategoryList(){
+    this.http.get(this.dataService.baseUrl + 'Home/HomeCategory').subscribe(
+        res => {
+          if(res['IsSuccess']){
+            this.categoryList = res['Data'];
+          }
+        }
+      )
+  }
+
   showBreedcrumb(){
     this.breedcrumb = [
       {
@@ -55,6 +68,49 @@ export class SingleDealComponent implements OnInit {
         "active": true
       }
     ];
+  }
+
+  handleSearchParams(columnName, e){
+    debugger
+    if(e.currentTarget.checked){
+      var searchObj = new SearchParams();
+      searchObj.ColumnName = columnName;
+      if(e.currentTarget.value.includes('|')){
+        var operator = e.currentTarget.value.split('|')[0].trim().toLowerCase();
+        switch (operator) {
+          case "less":
+             searchObj.Operator = 8;
+            break;
+          case "between":
+             searchObj.Operator = 6;
+            break;
+          case "above":
+             searchObj.Operator = 7;
+            break;
+         
+          default:
+            searchObj.Operator = 5;
+            break;
+        }
+      }
+      else {
+        searchObj.Operator = 1;
+        searchObj.ColumnValue = e.currentTarget.value;
+      }
+
+      this.searchObj.push(searchObj);
+    }
+    else{
+      var val = e.currentTarget.value;
+      if(this.searchObj.length){
+        this.searchObj.forEach((data, i)=>{
+          if(data.ColumnValue.toLowerCase() == val.toLowerCase()){
+            this.searchObj.splice(i, 1);
+          }
+        })
+      }
+    }
+    this.getCategoryInfo();
   }
 
   getCategoryInfo(){

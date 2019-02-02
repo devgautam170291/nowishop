@@ -22,7 +22,6 @@ export class SingleProductComponent implements OnInit {
 
   breedcrumb: any;
   productInfo: any = {};
-  wishlist: any = true;
   productMoreInfo: any = [];
   sliderImages: any = [];
   addToCartModel: any;  
