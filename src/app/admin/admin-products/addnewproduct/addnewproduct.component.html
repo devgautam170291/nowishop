@@ -53,6 +53,36 @@
             </div>
         </div>
         <div class="fields-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Product Details Specification</label>
+                        <div class="row" *ngFor="let info of productDetailsInfo; let i = index">
+                            <div class="col-md-4">
+                                <label>Key</label>
+                                <input type="text" class="form-control" [(ngModel)]="info.key">
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Value</label>
+                                <input type="text" class="form-control" [(ngModel)]="info.value">
+                            </div>
+                            <div class="col-md-4 text-right form-group">
+                                <button class="btn btn-danger color-light mt-3" (click)="removeProductDetail(i)" title="Remove"><i class="fa fa-trash"></i> Remove Product Detail</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-left">
+                                <button class="btn btn-primary" (click)="addMoreProductDetail()"><i class="fa fa-plus"></i> Add Product Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
             <!-- Category & SKU -->
             <div class="row">
                 <div class="col-md-6">

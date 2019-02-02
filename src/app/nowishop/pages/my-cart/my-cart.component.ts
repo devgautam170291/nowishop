@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../../../services/http.service';
+import { NowishopService } from '../../../services/nowishop.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-cart',
@@ -7,12 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyCartComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient, 
+    private dataService: HttpService,
+    private nowishopGlobal: NowishopService
+  ) { }
   breedcrumb: any;
   quantity: any = 1;
+  cartList: any = [];
 
   ngOnInit() {
   	this.showBreedcrumb();
+    this.getMyCart();
   }
 
   showBreedcrumb(){
@@ -28,6 +38,15 @@ export class MyCartComponent implements OnInit {
         "active": true
       }
     ];
+  }
+
+  getMyCart(){
+    var userId = this.nowishopGlobal.getUserInfo().userId;
+    this.http.get(this.dataService.baseUrl + 'UserAccount/GetUserCardList/' + userId).subscribe(
+      res=>{
+        
+      }
+    )
   }
 
   increaseQuantity(){

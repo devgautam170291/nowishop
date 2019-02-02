@@ -29,7 +29,7 @@ const routes: Routes = [
 			{path: 'deal/:deal_slug', component: SingleDealComponent},
 			{path: 'search/:search_value', component: SearchResultComponent},
 			{path: 'shipping-payment', component: ShippingPaymentComponent},
-			{path: 'cart', component: MyCartComponent},
+			{path: 'cart', canActivate: [AuthGuard], component: MyCartComponent},
 			{path: 'account', canActivate: [AuthGuard], component: MyAccountComponent},
 			{path: 'account/:name', canActivate: [AuthGuard], component: MyAccountComponent}
 	]}

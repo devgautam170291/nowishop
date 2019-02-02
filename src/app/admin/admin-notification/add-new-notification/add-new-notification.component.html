@@ -1,3 +1,99 @@
-<p>
-  add-new-notification works!
-</p>
+<div class="container-fluid p-0 m-0">
+    <div class="admin-title">
+        Add New Notification
+    </div>
+    <ngx-loading [show]="loading"></ngx-loading>
+    <div class="admin-wrapper">
+        <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+        <div class="fields-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Select Membership</label>
+                        <select class="form-control" [(ngModel)]="model.MemberShipID">
+                            <option *ngFor="let membership of membershipData" value="{{membership.MembershipID}}">
+                            	{{membership.MembershipName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Select Notification Type</label>
+                        <select class="form-control" [(ngModel)]="notificationType" (change)="onMembershipChange()">
+                            <option value="1">Important Message</option>
+                            <option value="2">Promotions</option>
+                            <option value="3">Coupons</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container" *ngIf="notificationType == 1">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Notification Description</label>
+                        <textarea class="form-control" rows="5" cols="2" [(ngModel)]="model.ImportantMessages"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fields-container" *ngIf="notificationType == 2">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Upload Promotion Banner</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="catImg" (change)="uploadNotificationImg($event, this.notificationType)" accept="image/png, image/jpeg">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="img-preview">
+                            <div *ngIf="model.Promotions">
+                                <img src="{{model.Promotions}}" alt="">
+            				</div>
+                                <div *ngIf="!model.Promotions" class="text-center">
+                                    No Preview Available
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fields-container" *ngIf="notificationType == 3">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Upload Coupon Banner</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="catImg" (change)="uploadNotificationImg($event, this.notificationType)" accept="image/png, image/jpeg">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="img-preview">
+                            <div *ngIf="model.Coupons">
+                                <img src="{{model.Coupons}}" alt="">
+            				</div>
+                                <div *ngIf="!model.Coupons" class="text-center">
+                                    No Preview Available
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5 mt-5">
+                <div class="col-md-12 text-right btn-container">
+                    <button class="btn btn-static" routerLink="/admin/notifications">Cancel</button>
+                    <button class="btn btn-success" (click)="uploadNotification()">Upload Brand</button>
+                </div>
+            </div>
+        </div>
+    </div>

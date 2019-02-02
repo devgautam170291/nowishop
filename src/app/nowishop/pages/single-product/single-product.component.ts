@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
@@ -17,7 +17,9 @@ export class SingleProductComponent implements OnInit {
     private http: HttpClient, 
     private dataService: HttpService, 
     private route: ActivatedRoute,
-    private nowishopGlobal: NowishopService
+    private nowishopGlobal: NowishopService,
+    private router: Router,
+    private state: RouterStateSnapshot
     ) { }
 
   breedcrumb: any;
@@ -29,6 +31,7 @@ export class SingleProductComponent implements OnInit {
   selectedVariation: any;
   selectedSizeQuantity: any;
   similarProductCategorySlug: any = null;
+  wishlist: any = false;
 
   ngOnInit() {
     this.loadModel();
@@ -71,6 +74,7 @@ export class SingleProductComponent implements OnInit {
             this.showBreedcrumb();
   					this.productMoreInfo = JSON.parse(this.productInfo.more_Data);
             this.checkFeaturedVariation(this.productInfo);
+            this.checkWishlist(this.productInfo.productID);
   					this.loadDummy = false;
   				}
   			}
@@ -129,10 +133,50 @@ export class SingleProductComponent implements OnInit {
     }
   }
 
+  checkWishlist(productId){
+    if(this.nowishopGlobal.isUserInfo()){
+      var userId = this.nowishopGlobal.getUserInfo().userId;
+      this.http.get(this.dataService.baseUrl + 'Home/SingleProductWishList/' + productId + '/' + userId).subscribe(
+        res => {
+          if(res['Data'] == true){
+            this.wishlist = true;
+          }
+        }
+      )
+    }
+  }
+
+  addRemoveWishlist(productId){
+    if(this.nowishopGlobal.isUserInfo()){
+      var userId = this.nowishopGlobal.getUserInfo().userId;
+      if(this.wishlist){
+        this.http.get(this.dataService.baseUrl + 'UserAccount/RemoveWishList/'+ userId + '/' + productId).subscribe(
+          res => {
+            if(res['IsSuccess']){
+              this.wishlist = false;
+            }
+          }
+        )
+      }
+      else{
+        this.http.get(this.dataService.baseUrl + 'UserAccount/AddWishList/'+ userId + '/' + productId).subscribe(
+          res => {
+            if(res['IsSuccess']){
+              this.wishlist = true;
+            }
+          }
+        )
+      }
+    }
+    else {
+      this.router.navigate(['/login'], { queryParams: { returnTo: this.state.url }});
+    }
+  }
+
   addToCart(){
     
     if(this.productInfo){
-      this.addToCartModel.ProductID = this.productInfo.productCategoryId;
+      this.addToCartModel.ProductID = this.productInfo.productID;
       this.addToCartModel.ProductVariactionID = this.selectedVariation.ProductVariactionID;
       this.addToCartModel.ProductSizeID = this.selectedSizeQuantity.length ? this.selectedSizeQuantity.ProductSizeID : 0;
     

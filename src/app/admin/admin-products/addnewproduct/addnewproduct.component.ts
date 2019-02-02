@@ -24,6 +24,8 @@ export class AddnewproductComponent implements OnInit {
   brandList: any = [];
   productTagList: any = [];
   moreProductInfo: any = [];
+  productDetailsImg: any = [];
+  productDetailsInfo: any = [];
   productSearchKeys: any = []; 
 
   ngOnInit() {	
@@ -45,6 +47,7 @@ export class AddnewproductComponent implements OnInit {
       this.case = 'add';
     }
   }
+    
 
   getEditProductData(id){
     this.loading = true;
@@ -54,6 +57,7 @@ export class AddnewproductComponent implements OnInit {
           if(res['IsSuccess']){
             this.model = res['Data'][0];
             this.moreProductInfo = JSON.parse(this.model.More_Data);
+            this.productDetailsInfo = JSON.parse(this.model.ProductSpecificationDetailsInfo);
           }
         }
       )
@@ -177,6 +181,7 @@ export class AddnewproductComponent implements OnInit {
 
   uploadProduct(){
     this.model.More_Data = JSON.stringify(this.moreProductInfo);
+    this.model.ProductSpecificationDetailsInfo = JSON.stringify(this.productDetailsInfo);
     this.model = this.setFeaturedImages(this.model);
     if(this.productSearchKeys.length){
       this.model.ProductSearch = this.productSearchKeys.join('|');
@@ -235,6 +240,19 @@ export class AddnewproductComponent implements OnInit {
 
   removeProductInfo(index){
     this.moreProductInfo.splice(index, 1);
+  }
+
+  addMoreProductDetail(){
+    var obj = {
+      "key": "",
+      "value": ""
+    }
+
+    this.productDetailsInfo.push(obj);
+  }
+
+  removeProductDetail(index){
+    this.productDetailsInfo.splice(index, 1);
   }
 
   makeRecommendedProduct(event){

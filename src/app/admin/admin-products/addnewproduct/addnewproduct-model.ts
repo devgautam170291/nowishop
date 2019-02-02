@@ -3,7 +3,8 @@ export class AddProductModal {
 	"ProductName": any;
 	"ProductDescription": any;
 	"SkuDetails": any;
-	"More_Data": "";
+	"More_Data": any;
+	"ProductSpecificationDetailsInfo": any;
 	"ProductCategoryId": any;
 	"product_Variations": Array<ProductVariation>;
 	"FeaturedColor": any;
@@ -18,6 +19,7 @@ export class AddProductModal {
 		this.ProductDescription = "";
 		this.SkuDetails = "";
 		this.More_Data = "";
+		this.ProductSpecificationDetailsInfo = "";
 		this.ProductCategoryId = "0";
 		this.product_Variations = [ new ProductVariation() ];
 		this.FeaturedColor = "0";
