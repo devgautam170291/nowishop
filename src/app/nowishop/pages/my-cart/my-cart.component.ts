@@ -44,7 +44,7 @@ export class MyCartComponent implements OnInit {
     var userId = this.nowishopGlobal.getUserInfo().userId;
     this.http.get(this.dataService.baseUrl + 'UserAccount/GetUserCardList/' + userId).subscribe(
       res=>{
-        
+        this.cartList = res['Data'];
       }
     )
   }
@@ -57,6 +57,14 @@ export class MyCartComponent implements OnInit {
     if(this.quantity > 1){
       this.quantity -= 1;
     }
+  }
+
+  removeFromCart(i){
+    this.cartList.splice(i, 1);
+  }
+
+  clearCart(){
+    this.cartList = [];
   }
 
 }

@@ -25,8 +25,8 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody *ngIf="cartList.length > 0">
+                        <tr *ngFor="let product of cartList; let i = index;">
                             <div class="product-desc-container">
                                 <div class="item-desc">
                                     <div class="item-title">Adiddas product Adiddas product Adiddas product</div>
@@ -41,8 +41,8 @@
                             </div>
                             <td>
                                 <div class="item-price">
-                                    <div class="discount-price">INR 32,000 </div>
-                                    <div class="actual-price">INR 44,000</div>
+                                    <div class="discount-price">INR {{product.Price}} </div>
+                                    <div class="actual-price" *ngIf="product.DescountPrice">INR {{product.DescountPrice}}</div>
                                 </div>
                             </td>
                             <td>
@@ -53,14 +53,14 @@
                                 </div>
                             </td>
                             <td style="width: 50px;">
-                                <div class="remove-item">
+                                <div class="remove-item" (click)="removeFromCart(i)">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <div class="clear-button">
+                                <div class="clear-button" (click)="clearCart()">
                                     <button class="btn">Clear Cart</button>
                                 </div>
                             </td>
@@ -76,6 +76,13 @@
                                         <span>Add Point</span>: <span>21 point</span>
                                     </div>
                                 </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="cartList.length == 0">
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                No item in cart
                             </td>
                         </tr>
                     </tbody>
