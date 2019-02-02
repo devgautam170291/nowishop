@@ -58,9 +58,63 @@ export class AddnewproductComponent implements OnInit {
             this.model = res['Data'][0];
             this.moreProductInfo = JSON.parse(this.model.More_Data);
             this.productDetailsInfo = JSON.parse(this.model.ProductSpecificationDetailsInfo);
+            if(this.productDetailsInfo.length){
+              this.productDetailsImg.map((data)=>{
+                if(data.key == 'img'){
+                  return data;
+                }
+              })
+            }            
           }
         }
       )
+  }
+
+  deleteProductDetailImg(index){
+    if(index < this.productDetailsImg.length){
+      this.productDetailsImg.splice(index, 1);
+    }    
+  }
+
+  uploadProductDetailImg(e){
+    if(e.currentTarget.files.length){
+      var formData = new FormData();
+      for(let i=0; i<e.target.files.length; i++){
+        formData.append('UploadedImage', e.target.files[i]);
+      } 
+
+      this.loading = true;
+      this.dataService.post('Product/SaveImage', formData).subscribe(
+        res => {
+          this.loading = false;
+          if(res['IsSuccess']){
+            
+            var urls = res['Data'];
+            if(urls.includes(',')){
+              urls = urls.split(',');
+              for(let i=0; i<urls.length; i++){
+                let obj = {
+                  "key": "img",
+                  "value": ""
+                };
+
+                obj.value = this.dataService.imageUrl + urls[i];
+                this.productDetailsImg.push(obj);
+              }
+            }
+            else{
+              let obj = {
+                  "key": "img",
+                  "value": ""
+                };
+
+              obj.value = this.dataService.imageUrl + urls;
+              this.productDetailsImg.push(obj);
+            }
+          }
+        }
+      )
+    }
   }
 
   showBreedcrumb(){
@@ -181,6 +235,12 @@ export class AddnewproductComponent implements OnInit {
 
   uploadProduct(){
     this.model.More_Data = JSON.stringify(this.moreProductInfo);
+    if(this.productDetailsImg.length){
+      this.productDetailsImg.forEach((obj)=>{
+        this.model.ProductSpecificationDetailsInfo.push(obj);
+      })
+    }
+
     this.model.ProductSpecificationDetailsInfo = JSON.stringify(this.productDetailsInfo);
     this.model = this.setFeaturedImages(this.model);
     if(this.productSearchKeys.length){

@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="fields-container">
+        <div class="fields-container product-details">
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
@@ -76,8 +76,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        
+                    <div class="col-md-12 mt-2">
+                        <label>Choose Product Detail Images</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="catImg" (change)="uploadProductDetailImg($event)" accept="image/png, image/jpeg" multiple>
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="variation-img-container">
+                            <div class="row">
+                                <div class="col-md-2 variation-img" *ngFor="let img of productDetailsImg; let j = index">
+                                    <span class="deleteImg" (click)="deleteProductDetailImg(j)">
+                                              <i class="fa fa-times" aria-hidden="true"></i>
+                                            </span>
+                                    <a href="{{img.value}}" target="_blank"><img src="{{img.value}}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -273,11 +289,11 @@
                         </div>
                         <div class="form-group">
                             <div class="searchkey" *ngFor="let searchkey of productSearchKeys; let i = index;">
-                            {{searchkey}}
-                            <span (click)="deleteSearchKey(i)">
+                                {{searchkey}}
+                                <span (click)="deleteSearchKey(i)">
                               <i class="fa fa-times" aria-hidden="true"></i>
                             </span>
-                          </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">

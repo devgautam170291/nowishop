@@ -550,3 +550,8 @@ button.close {
 .pagination-container {
     padding: 15px 0px;
 }
+
+.product-details {
+    background: #dedede;
+    padding: 20px 20px 0px 20px;
+}
