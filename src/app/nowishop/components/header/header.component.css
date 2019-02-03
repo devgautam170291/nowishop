@@ -34,6 +34,7 @@
   border-radius: 10px;
   border: 2px solid #f9f9f9;
   font-family: futura-light;
+  width: 100%;
 }
 
 .nav-cart.btn img {
@@ -96,7 +97,7 @@
 }
 
 .first-child-title {
-  color: var(--nowishop-red);
+  color: #fff;
 }
 
 .header-account .account-wrapper {
@@ -140,8 +141,8 @@
 .ship-to-selected {
   padding-left: 45px;
   background-repeat: no-repeat;
-  background-size: 12%;
-  background-position: 5px 7px;
+  background-size: 25%;
+  background-position: 7px 7px;
   background-color: #fff;
   color: var(--nowishop-light-blue);
   font-family: 'Montserrat', sans-serif;
@@ -166,11 +167,17 @@
 .shop-by-cat .dropdown-menu {
   width: 1115px;
   padding: 0px;
+  margin-top: 5px;
+}
+
+#shopbycategory {
+  background: rgb(40,56,145, 0.8);
+  border: 1px solid #ccc;
 }
 
 .cat-container li {
   padding: 10px;
-  background: #fbfafa;
+  background: var(--nowishop-blue);
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid #ccc !important;
@@ -179,6 +186,7 @@
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
+  color: #fbfbfb;
 }
 
 .cat-container li:last-child {
@@ -187,7 +195,7 @@
 }
 
 .cat-container li.active {
-  background: #fff !important;
+  background: rgb(40,56,145, 0) !important;
   border-right: none !important;
 }
 
@@ -201,6 +209,7 @@ ul.second-child li {
   text-transform: capitalize;
   margin-top: 5px;
   cursor: pointer;
+  color: #fbfbfb;
 }
 
 .second-child li:hover {

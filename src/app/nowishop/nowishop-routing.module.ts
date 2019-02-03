@@ -15,6 +15,7 @@ import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { ShippingPaymentComponent } from './pages/shipping-payment/shipping-payment.component';
 import { SingleCategoryComponent } from './pages/single-category/single-category.component';
 import { SingleDealComponent } from './pages/single-deal/single-deal.component';
+import { SellerComponent } from './pages/seller/seller.component';
 
 const routes: Routes = [
 	{
@@ -31,7 +32,8 @@ const routes: Routes = [
 			{path: 'shipping-payment', component: ShippingPaymentComponent},
 			{path: 'cart', canActivate: [AuthGuard], component: MyCartComponent},
 			{path: 'account', canActivate: [AuthGuard], component: MyAccountComponent},
-			{path: 'account/:name', canActivate: [AuthGuard], component: MyAccountComponent}
+			{path: 'account/:name', canActivate: [AuthGuard], component: MyAccountComponent},
+			{path: 'seller', component: SellerComponent},
 	]}
 ];
 

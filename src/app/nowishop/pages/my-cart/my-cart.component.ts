@@ -17,7 +17,7 @@ export class MyCartComponent implements OnInit {
     private nowishopGlobal: NowishopService
   ) { }
   breedcrumb: any;
-  quantity: any = 1;
+  // quantity: any = 1;
   cartList: any = [];
 
   ngOnInit() {
@@ -49,21 +49,43 @@ export class MyCartComponent implements OnInit {
     )
   }
 
-  increaseQuantity(){
-    this.quantity += 1;
+  increaseQuantity(obj){
+    obj.ProductCount += 1;
   }
 
-  decreaseQuantity(){
-    if(this.quantity > 1){
-      this.quantity -= 1;
+  decreaseQuantity(obj){
+    if(obj.ProductCount > 1){
+      obj.ProductCount -= 1;
     }
   }
 
   removeFromCart(i){
-    this.cartList.splice(i, 1);
+    debugger
+    var model = {
+      "UserID": this.cartList[i].UserID,
+      "ProductID":this.cartList[i].ProductID,
+      "ProductVariactionID":this.cartList[i].ProductVariationID,  
+      "ProductSizeID":this.cartList[i].ProductSizeID,
+    };
+
+    this.http.post(this.dataService.baseUrl + 'UserAccount/RemoveUserCard',model).subscribe(
+      res => {
+        if(res['IsSuccess']){
+          this.cartList.splice(i, 1);
+        }
+      }
+    )
   }
 
   clearCart(){
+    var userId = this.nowishopGlobal.getUserInfo().userId;
+    this.http.get(this.dataService.baseUrl + 'UserAccount/RemoveAllformUserCard/'+userId).subscribe(
+      res=>{
+        if(res['IsSuccess']){
+          alert('cart is clear');
+        }
+      }
+    )
     this.cartList = [];
   }
 

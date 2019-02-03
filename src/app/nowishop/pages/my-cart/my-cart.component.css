@@ -52,9 +52,10 @@
 .remove-item .fa {
     font-size: 18px;
     margin-top: 10px;
-}	
+}
 
-.quantity-decrease .fa, .quantity-increase .fa {
+.quantity-decrease .fa,
+.quantity-increase .fa {
     display: block;
     padding: 8px 0px;
 }
@@ -64,14 +65,16 @@
     font-family: futura-light;
 }
 
-.item-title, thead th {
+.item-title,
+thead th {
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
 }
 
-.item-size, .item-variation {
-	font-family: futura-light;
-	font-size: 14px;
+.item-size,
+.item-variation {
+    font-family: futura-light;
+    font-size: 14px;
 }
 
 .cart-header {
@@ -87,10 +90,6 @@
     background: #e7e7e7;
 }
 
-.product-desc-container {
-    padding: 10px 0px;
-}
-
 .clear-button .btn {
     padding: 14px 30px;
     background: #fff;
@@ -101,4 +100,18 @@
 
 .cart-total span:first-child {
     font-family: futura-light;
+}
+
+tr td {
+    vertical-align: middle;
+}
+
+.img-wrapper {
+    width: 100px;
+    height: 100%;
+    margin-right: 10px;
+    vertical-align: top;
+}
+.img-wrapper img {
+    width: 100%;
 }

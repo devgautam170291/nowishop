@@ -1,96 +1,101 @@
 <div id="my-cart">
     <div class="breedcrumb-wrap">
         <div class="container">
-            <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
-        </div>
+        <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
     </div>
-    <div class="my-cart page-section">
-        <div class="container">
-            <div class="cart-header">
-                <div class="row">
-                    <div class="col-md-6 title">My Cart</div>
-                    <div class="col-md-6">
-                        <div class="membership-logo">
-                        </div>
+</div>
+<div class="my-cart page-section">
+    <div class="container">
+        <div class="cart-header">
+            <div class="row">
+                <div class="col-md-6 title">My Cart</div>
+                <div class="col-md-6">
+                    <div class="membership-logo">
                     </div>
                 </div>
             </div>
-            <div class="my-cart-container">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Items</th>
-                            <th class="text-center" scope="col">Price</th>
-                            <th class="text-center" scope="col">Quantity</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody *ngIf="cartList.length > 0">
-                        <tr *ngFor="let product of cartList; let i = index;">
-                            <div class="product-desc-container">
+        </div>
+        <div class="my-cart-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Items</th>
+                        <th class="text-center" scope="col">Price</th>
+                        <th class="text-center" scope="col">Quantity</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="cartList.length > 0">
+                    <tr *ngFor="let product of cartList; let i = index;">
+                        <td>
+                            <div class="img-wrapper d-inline-block">
+                                <img src="{{product.ImageURl}}" alt="">
+                            </div>
+                            <div class="product-desc-container d-inline-block">
                                 <div class="item-desc">
-                                    <div class="item-title">Adiddas product Adiddas product Adiddas product</div>
+                                    <div class="item-title">{{product.ProductName}}</div>
                                     <div class="item-deal">Flash Deal</div>
                                     <div class="item-size">
                                         Size: L
                                     </div>
                                     <div class="item-variation">
-                                        Color: red
+                                        Color: {{product.ProductSelectedColor}}
                                     </div>
                                 </div>
                             </div>
-                            <td>
-                                <div class="item-price">
-                                    <div class="discount-price">INR {{product.Price}} </div>
-                                    <div class="actual-price" *ngIf="product.DescountPrice">INR {{product.DescountPrice}}</div>
+                        </td>
+                        <td>
+                            <div class="item-price">
+                                <div class="discount-price">INR {{(product.Price * product.ProductCount) | currency:'INR'}} </div>
+                                <div class="actual-price" *ngIf="product.DescountPrice">INR {{(product.DescountPrice * product.ProductCount) | currency:'INR'}}</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="quantity-raiser">
+                                <div class="d-inline-block quantity-decrease" (click)="decreaseQuantity(product)"><i class="fa fa-minus" aria-hidden="true"></i></div>
+                                <div class="d-inline-block quantity-val">{{product.ProductCount}}</div>
+                                <div class="d-inline-block quantity-increase" (click)="increaseQuantity(product)"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                            </div>
+                        </td>
+                        <td style="width: 50px;">
+                            <div class="remove-item" (click)="removeFromCart(i)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="clear-button" (click)="clearCart()">
+                                <button class="btn">Clear Cart</button>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class="cart-total text-right">
+                                <div>
+                                    <span>Discount</span>: <span class="discount-price">3,100</span>
                                 </div>
-                            </td>
-                            <td>
-                                <div class="quantity-raiser">
-                                    <div class="d-inline-block quantity-decrease" (click)="decreaseQuantity()"><i class="fa fa-minus" aria-hidden="true"></i></div>
-                                    <div class="d-inline-block quantity-val">{{quantity}}</div>
-                                    <div class="d-inline-block quantity-increase" (click)="increaseQuantity()"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                <div>
+                                    <span>Total</span>: <span>1 item</span>
                                 </div>
-                            </td>
-                            <td style="width: 50px;">
-                                <div class="remove-item" (click)="removeFromCart(i)">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                <div>
+                                    <span>Add Point</span>: <span>21 point</span>
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <div class="clear-button" (click)="clearCart()">
-                                    <button class="btn">Clear Cart</button>
-                                </div>
-                            </td>
-                            <td colspan="2">
-                                <div class="cart-total text-right">
-                                    <div>
-                                        <span>Discount</span>: <span class="discount-price">3,100</span>
-                                    </div>
-                                    <div>
-                                        <span>Total</span>: <span>1 item</span>
-                                    </div>
-                                    <div>
-                                        <span>Add Point</span>: <span>21 point</span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody *ngIf="cartList.length == 0">
-                        <tr>
-                            <td colspan="4" class="text-center">
-                                No item in cart
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="continue-payment text-right">
-                <button class="btn btn-primary">Continue</button>
-            </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody *ngIf="cartList.length == 0">
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            No item in cart
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="continue-payment text-right">
+            <button class="btn btn-primary">Continue</button>
         </div>
     </div>
+</div>
 </div>

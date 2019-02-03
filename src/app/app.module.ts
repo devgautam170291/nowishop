@@ -14,6 +14,7 @@ import { RegisterComponent } from './pages/login-register/register/register.comp
 import { ForgetPasswordComponent } from './pages/login-register/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './pages/login-register/reset-password/reset-password.component';
 import { CommingSoonComponent } from './pages/comming-soon/comming-soon.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CommingSoonComponent } from './pages/comming-soon/comming-soon.componen
     RegisterComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-    CommingSoonComponent
+    CommingSoonComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

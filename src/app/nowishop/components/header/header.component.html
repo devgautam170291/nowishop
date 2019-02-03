@@ -6,6 +6,29 @@
                     <div class="social">
                         <ul>
                             <li class="d-inline mr-3">
+                                <a href="https://www.facebook.com/NowIshop-346877486057657" target="_blank"><i data-toggle="tooltip" data-placement="bottom" title="Facebook" class="fa fa-facebook-square my-primary"></i></a>
+                            </li>
+                            <li class="d-inline mr-3">
+                                <a href="https://twitter.com/NowIshop2" target="_blank"><i data-toggle="tooltip" data-placement="bottom" title="Twitter" class="fa fa-twitter my-primary"></i></a>
+                            </li>
+                            <li class="d-inline mr-3">
+                                <a href="https://www.linkedin.com/company/nowishop/about/" target="_blank"><i data-toggle="tooltip" data-placement="bottom" title="Linkedin" class="fa fa-linkedin-square my-primary"></i></a>
+                            </li>
+                            <li class="d-inline mr-3">
+                                <a href="https://www.instagram.com/nowishop_official" target="_blank"><i data-toggle="tooltip" data-placement="bottom" title="Instagram" class="fa fa-instagram my-primary"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="site-logo text-center">
+                        <img src="/assets/img/logo.png" width="100px" [routerLink]="['/']">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="social text-left mobile float-left">
+                        <ul>
+                            <li class="d-inline mr-3">
                                 <a href="#"><i data-toggle="tooltip" data-placement="bottom" title="Facebook" class="fa fa-facebook-square my-primary"></i></a>
                             </li>
                             <li class="d-inline mr-3">
@@ -19,133 +42,110 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="site-logo text-center">
-                        <img src="/assets/img/logo.png" width="100px" [routerLink]="['/']">
-                    </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="social text-left mobile float-left">
-                            <ul>
-                                <li class="d-inline mr-3">
-                                    <a href="#"><i data-toggle="tooltip" data-placement="bottom" title="Facebook" class="fa fa-facebook-square my-primary"></i></a>
-                                </li>
-                                <li class="d-inline mr-3">
-                                    <a href="#"><i data-toggle="tooltip" data-placement="bottom" title="Twitter" class="fa fa-twitter my-primary"></i></a>
-                                </li>
-                                <li class="d-inline mr-3">
-                                    <a href="#"><i data-toggle="tooltip" data-placement="bottom" title="Linkedin" class="fa fa-linkedin-square my-primary"></i></a>
-                                </li>
-                                <li class="d-inline mr-3">
-                                    <a href="#"><i data-toggle="tooltip" data-placement="bottom" title="Instagram" class="fa fa-instagram my-primary"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="user-profile text-right float-right">
-                            <ul>
-                                <li class="header-account">
-                                    <div class="d-inline-block account-wrapper" [routerLink]="'/account'">
-                                        <i class="fa fa-user my-primary mr-2"></i> <span>My Account</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="user-profile text-right float-right">
+                        <ul>
+                            <li class="header-account">
+                                <div class="d-inline-block account-wrapper" [routerLink]="'/account'">
+                                    <i class="fa fa-user my-primary mr-2"></i> <span>My Account</span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="sub-header p-4">
-            <div class="container">
-                <div class="row desktop">
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-12 mb-3">
-                                <button class="nav-cart btn" [routerLink]="'/cart'"><img src="/assets/img/cart-icon.png">Cart</button>
-                            </div>
-                            <div class="col-md-10 col-sm-12">
-                                <div class="input-group mb-3 nav-search">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{searchCat}}</button>
-                                        <div class="dropdown-menu">
-                                            <span class="dropdown-item" (click)="changeSearchCategory(defaultSearch)">All</span>
-                                            <span class="dropdown-item" *ngFor="let cat of categoryList" (click)="changeSearchCategory(cat)">{{cat.CategoryName}}</span>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" aria-label="Text input with dropdown button" [(ngModel)]="searchText">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="search" (click)="searchProducts()"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+    </div>
+    <div class="sub-header p-4">
+        <div class="container">
+            <div class="row desktop">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-12 mb-3">
+                            <button class="nav-cart btn" [routerLink]="'/cart'"><img src="/assets/img/cart-icon.png">Cart</button>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-6">
-                                <div class="input-group mb-3 nav-search ship-to">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ship to</button>
-                                        <div class="dropdown-menu ship-to">
-                                            <span class="dropdown-item" (click)="changeShipping('India')"><img src="/assets/img/india-flag.jpg"> India</span>
-                                            <!-- <span class="dropdown-item" (click)="changeShipping('Thailand')"><img src="/assets/img/thailand-flag.jpg"> Thailand</span>
-                                            <span class="dropdown-item" (click)="changeShipping('USA')"><img src="/assets/img/usa-flag.jpg"> USA</span> -->
-                                        </div>
+                        <div class="col-md-10 col-sm-12">
+                            <div class="input-group mb-3 nav-search">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{searchCat}}</button>
+                                    <div class="dropdown-menu">
+                                        <span class="dropdown-item" (click)="changeSearchCategory(defaultSearch)">All</span>
+                                        <span class="dropdown-item" *ngFor="let cat of categoryList" (click)="changeSearchCategory(cat)">{{cat.CategoryName}}</span>
                                     </div>
-                                    <input type="text" class="form-control ship-to-selected" [ngClass]="shipTo" aria-label="Text input with dropdown button" [(ngModel)]="shipTo">
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button" [(ngModel)]="searchText">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="search" (click)="searchProducts()"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-4">
-                                <button class="nav-seller btn" routerLink="/seller">Seller</button>
-                            </div> -->
                         </div>
                     </div>
                 </div>
-                <!----------------- Home Sub Nav ----------------->
-                <div class="site-nav">
-                    <ul>
-                        <li class="d-inline-block shop-by-cat">
-                            <div class="dropdown">
-                                <a href="#" class="dropdown-toggle shopbycat" id="shopbycat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  shop by category
-                                </a>
-                                <div id="shopbycategory" class="dropdown-menu" aria-labelledby="shopbycat">
-                                    <div class="category-container">
-                                        <div class="row" *ngIf="categoryList.length">
-                                            <div class="col-md-3 no-padding-right">
-                                                <div class="cat-container">
-                                                    <ul>
-                                                        <li *ngFor="let cat of categoryList; let i = index" [ngClass]="i == '0' ? 'active' : ''" (click)="changeCategory($event, cat)">{{cat.CategoryName}}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-9 no-padding-left">
-                                                <div class="sub-cat-container">
-                                                    <ul class="row">
-                                                        <li class="col-md-3 first-child" *ngFor="let subCat of selectedCategory">
-                                                            <span class="first-child-title" routerLink="/category/{{subCat.CategorySlug}}">{{subCat.CategoryName}}</span>
-                                                            <ul class="second-child" *ngIf="subCat.secondLevelSubCategories">
-                                                                <li class="second-child-title" *ngFor="let nestCat of subCat.secondLevelSubCategories" routerLink="/category/{{nestCat.CategorySlug}}">{{nestCat.CategoryName}}</li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row" *ngIf="!categoryList.length">
-                                            <div class="col-md-12 text-center p-3">
-                                                No Category List Found.
-                                            </div>
-                                        </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-6">
+                            <div class="input-group mb-3 nav-search ship-to">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ship to</button>
+                                    <div class="dropdown-menu ship-to">
+                                        <span class="dropdown-item" (click)="changeShipping('India')"><img src="/assets/img/india-flag.jpg"> India</span>
+                                        <!-- <span class="dropdown-item" (click)="changeShipping('Thailand')"><img src="/assets/img/thailand-flag.jpg"> Thailand</span>
+                                        <span class="dropdown-item" (click)="changeShipping('USA')"><img src="/assets/img/usa-flag.jpg"> USA</span> -->
                                     </div>
                                 </div>
+                                <input type="text" class="form-control ship-to-selected" [ngClass]="shipTo" aria-label="Text input with dropdown button" [(ngModel)]="shipTo">
                             </div>
-                        </li>
-                        <li class="d-inline-block"><a routerLink="deal/flash_deal">today's deal</a></li>
-                        <li class="d-inline-block"><a routerLink="/account/wishlist">your wishlist</a></li>
-                        <li class="d-inline-block"><a routerLink="/customer-care">24/7 customer care</a></li>
-                    </ul>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <button class="nav-seller btn" routerLink="/seller">Seller</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!----------------- Home Sub Nav ----------------->
+            <div class="site-nav">
+                <ul>
+                    <li class="d-inline-block shop-by-cat">
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle shopbycat" id="shopbycat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                shop by category
+                            </a>
+                            <div id="shopbycategory" class="dropdown-menu" aria-labelledby="shopbycat">
+                                <div class="category-container">
+                                    <div class="row" *ngIf="categoryList.length">
+                                        <div class="col-md-3 no-padding-right">
+                                            <div class="cat-container">
+                                                <ul>
+                                                    <li *ngFor="let cat of categoryList; let i = index" [ngClass]="i == '0' ? 'active' : ''" (click)="changeCategory($event, cat)">{{cat.CategoryName}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9 no-padding-left">
+                                            <div class="sub-cat-container">
+                                                <ul class="row">
+                                                    <li class="col-md-3 first-child" *ngFor="let subCat of selectedCategory">
+                                                        <span class="first-child-title" routerLink="/category/{{subCat.CategorySlug}}">{{subCat.CategoryName}}</span>
+                                                        <ul class="second-child" *ngIf="subCat.secondLevelSubCategories">
+                                                            <li class="second-child-title" *ngFor="let nestCat of subCat.secondLevelSubCategories" routerLink="/category/{{nestCat.CategorySlug}}">{{nestCat.CategoryName}}</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="!categoryList.length">
+                                        <div class="col-md-12 text-center p-3">
+                                            No Category List Found.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="d-inline-block"><a routerLink="/deal/flash_deal">today's deal</a></li>
+                    <li class="d-inline-block"><a routerLink="/account/wishlist">your wishlist</a></li>
+                    <li class="d-inline-block"><a routerLink="/customer-care">24/7 customer care</a></li>
+                </ul>
+            </div>
         </div>
+    </div>
 </header>

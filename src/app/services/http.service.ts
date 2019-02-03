@@ -65,6 +65,7 @@ export class HttpService {
   }
 
   showSessionExpiredMsg(){
+    let state = this.router.routerState.snapshot;
       Swal({
         title: 'Session Expired!',
         text: 'Your session has been expired. Please relogin.',
@@ -74,7 +75,7 @@ export class HttpService {
       }).then((result) => {
         if (result.value) {
           this.nowishopGlobal.deleteUserInfo();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/login'], { queryParams: { returnTo: state.url }});
         }
       })
   }

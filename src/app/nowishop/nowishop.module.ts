@@ -49,6 +49,7 @@ import { MyShippingAddressComponent } from './pages/my-account/my-shipping-addre
 import { MySecuritySettingComponent } from './pages/my-account/my-security-setting/my-security-setting.component';
 import { MyAccountBindingComponent } from './pages/my-account/my-account-binding/my-account-binding.component';
 import { SingleDealComponent } from './pages/single-deal/single-deal.component';
+import { SellerComponent } from './pages/seller/seller.component';
 
 @NgModule({
   imports: [
@@ -99,7 +100,8 @@ import { SingleDealComponent } from './pages/single-deal/single-deal.component';
     MyShippingAddressComponent,
     MySecuritySettingComponent,
     MyAccountBindingComponent,
-    SingleDealComponent
+    SingleDealComponent,
+    SellerComponent
   ],
   providers: [
     HttpService,

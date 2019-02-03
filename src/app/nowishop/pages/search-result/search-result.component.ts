@@ -23,6 +23,7 @@ export class SearchResultComponent implements OnInit {
   dataRequestModel: any;
   productList: any = [];
   dummyProducts: any = [];
+  showDummy: any = true;
   categoryList: any = [];
   searchObj: any = [];
 
@@ -119,6 +120,7 @@ export class SearchResultComponent implements OnInit {
   	this.http.post(this.dataService.baseUrl + 'Home/SearchBarProductWithFilter', this.dataRequestModel).subscribe(
         res=>{
             this.productList = res['Dt'];
+            this.showDummy = false;
         }
     )
   }

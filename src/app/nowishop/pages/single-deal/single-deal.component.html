@@ -1,7 +1,9 @@
 <div id="single-deal">
     <div class="breedcrumb-wrap">
         <div class="container">
-            <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+            <app-breedcrumb [breedcrumb]="breedcrumb">
+                
+            </app-breedcrumb>
         </div>
     </div>
     <div class="page-section">
@@ -22,10 +24,10 @@
                                                         <li *ngFor="let firstLevelCat of category.FirstLevelSubCategory">
                                                             <input type="checkbox" value="{{firstLevelCat.CategorySlug}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
                                                             <!-- <ul class="second-level-cat" *ngIf="firstLevelCat.secondLevelSubCategories.length">
-                                                            <li *ngFor="let secondLevelCat of firstLevelCat.secondLevelSubCategories">
-                                                                <input type="checkbox" value="{{secondLevelCat.CategorySlug}}"> {{secondLevelCat.CategoryName}}
-                                                            </li>
-                                                        </ul> -->
+                                                                <li *ngFor="let secondLevelCat of firstLevelCat.secondLevelSubCategories">
+                                                                    <input type="checkbox" value="{{secondLevelCat.CategorySlug}}"> {{secondLevelCat.CategoryName}}
+                                                                </li>
+                                                            </ul> -->
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -59,17 +61,28 @@
                         <div class="content">
                             <div class="content-container">
                                 <div class="content-title-container">
-                                     {{dataRequestModel.DealSlug ? this.dataRequestModel.DealSlug.split('_').join(' ') : 'Loading...'}}
+                                    {{dataRequestModel.DealSlug ? this.dataRequestModel.DealSlug.split('_').join(' ') : 'Loading...'}}
                                 </div>
-                                <div class="content-section">
+                                <div class="content-section" *ngIf="!showDummy">
                                     <div class="row" *ngIf="productList.length > 0">
                                         <div class="col-md-4 product-container position-relative" *ngFor="let product of productList">
-                                            <app-show-product [product]="product"></app-show-product>
+                                            <app-show-product [product]="product">
+                                                
+                                            </app-show-product>
                                         </div>
                                     </div>
                                     <div class="row" *ngIf="productList.length == 0">
+                                        <div class="col-md-12 product-container text-center p-3">
+                                            No product to display
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content-section" *ngIf="showDummy">
+                                    <div class="row">
                                         <div class="col-md-4 product-container" *ngFor="let product of dummyProducts">
-                                            <app-dummy-products></app-dummy-products>
+                                            <app-dummy-products>
+                                                
+                                            </app-dummy-products>
                                         </div>
                                     </div>
                                 </div>

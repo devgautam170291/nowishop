@@ -5,6 +5,7 @@ import { RegisterComponent } from './pages/login-register/register/register.comp
 import { ForgetPasswordComponent } from './pages/login-register/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './pages/login-register/reset-password/reset-password.component';
 import { CommingSoonComponent } from './pages/comming-soon/comming-soon.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
 	{ path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
@@ -15,8 +16,7 @@ const routes: Routes = [
 	{ path: 'forget-password', component: ForgetPasswordComponent },
 	{ path: 'reset-password/:id', component: ResetPasswordComponent },
 	{ path: 'career', component: CommingSoonComponent},
-	{ path: 'seller', component: CommingSoonComponent},
-	{ path: '**',  redirectTo: '', pathMatch: 'full' }
+	{ path: '**',  component: NotFoundComponent }
 ];
 
 @NgModule({

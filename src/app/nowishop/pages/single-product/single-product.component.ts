@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
@@ -18,9 +18,13 @@ export class SingleProductComponent implements OnInit {
     private dataService: HttpService, 
     private route: ActivatedRoute,
     private nowishopGlobal: NowishopService,
-    private router: Router,
-    private state: RouterStateSnapshot
-    ) { }
+    private router: Router
+    ) {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+        return false;
+     }
+  }
 
   breedcrumb: any;
   productInfo: any = {};
@@ -83,11 +87,11 @@ export class SingleProductComponent implements OnInit {
   }
 
   checkFeaturedVariation(obj){
+    debugger
     var that = this;
     if(obj.featuredColor){
       if(obj.productVariation.length){
         obj.productVariation.forEach((data)=>{
-          debugger
           if(data.variationColor.toLowerCase() == obj.featuredColor.toLowerCase()){
             that.setVariation(data);
             return false;
@@ -169,7 +173,8 @@ export class SingleProductComponent implements OnInit {
       }
     }
     else {
-      this.router.navigate(['/login'], { queryParams: { returnTo: this.state.url }});
+       let state = this.router.routerState.snapshot;
+      this.router.navigate(['/login'], { queryParams: { returnTo: state.url }});
     }
   }
 
@@ -178,7 +183,7 @@ export class SingleProductComponent implements OnInit {
     if(this.productInfo){
       this.addToCartModel.ProductID = this.productInfo.productID;
       this.addToCartModel.ProductVariactionID = this.selectedVariation.ProductVariactionID;
-      this.addToCartModel.ProductSizeID = this.selectedSizeQuantity.length ? this.selectedSizeQuantity.ProductSizeID : 0;
+      this.addToCartModel.ProductSizeID = this.selectedSizeQuantity ? this.selectedSizeQuantity.ProductSizeID : 0;
     
       this.http.post(this.dataService.baseUrl + 'UserAccount/AddUserCard', this.addToCartModel).subscribe(
         res => {

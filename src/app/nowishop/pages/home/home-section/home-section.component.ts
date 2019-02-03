@@ -63,7 +63,21 @@ export class HomeSectionComponent implements OnInit {
   }
 
   flashDealTimer(){
-    this.showTimer();
+    this.http.get(this.dataService.baseUrl + 'Home/CheckDealTime/flash_deal').subscribe(
+      res=>{
+        if(res['IsSuccess']){
+          if(res['Data']){
+            var data = res['Data'];
+            this.showTimer(data['startTime'], data['EndTime']);
+          }
+          else{
+            this.type = "recommended";
+            this.dynamicTitleHandler();
+            this.dynamicContentHandler();
+          }          
+        }
+      }
+    )    
   }
 
   dynamicTitleHandler(){
@@ -76,6 +90,9 @@ export class HomeSectionComponent implements OnInit {
       }
       else if(this.type.toLowerCase() == 'bestselling'){
         this.dynamicTitle = "Best Selling";
+      }
+      else if(this.type.toLowerCase() == 'recommended'){
+        this.dynamicTitle = "Recommend For You";
       }
     }
   }
@@ -90,6 +107,9 @@ export class HomeSectionComponent implements OnInit {
       }
       else if(this.type.toLowerCase() == 'bestselling'){
         this.getProductList('best');
+      }
+      else if(this.type.toLowerCase() == 'recommended'){
+        this.getProductList('recommended');
       }
     }
   }
@@ -112,10 +132,10 @@ export class HomeSectionComponent implements OnInit {
     }  	
   }
 
-  showTimer(){
+  showTimer(startTime, endTime){
     var thisobj = this;
     var interval = setInterval(function(){
-      var output = thisobj.nowishopGlobal.showTimer(new Date(), new Date('02-9-2019'));
+      var output = thisobj.nowishopGlobal.showTimer(new Date(), new Date(endTime));
 
       thisobj.flashDealTimerObj['hours'] = output['hours'] + (24 * output['days']);
       thisobj.flashDealTimerObj['minutes'] = output['minutes'];

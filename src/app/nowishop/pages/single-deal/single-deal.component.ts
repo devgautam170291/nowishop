@@ -23,6 +23,7 @@ export class SingleDealComponent implements OnInit {
   dataRequestModel: any;
   productList: any = [];
   dummyProducts: any = [];
+  showDummy: any = true;
   categoryList: any = [];
   searchObj: any = [];
 
@@ -118,6 +119,7 @@ export class SingleDealComponent implements OnInit {
   	this.http.post(this.dataService.baseUrl + 'Home/DealWiseProductList', this.dataRequestModel).subscribe(
         res=>{
             this.productList = res['Dt'];
+            this.showDummy = false;
         }
     )
   }

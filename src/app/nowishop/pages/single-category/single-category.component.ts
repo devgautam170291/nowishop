@@ -22,6 +22,7 @@ export class SingleCategoryComponent implements OnInit {
   breedcrumb: any;
   dataRequestModel: any;
   productList: any = [];
+  showDummy: any = true;
   dummyProducts: any = [];
   categoryList: any = [];
   searchObj: any = [];
@@ -119,6 +120,7 @@ export class SingleCategoryComponent implements OnInit {
   	this.http.post(this.dataService.baseUrl + 'Home/SimilarProduct', this.dataRequestModel).subscribe(
         res=>{
             this.productList = res['Dt'];
+            this.showDummy = false;
         }
     )
   }
