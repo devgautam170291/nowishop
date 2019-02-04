@@ -163,7 +163,9 @@
             <app-about-product [data]="productInfo">
             </app-about-product>
         </div>
-        <app-browsing-history>
-        </app-browsing-history>
+        <div *ngIf="nowishopGlobal.isUserInfo()">
+            <app-browsing-history [userId]="nowishopGlobal.getUserInfo().userId">
+            </app-browsing-history>
+        </div>
     </div>
 </div>

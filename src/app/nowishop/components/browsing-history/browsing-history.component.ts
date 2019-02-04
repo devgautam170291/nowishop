@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NowishopService } from '../../../services/nowishop.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../../../services/http.service';
 
 @Component({
   selector: 'app-browsing-history',
@@ -7,14 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowsingHistoryComponent implements OnInit {
 
-  constructor() { }
+  @Input() userId:any;
+
+  constructor(
+    private nowishopGlobal: NowishopService,
+    private http: HttpClient, 
+    private dataService: HttpService) { }
 
   browsingHistoryProducts: any = [];
   dummyProducts: any = [];
+  model: any = {};
 
   ngOnInit() {
+    this.loadModel();
     this.loadDummy();
-  	// this.getHistoryProducts();
+  	this.getHistoryProducts();
+  }
+
+  loadModel(){
+    debugger
+    this.model.UserId = this.userId;
+    this.model.PageSize = 6;
+    this.model.PageNumber = 1;
   }
 
   loadDummy(){
@@ -24,50 +41,13 @@ export class BrowsingHistoryComponent implements OnInit {
   }
 
   getHistoryProducts(){
-  	this.browsingHistoryProducts = [
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		},
-  		{
-  			name: 'Ban Bao Bags',
-  			image: '',
-  			price: '15.20',
-  			rating: '',
-  			link: ''
-  		}
-  	];
+    this.http.post(this.dataService.baseUrl+'Home/UserBrowsingHistories', this.model).subscribe(
+      res => {
+        if(res['IsSuccess']){
+          this.browsingHistoryProducts = res['Dt'];
+        }
+      }
+    )  	
   }
 
 }

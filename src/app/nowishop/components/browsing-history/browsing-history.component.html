@@ -28,10 +28,10 @@
                         <div class="row" *ngIf="browsingHistoryProducts.length > 0">
                             <div class="col-md-2 " [ngClass]="i==0 ? 'active' : ''" *ngFor="let product of browsingHistoryProducts; let i = index">
                                 <div class="recomended-product">
-                                    <div class="recomended-product-img">{{product.image}}</div>
-                                    <div class="recomended-product-name text-center">{{product.name}}</div>
+                                    <div class="recomended-product-img" [ngStyle]="{'background': 'url('+product.ImageURL+')'}"></div>
+                                    <div class="recomended-product-name text-center">{{product.ProductName}}</div>
                                     <div class="recomended-product-price text-center">
-                                        <div>US$ {{product.price}}</div>
+                                        <div>INR {{product.Price | currency:'INR'}}</div>
                                     </div>
                                 </div>
                             </div>
