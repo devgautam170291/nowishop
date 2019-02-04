@@ -69,10 +69,14 @@
                                     <ul>
                                         <li>
                                             <div class="title d-inline-block">INR</div>
-                                            <div class="desc d-inline-block">
+                                            <div class="desc d-inline-block" *ngIf="selectedSizeQuantity && selectedSizeQuantity.DiscountedPrice">
+                                                <span class="price"> 
+                                                {{selectedSizeQuantity.DiscountedPrice | currency:'INR'}}</span>
+                                                <span class="discounted-price">{{selectedSizeQuantity.Price | currency:'INR'}}</span>
+                                            </div>
+                                            <div class="desc d-inline-block" *ngIf="selectedSizeQuantity && !selectedSizeQuantity.DiscountedPrice">
                                                 <span class="price"> 
                                                 {{selectedSizeQuantity.Price | currency:'INR'}}</span>
-                                                <span *ngIf="selectedSizeQuantity && selectedSizeQuantity.DiscountedPrice" class="discounted-price">{{selectedSizeQuantity.DiscountedPrice | currency:'INR'}}</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -95,7 +99,7 @@
                                                 </ul>
                                             </td>
                                         </tr>
-                                        <tr *ngIf="productInfo && productInfo.productVariation && selectedVariation.variationSizes && selectedVariation.variationSizes.length">
+                                        <tr *ngIf="selectedSizeQuantity && selectedSizeQuantity.size">
                                             <td>Size</td>
                                             <td>
                                                 <ul class="available-size">

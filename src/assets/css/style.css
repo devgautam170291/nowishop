@@ -36,6 +36,10 @@ body::-webkit-scrollbar-thumb {
     outline: none;
 }
 
+body {
+    font-family: futura-light;
+}
+
 .page-section {
     padding: 40px 0px;
     position: relative;

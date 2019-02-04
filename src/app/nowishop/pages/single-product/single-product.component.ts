@@ -106,7 +106,9 @@ export class SingleProductComponent implements OnInit {
   	this.selectedVariation = obj;
     this.sliderImages = obj.UploadedImages;
     if(obj.variationSizes.length){
-      this.selectedSizeQuantity = obj.variationSizes[0];    
+      this.selectedSizeQuantity = obj.variationSizes[0]; 
+      console.log('check variation Size');
+      console.log(this.selectedSizeQuantity) ;  
     }
     
   	if(e){

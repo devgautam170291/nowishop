@@ -45,9 +45,12 @@
                             </div>
                         </td>
                         <td>
-                            <div class="item-price">
+                            <div class="item-price" *ngIf="product.DescountPrice">
+                                <div class="discount-price">INR {{(product.DescountPrice * product.ProductCount) | currency:'INR'}} </div>
+                                <div class="actual-price" *ngIf="product.DescountPrice">INR {{(product.Price * product.ProductCount) | currency:'INR'}}</div>
+                            </div>
+                            <div class="item-price" *ngIf="!product.DescountPrice">
                                 <div class="discount-price">INR {{(product.Price * product.ProductCount) | currency:'INR'}} </div>
-                                <div class="actual-price" *ngIf="product.DescountPrice">INR {{(product.DescountPrice * product.ProductCount) | currency:'INR'}}</div>
                             </div>
                         </td>
                         <td>
