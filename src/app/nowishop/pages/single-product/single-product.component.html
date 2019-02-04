@@ -160,7 +160,7 @@
         <div *ngIf="!loadDummy">
             <app-similar-products [category]="productInfo.productCategorySlug">
             </app-similar-products>
-            <app-about-product [data]="productInfo">
+            <app-about-product [productDescription]="productInfo.productDescription">
             </app-about-product>
         </div>
         <div *ngIf="nowishopGlobal.isUserInfo()">

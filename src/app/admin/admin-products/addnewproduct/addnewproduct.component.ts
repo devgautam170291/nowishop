@@ -56,8 +56,8 @@ export class AddnewproductComponent implements OnInit {
           this.loading = false;
           if(res['IsSuccess']){
             this.model = res['Data'][0];
-            this.moreProductInfo = JSON.parse(this.model.More_Data);
-            this.productDetailsInfo = JSON.parse(this.model.ProductSpecificationDetailsInfo);
+            this.moreProductInfo = this.model.More_Data ? JSON.parse(this.model.More_Data) : [];
+            this.productDetailsInfo = this.model.ProductSpecificationDetailsInfo ? JSON.parse(this.model.ProductSpecificationDetailsInfo) : [];
             if(this.productDetailsInfo.length){
               this.productDetailsImg.map((data)=>{
                 if(data.key == 'img'){
