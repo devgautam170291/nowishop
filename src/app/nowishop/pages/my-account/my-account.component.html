@@ -53,6 +53,12 @@
                                         </li>
                                         <li class="sidebar-single-list">
                                             <ul class="account-list">
+                                                <h2>Browsing History</h2>
+                                                <li [ngClass]="content == 'browsing-history' ? 'active' : ''" (click)="changeContent('browsing-history')">Browsing History</li>
+                                            </ul>
+                                        </li>
+                                        <li class="sidebar-single-list">
+                                            <ul class="account-list">
                                                 <li class="title text-uppercase" [ngClass]="content == 'logout' ? 'active' : ''" (click)="changeContent('logout')">Logout</li>
                                             </ul>
                                         </li>
@@ -93,6 +99,9 @@
                                 </div>
                                 <div *ngIf="content == 'account-binding'">
                                     <app-my-account-binding></app-my-account-binding>
+                                </div>
+                                <div *ngIf="content == 'browsing-history'">
+                                    <app-my-browsing-history></app-my-browsing-history>
                                 </div>
                             </div>
                         </div>

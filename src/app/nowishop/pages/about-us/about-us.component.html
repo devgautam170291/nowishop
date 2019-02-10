@@ -1,7 +1,9 @@
 <div id="about-us">
   <div class="breedcrumb-wrap">
     <div class="container">
-      <app-breedcrumb [breedcrumb]="breedcrumb"></app-breedcrumb>
+      <app-breedcrumb [breedcrumb]="breedcrumb">
+        
+      </app-breedcrumb>
     </div>
   </div>
   <div class="page-section">
@@ -10,35 +12,31 @@
         <div class="who-we-are text-left">
           <div class="title-container">
             <a class="who-text" href="#" (click)="openModal($event)">who we are?</a>
+            <div class="content-section">
+              {{whoWeare}}
+            </div>
           </div>
         </div>
         <div class="what-we-do text-right">
           <div class="title-container">
             <a class="what-text" href="#" (click)="openModal($event)">what do we do?</a>
+            <div class="content-section">
+              {{whatWeDo}}
+            </div>
           </div>
         </div>
         <div class="unique text-center">
           <div class="title-container">
             <a class="unique-text" href="#" (click)="openModal($event)">what make us unique and reliable?</a>
-            <div class="sell-on-us">
-              <app-section-title [titleBg]="'#bf1e2e'" [titleColor]="'#ffffff'" [value]="'come to sell on nowishop?'" [dimention]=""></app-section-title>
+            <div class="content-section">
+              {{whatMakeUsUnique}}
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<div id="show-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">{{modalTitle}}</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        {{modalDesc}}
+      <div class="sell-on-us">
+        <app-section-title [titleBg]="'#bf1e2e'" [titleColor]="'#ffffff'" [value]="'come to sell on nowishop?'" [dimention]="">          
+        </app-section-title>
       </div>
     </div>
   </div>

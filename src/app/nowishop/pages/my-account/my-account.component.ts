@@ -24,10 +24,20 @@ export class MyAccountComponent implements OnInit {
 
   breedcrumb: any;
   content: any;
+  fullStar: any = [];
+  emptyStar: any = [];
 
   ngOnInit() {  	
+    this.loadDefault();
   	this.checkParams();
     this.showBreedcrumb();
+  }
+
+  loadDefault(){
+    debugger
+    for(let i=0; i<5; i++){
+      this.emptyStar.push(new Object());
+    }
   }
 
   checkParams(){
@@ -90,6 +100,9 @@ export class MyAccountComponent implements OnInit {
       case "account-binding":
          this.router.navigate(['/account/account-binding']);
         break;  
+      case "browsing-history":
+         this.router.navigate(['/account/browsing-history']);
+        break;
       case "logout":
          this.logout();
         break;       

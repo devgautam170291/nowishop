@@ -77,6 +77,10 @@ thead th {
     font-size: 14px;
 }
 
+.product-desc-container {
+    width: calc(100% - 110px);
+}
+
 .cart-header {
     padding: 20px 10px;
 }
@@ -114,4 +118,9 @@ tr td {
 }
 .img-wrapper img {
     width: 100%;
+}
+
+.my-cart-container {
+    border: 2px solid #e7e7e7;
+    margin-bottom: 20px;
 }

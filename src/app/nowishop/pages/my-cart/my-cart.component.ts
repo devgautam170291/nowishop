@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
 import { Router } from '@angular/router';
+declare let $: any;
 
 @Component({
   selector: 'app-my-cart',
@@ -45,6 +46,7 @@ export class MyCartComponent implements OnInit {
     this.http.get(this.dataService.baseUrl + 'UserAccount/GetUserCardList/' + userId).subscribe(
       res=>{
         this.cartList = res['Data'];
+        this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
       }
     )
   }
@@ -72,6 +74,7 @@ export class MyCartComponent implements OnInit {
       res => {
         if(res['IsSuccess']){
           this.cartList.splice(i, 1);
+          this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
         }
       }
     )
@@ -82,11 +85,17 @@ export class MyCartComponent implements OnInit {
     this.http.get(this.dataService.baseUrl + 'UserAccount/RemoveAllformUserCard/'+userId).subscribe(
       res=>{
         if(res['IsSuccess']){
-          alert('cart is clear');
+          this.cartList = [];
+          this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
+          $(".alert").css("display", "block");
+            window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).css("display", "none");
+                });
+            }, 2000);
         }
       }
     )
-    this.cartList = [];
   }
 
 }

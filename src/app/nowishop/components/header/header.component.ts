@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
+import { Observable  } from 'rxjs';
 declare let $: any;
 
 @Component({
@@ -14,17 +15,25 @@ export class HeaderComponent implements OnInit {
   
   @Input() categoryList;
   @Input() selectedCategory;
-  constructor(
-    private http: HttpClient, 
-    private dataService: HttpService, 
-    private nowishopGlobal: NowishopService,
-    private ref: ChangeDetectorRef,
-    private router: Router ) { }
 
   shipTo: any;
   searchCat: any;
   searchText: any;
   defaultSearch: any = {"CategoryId": 0, "CategoryName": "All"};
+  cartInfo: any = [];
+
+  constructor(
+    private http: HttpClient, 
+    private dataService: HttpService, 
+    private nowishopGlobal: NowishopService,
+    private ref: ChangeDetectorRef,
+    private router: Router ) { 
+
+    this.nowishopGlobal.cartInfoChange.subscribe(value => {
+      debugger
+      this.cartInfo = value;
+    });
+  }
 
   ngOnInit() {
   	this.changeShipping('India');

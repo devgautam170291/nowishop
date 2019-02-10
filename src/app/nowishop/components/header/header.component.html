@@ -61,7 +61,7 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-2 col-sm-12 mb-3">
-                            <button class="nav-cart btn" [routerLink]="'/cart'"><img src="/assets/img/cart-icon.png">Cart</button>
+                            <button class="nav-cart btn" [routerLink]="'/cart'"><img src="/assets/img/cart-icon.png">Cart <span *ngIf="cartInfo.length" class="badge badge-light">{{cartInfo.length}}</span></button>
                         </div>
                         <div class="col-md-10 col-sm-12">
                             <div class="input-group mb-3 nav-search">

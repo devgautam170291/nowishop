@@ -11,6 +11,9 @@ import { HttpService } from '../../../services/http.service';
 export class BrowsingHistoryComponent implements OnInit {
 
   @Input() userId:any;
+  @Input() showTitle: any;
+  @Input() productCount: any;
+  @Input() itemInRow: any;
 
   constructor(
     private nowishopGlobal: NowishopService,
@@ -30,7 +33,7 @@ export class BrowsingHistoryComponent implements OnInit {
   loadModel(){
     debugger
     this.model.UserId = this.userId;
-    this.model.PageSize = 6;
+    this.model.PageSize = this.productCount;
     this.model.PageNumber = 1;
   }
 

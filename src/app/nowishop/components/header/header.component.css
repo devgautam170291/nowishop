@@ -26,15 +26,17 @@
 
 .nav-cart,
 .nav-seller {
-  background: var(--nowishop-blue);
-  color: #fff;
-  min-height: 38px;
-  font-size: 18px !important;
-  line-height: 18px;
-  border-radius: 10px;
-  border: 2px solid #f9f9f9;
-  font-family: futura-light;
-  width: 100%;
+    background: var(--nowishop-blue);
+    color: #fff;
+    min-height: 38px;
+    font-size: 18px !important;
+    line-height: 18px;
+    border-radius: 10px;
+    border: 2px solid #f9f9f9;
+    font-family: futura-light;
+    width: 100%;
+    padding: 0px;
+    text-align: center;
 }
 
 .nav-cart.btn img {

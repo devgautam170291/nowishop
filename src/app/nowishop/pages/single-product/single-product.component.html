@@ -168,8 +168,17 @@
             </app-about-product>
         </div>
         <div *ngIf="nowishopGlobal.isUserInfo()">
-            <app-browsing-history [userId]="nowishopGlobal.getUserInfo().userId">
+            <app-browsing-history 
+            [userId]="nowishopGlobal.getUserInfo().userId"
+            [showTitle]="'true'"
+            [productCount]="'6'"
+            [itemInRow]="'6'"
+            >
             </app-browsing-history>
         </div>
     </div>
+</div>
+
+<div class="alert alert-success" role="alert">
+  <strong>Success!</strong> Product added to cart successfully!
 </div>

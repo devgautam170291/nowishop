@@ -1,0 +1,17 @@
+.inner-section-container div {
+    margin-bottom: 20px;
+}
+.inner-section-container table td {
+    border: 2px solid #ccc;
+    padding: 10px;
+}
+.inner-section-container b {
+    display: block;
+}
+.inner-section-container table {
+    margin: 10px 0px;
+}
+
+.inner-section-container table tr td:first-child {
+    width: 200px;
+}

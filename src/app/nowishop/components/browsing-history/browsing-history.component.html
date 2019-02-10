@@ -1,12 +1,12 @@
 <section class="home-section">
     <div class="container">
-        <app-section-title [titleBg]="'#e5e6e1'" [titleColor]="'#000000'" [value]="'Browsing History'"></app-section-title>
+        <app-section-title *ngIf="showTitle == 'true'" [titleBg]="'#e5e6e1'" [titleColor]="'#000000'" [value]="'Browsing History'"></app-section-title>
         <div class="recommend-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="" id="similarProductsCarousel">
                         <div class="row" *ngIf="browsingHistoryProducts.length == 0">
-                            <div class="col-md-2" *ngFor="let product of dummyProducts">
+                            <div [ngClass]="itemInRow == '6' ? 'col-md-2' : 'col-md-4'" *ngFor="let product of dummyProducts">
                                 <div class="recomended-product" style="height: 200px;position: relative; padding: 0px;">
                                     <div class="load-wrapp">
                                         <div class="letter-holder">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="row" *ngIf="browsingHistoryProducts.length > 0">
-                            <div class="col-md-2 " [ngClass]="i==0 ? 'active' : ''" *ngFor="let product of browsingHistoryProducts; let i = index">
+                            <div [ngClass]="itemInRow == '6' ? 'col-md-2' : 'col-md-4'" [ngClass]="i==0 ? 'active' : ''" *ngFor="let product of browsingHistoryProducts; let i = index">
                                 <div class="recomended-product">
                                     <div class="recomended-product-img" [ngStyle]="{'background': 'url('+product.ImageURL+')'}"></div>
                                     <div class="recomended-product-name text-center">{{product.ProductName}}</div>

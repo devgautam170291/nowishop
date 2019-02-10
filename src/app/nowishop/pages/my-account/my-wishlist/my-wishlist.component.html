@@ -1,3 +1,25 @@
-<p>
-  my-wishlist works!
-</p>
+<div class="account-wrapper">
+	<div class="content-section" *ngIf="!showDummy">
+		<div class="row" *ngIf="productList.length > 0">
+			<div class="col-md-4 product-container position-relative" *ngFor="let product of productList">
+				<app-show-product [product]="product">
+					
+				</app-show-product>
+			</div>
+		</div>
+		<div class="row" *ngIf="productList.length == 0">
+			<div class="col-md-12 product-container text-center p-3">
+				No product to display
+			</div>
+		</div>
+	</div>
+	<div class="content-section" *ngIf="showDummy">
+		<div class="row">
+			<div class="col-md-4 product-container" *ngFor="let product of dummyProducts">
+				<app-dummy-products>
+					
+				</app-dummy-products>
+			</div>
+		</div>
+	</div>
+</div>

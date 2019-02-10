@@ -1,3 +1,74 @@
-<p>
-  my-security-setting works!
-</p>
+<div class="account-wrapper">
+	<table class="table-bordered">
+		<tbody>
+			<tr>
+				<td>Password</td>
+				<td></td>
+				<td><span (click)="changePassword()">Change</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="customerCareModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>Change your password</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="customer-modal-container text-center">
+						<div class="customer-email-container ">
+							<div class="field-container">
+								<div class="row">
+									<div class="col-md-4 p-0">Current Password</div>
+									<div class="col-md-8 p-0">
+										<div class="form-group">
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="field-container">
+								<div class="row">
+									<div class="col-md-4 p-0">New Password</div>
+									<div class="col-md-8 p-0">
+										<div class="form-group">
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="field-container">
+								<div class="row">
+									<div class="col-md-4 p-0">Re-enter Password</div>
+									<div class="col-md-8 p-0">
+										<div class="form-group">
+											<input type="text" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="field-container">
+								<div class="row">
+									<div class="col-md-4 p-0">Security Code</div>
+									<div class="col-md-8 p-0">
+										<div class="form-group">
+											<input type="text" class="form-control">
+										</div>
+										<div class="note">Security code is send to your registerd email address.</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					Change Password
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

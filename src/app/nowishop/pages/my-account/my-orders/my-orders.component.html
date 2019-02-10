@@ -1,3 +1,112 @@
-<p>
-  my-orders works!
-</p>
+<div class="account-wrapper">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Order Detail</th>
+				<th>Order Amount</th>
+				<th>Order Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<div class="img-wrapper d-inline-block">
+						<!-- <img src="{{product.ImageURl}}" alt=""> -->
+						<img src="" alt="">
+					</div>
+					<div class="product-desc-container d-inline-block">
+						<div class="item-desc">
+							<!-- <div class="item-title">{{product.ProductName}}</div> -->
+							<div class="item-title">Adiddas Product Name</div>
+							<div class="item-deal">Flash Deal</div>
+							<div class="item-size">
+								Size: L
+							</div>
+							<div class="row">
+								<div class="col-md-6 text-left p-0">
+									<div class="item-variation">
+								<!-- Color: {{product.ProductSelectedColor}} -->
+								Color: Red
+							</div>
+								</div>
+								<div class="col-md-6 text-right p-0">
+									<div class="product-quantity">
+										<i class="fa fa-times" aria-hidden="true"></i> 2
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</td>
+				<td>
+					<!-- <div class="item-price" *ngIf="product.DescountPrice">
+						<div class="discount-price">INR {{(product.DescountPrice * product.ProductCount) | currency:'INR'}} </div>
+						<div class="actual-price" *ngIf="product.DescountPrice">INR {{(product.Price * product.ProductCount) | currency:'INR'}}</div>
+					</div> -->
+					<div class="item-price">
+						<div class="actual-price">
+							INR {{'1200' | currency:'INR'}}
+						</div>
+					</div>
+				</td>
+				<td>
+					<div class="action-btns">
+						<div>
+							<button class="btn">Order Again</button>
+						</div>
+						<div>
+							<button class="btn" (click)="addReview()">Add Review</button>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="modal fade" id="review-modal" tabindex="-1" role="dialog" aria-labelledby="customerCareModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3>Add Product Review</h3>
+        </div>
+        <div class="modal-body">
+          <div class="customer-modal-container text-center">
+            <div class="form-group">
+            	<div class="start-rating">
+            		<div class="decrease-star d-inline-block"></div>
+            		<div class="stars d-inline-block">
+            			<div class="show-stars d-inline-block" *ngFor="let full of fullStar">
+            				<i class="fa fa-star" aria-hidden="true"></i>
+            			</div>
+            			<div class="show-stars d-inline-block" *ngFor="let empty of emptyStar">
+            				<i class="fa fa-star-o" aria-hidden="true"></i>
+            			</div>
+            		</div>
+            		<div class="increase-star d-inline-block"></div>
+            	</div>
+            </div>
+            <div class="form-group">
+            	<select type="text" class="form-control">
+                  <option value="">Choose Topic</option>
+                  <option value="">Recommended</option>
+                  <option value="">Good Quality</option>
+                  <option value="">Satisfied</option>
+                  <option value="">Bad Quality</option>
+                  <option value="">Report this shop</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Comment"></textarea>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          Send
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

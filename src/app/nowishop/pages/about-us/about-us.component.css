@@ -31,6 +31,12 @@
 
 .sell-on-us {
   text-align: center;
-  position: relative;
-  top: 220px;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active{
+  display: block;
 }

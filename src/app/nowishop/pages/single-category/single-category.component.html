@@ -19,10 +19,10 @@
                                             <h2>Categories</h2>
                                             <ul *ngIf="categoryList.length">
                                                 <li *ngFor="let category of categoryList">
-                                                    <input type="checkbox" value="{{category.CategorySlug}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{category.CategoryName}}
+                                                    <div class="cat-name"> {{category.CategoryName}}</div>
                                                     <ul class="first-level-cat" *ngIf="category.FirstLevelSubCategory.length">
                                                         <li *ngFor="let firstLevelCat of category.FirstLevelSubCategory">
-                                                            <input type="checkbox" value="{{firstLevelCat.CategorySlug}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
+                                                            <input type="checkbox" value="{{firstLevelCat.CategoryId}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
                                                             <!-- <ul class="second-level-cat" *ngIf="firstLevelCat.secondLevelSubCategories.length">
                                                                 <li *ngFor="let secondLevelCat of firstLevelCat.secondLevelSubCategories">
                                                                     <input type="checkbox" value="{{secondLevelCat.CategorySlug}}"> {{secondLevelCat.CategoryName}}

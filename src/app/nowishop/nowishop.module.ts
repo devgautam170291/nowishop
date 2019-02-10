@@ -50,6 +50,7 @@ import { MySecuritySettingComponent } from './pages/my-account/my-security-setti
 import { MyAccountBindingComponent } from './pages/my-account/my-account-binding/my-account-binding.component';
 import { SingleDealComponent } from './pages/single-deal/single-deal.component';
 import { SellerComponent } from './pages/seller/seller.component';
+import { MyBrowsingHistoryComponent } from './pages/my-account/my-browsing-history/my-browsing-history.component';
 
 @NgModule({
   imports: [
@@ -101,7 +102,8 @@ import { SellerComponent } from './pages/seller/seller.component';
     MySecuritySettingComponent,
     MyAccountBindingComponent,
     SingleDealComponent,
-    SellerComponent
+    SellerComponent,
+    MyBrowsingHistoryComponent
   ],
   providers: [
     HttpService,

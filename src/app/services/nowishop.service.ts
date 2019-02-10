@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NowishopService {
+  cartInfo: any = [];
+  cartInfoChange: Subject<any> = new Subject<any>();
 
-  constructor() { }
+  constructor() {
+    if(this.isInLocalStorage('user-cart')){
+      this.cartInfo = this.getFromLocalStorage('user-cart');
+      this.cartInfoChange.next(this.cartInfo);
+    }
+  } 
 
   setUserInfo(userInfo){
   	localStorage.setItem('userInfo', JSON.stringify(userInfo));
@@ -33,11 +41,24 @@ export class NowishopService {
     }
   }
 
+  isInLocalStorage(name){
+    if(localStorage.getItem(name)){
+      return true;
+    }
+    return false;
+  }
+
   setInLocalStorage(name, data){
+    debugger
     if(localStorage.getItem(name)){
       localStorage.removeItem(name);
     }
     localStorage.setItem(name, JSON.stringify(data));
+
+    if(name == "user-cart"){
+      this.cartInfo = data;
+      this.cartInfoChange.next(this.cartInfo);
+    }
   }
 
   getFromLocalStorage(name){

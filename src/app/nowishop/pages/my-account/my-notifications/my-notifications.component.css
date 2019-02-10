@@ -1,0 +1,10 @@
+.notification-list div {
+    padding: 15px 0px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+.notification-list.active div {
+    color: var(--nowishop-red);
+}

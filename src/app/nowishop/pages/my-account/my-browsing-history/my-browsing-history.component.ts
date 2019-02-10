@@ -3,14 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../../services/http.service';
 import { NowishopService } from '../../../../services/nowishop.service';
 import { Router } from '@angular/router';
-declare let $: any;
 
 @Component({
-  selector: 'app-my-shipping-address',
-  templateUrl: './my-shipping-address.component.html',
-  styleUrls: ['./my-shipping-address.component.css', '../my-account.component.css']
+  selector: 'app-my-browsing-history',
+  templateUrl: './my-browsing-history.component.html',
+  styleUrls: ['./my-browsing-history.component.css']
 })
-export class MyShippingAddressComponent implements OnInit {
+export class MyBrowsingHistoryComponent implements OnInit {
 
   constructor(
   	private http: HttpClient, 
@@ -19,10 +18,6 @@ export class MyShippingAddressComponent implements OnInit {
   	) { }
 
   ngOnInit() {
-  }
-
-  addAddress(){
-  	$('#addAddressModal').modal('show');
   }
 
 }

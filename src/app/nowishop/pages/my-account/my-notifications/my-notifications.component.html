@@ -1,3 +1,29 @@
-<p>
-  my-notifications works!
-</p>
+<div class="account-wrapper">
+	<div class="notification-option">
+		<div class="row">
+			<div class="col-md-4 p-0 notification-list" *ngFor="let notification of notificationOptions" (click)="changeNotification(notification.value)" [ngClass]="notification.active ? 'active': ''">
+				<div>
+					{{notification.name}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="notification-list">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Date and Time</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						
+					</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -180,17 +180,36 @@ export class SingleProductComponent implements OnInit {
     }
   }
 
+  saveCartInfoLocally(addToCartModel){
+    let userCart = [];
+      if(this.nowishopGlobal.isInLocalStorage('user-cart')){
+        userCart = this.nowishopGlobal.getFromLocalStorage('user-cart');        
+      }
+      
+      userCart.push(addToCartModel);
+      this.nowishopGlobal.setInLocalStorage('user-cart', userCart);
+  }
+
   addToCart(){
     
     if(this.productInfo){
       this.addToCartModel.ProductID = this.productInfo.productID;
       this.addToCartModel.ProductVariactionID = this.selectedVariation.ProductVariactionID;
       this.addToCartModel.ProductSizeID = this.selectedSizeQuantity ? this.selectedSizeQuantity.ProductSizeID : 0;
-    
+      
+      // Save Cart Info Locally
+      this.saveCartInfoLocally(this.addToCartModel)
+
       this.http.post(this.dataService.baseUrl + 'UserAccount/AddUserCard', this.addToCartModel).subscribe(
         res => {
           if(res['IsSuccess']){
-            alert('added');
+            debugger
+            $(".alert").css("display", "block");
+            window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).css("display", "none");
+                });
+            }, 2000);
           }
         }
       )

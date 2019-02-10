@@ -11,9 +11,6 @@ export class AboutUsComponent implements OnInit {
   constructor() { }
 
   breedcrumb: any;
-  showModal: any = false;
-  modalTitle: any;
-  modalDesc: any;
   whoWeare: any;
   whatWeDo: any;
   whatMakeUsUnique: any;
@@ -45,32 +42,17 @@ export class AboutUsComponent implements OnInit {
   }
 
   closeModal(){
-    this.showModal = false;
-    this.modalTitle = "";
-    this.modalDesc = "";
-    $('#show-modal').modal('hide');
+    $('.content-section').each(function(){
+      $(this).removeClass('active');
+    })
   }
 
   openModal(e){
     e.preventDefault();
-    var titleName = $("."+e.currentTarget.className).text();
-    var className = e.currentTarget.className;
-    debugger
-    if(className == 'who-text'){
-      this.modalTitle = "Who we are?";
-      this.modalDesc = this.whoWeare;
-    }
-    else if(className == "what-text"){
-      this.modalTitle = "What do we do?";
-      this.modalDesc = this.whatWeDo;
-    }
-    else {
-      this.modalTitle = "what make us unique and reliable?";
-      this.modalDesc = this.whatMakeUsUnique;
-    }
-
-    this.showModal = true;
-    $('#show-modal').modal('show');
+    $('.content-section').each(function(){
+      $(this).removeClass('active');
+    })
+    $(e.currentTarget).closest('.title-container').find('.content-section').addClass('active');
 
   }
 
