@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { Component, OnInit, HostListener , Inject} from '@angular/core';
 import { LoginModel, UserLoginInfo, ValidationModel } from './login-model';
 import { HttpClient } from  '@angular/common/http';
 import { HttpService } from './../../../services/http.service';
@@ -13,7 +14,7 @@ declare let $: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, 
   		private http: HttpClient, 
       private dataService: HttpService, 
       private router: Router,

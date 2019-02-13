@@ -1,3 +1,6 @@
+import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { CommonModule } from '@angular/common';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,8 +30,14 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CommingSoonComponent,
     NotFoundComponent
   ],
-  imports: [
-    BrowserModule,
+  imports:[
+ CommonModule,
+NgtUniversalModule,
+ 
+ TransferHttpCacheModule,
+HttpClientModule,
+ 
+    
     AppRoutingModule,
     HttpClientModule,
     NgxLoadingModule,
@@ -39,6 +48,5 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
   	ValidationHandlerService,
   	NowishopService
   ],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }

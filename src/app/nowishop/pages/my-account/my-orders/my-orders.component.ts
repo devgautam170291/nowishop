@@ -9,8 +9,18 @@ declare let $:any;
 export class MyOrdersComponent implements OnInit {
 
   constructor() { }
+  fullStar: any = [];
+  emptyStar: any = [];
 
   ngOnInit() {
+  	this.loadDefault();
+  }
+
+  loadDefault(){
+    debugger
+    for(let i=0; i<5; i++){
+      this.emptyStar.push(new Object());
+    }
   }
 
   addReview(){

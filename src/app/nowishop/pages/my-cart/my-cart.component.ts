@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit , Inject} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
@@ -12,7 +13,7 @@ declare let $: any;
 })
 export class MyCartComponent implements OnInit {
 
-  constructor(
+  constructor(@Inject(WINDOW) private window: Window, 
     private http: HttpClient, 
     private dataService: HttpService,
     private nowishopGlobal: NowishopService
@@ -88,7 +89,7 @@ export class MyCartComponent implements OnInit {
           this.cartList = [];
           this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
           $(".alert").css("display", "block");
-            window.setTimeout(function() {
+            this.window.setTimeout(function() {
                 $(".alert").fadeTo(500, 0).slideUp(500, function(){
                     $(this).css("display", "none");
                 });

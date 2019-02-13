@@ -24,21 +24,15 @@ export class MyAccountComponent implements OnInit {
 
   breedcrumb: any;
   content: any;
-  fullStar: any = [];
-  emptyStar: any = [];
+  
 
   ngOnInit() {  	
-    this.loadDefault();
+    
   	this.checkParams();
     this.showBreedcrumb();
   }
 
-  loadDefault(){
-    debugger
-    for(let i=0; i<5; i++){
-      this.emptyStar.push(new Object());
-    }
-  }
+  
 
   checkParams(){
     var val = this.route.snapshot.params.name;

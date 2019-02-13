@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { Injectable, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class NowishopService {
   cartInfo: any = [];
   cartInfoChange: Subject<any> = new Subject<any>();
 
-  constructor() {
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, ) {
     if(this.isInLocalStorage('user-cart')){
       this.cartInfo = this.getFromLocalStorage('user-cart');
       this.cartInfoChange.next(this.cartInfo);
@@ -16,12 +17,12 @@ export class NowishopService {
   } 
 
   setUserInfo(userInfo){
-  	localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  	this.localStorage.setItem('userInfo', JSON.stringify(userInfo));
   }
 
   getUserInfo(){
-  	if(localStorage.getItem('userInfo')){
-      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  	if(this.localStorage.getItem('userInfo')){
+      var userInfo = JSON.parse(this.localStorage.getItem('userInfo'));
       return userInfo;
     }
 
@@ -29,20 +30,20 @@ export class NowishopService {
   }
 
   isUserInfo(){
-    if(localStorage.getItem('userInfo')){
+    if(this.localStorage.getItem('userInfo')){
       return true;
     }
     return false;
   }
 
   deleteUserInfo(){
-    if(localStorage.getItem('userInfo')){
-      localStorage.removeItem('userInfo');
+    if(this.localStorage.getItem('userInfo')){
+      this.localStorage.removeItem('userInfo');
     }
   }
 
   isInLocalStorage(name){
-    if(localStorage.getItem(name)){
+    if(this.localStorage.getItem(name)){
       return true;
     }
     return false;
@@ -50,10 +51,10 @@ export class NowishopService {
 
   setInLocalStorage(name, data){
     debugger
-    if(localStorage.getItem(name)){
-      localStorage.removeItem(name);
+    if(this.localStorage.getItem(name)){
+      this.localStorage.removeItem(name);
     }
-    localStorage.setItem(name, JSON.stringify(data));
+    this.localStorage.setItem(name, JSON.stringify(data));
 
     if(name == "user-cart"){
       this.cartInfo = data;
@@ -62,8 +63,8 @@ export class NowishopService {
   }
 
   getFromLocalStorage(name){
-    if(localStorage.getItem(name)){
-      var data = JSON.parse(localStorage.getItem(name));
+    if(this.localStorage.getItem(name)){
+      var data = JSON.parse(this.localStorage.getItem(name));
       return data;
     }
     return null;
