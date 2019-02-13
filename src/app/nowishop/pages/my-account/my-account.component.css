@@ -164,3 +164,10 @@ tbody tr td {
     position: relative;
     top: 30px !important;
 }
+
+.account-btn {
+    background: var(--nowishop-blue);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 50px;
+}

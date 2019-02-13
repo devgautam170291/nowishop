@@ -1,8 +1,8 @@
 <div class="account-wrapper">
 	<div class="add-address">
 		<div class="row">
-			<div class="col-md-4 p-0">
-				<button class="btn" (click)="addAddress()">Add a new address</button>
+			<div class="col-md-4 p-0 mb-3">
+				<button class="btn account-btn" (click)="openAddressModal()"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add a new address</button>
 			</div>
 			<div class="col-md-8 p-0">
 				
@@ -20,8 +20,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					
+				<tr *ngFor="let details of addressList">
+					<td>{{details.name}}</td>
+					<td>
+						<span *ngFor="let address of details['address']">
+							{{address.line1}}, {{address.line2}}, {{address.city}},
+							{{address.state}}, {{address.country}}, {{address.pin}}
+						</span>
+					</td>
+					<td>{{details.mobileNo}}</td>
+					<td></td>					
 				</tr>
 			</tbody>
 		</table>
@@ -30,7 +38,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3>Add Address</h3>
+					<h3>Add New Address</h3>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 					</button>
@@ -40,26 +48,26 @@
 						<div class="customer-email-container ">
 							<div class="form-group">
 								<label for="">Name</label>
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" [(ngModel)]="model.name">
 							</div>
 							<div class="form-group">
 								<label for="">Address Details</label>
-								<input type="text" placeholder="Address Line 1" class="form-control">
+								<input type="text" placeholder="Address Line 1" class="form-control" [(ngModel)]="model.address.line1">
 							</div>
 							<div class="form-group">
-								<input type="text" placeholder="Address Line 2" class="form-control">
+								<input type="text" placeholder="Address Line 2" class="form-control" [(ngModel)]="model.address.line2">
 							</div>
 							
 							<div class="row">
 								<div class="col-md-6 p-0">
 									<div class="form-group mr-1">
-										<input type="text" placeholder="City" class="form-control">
+										<input type="text" placeholder="City" class="form-control" [(ngModel)]="model.address.city">
 									</div>
 									
 								</div>
 								<div class="col-md-6 p-0">
 									<div class="form-group ml-1">
-										<input type="text" placeholder="State" class="form-control">
+										<input type="text" placeholder="State" class="form-control" [(ngModel)]="model.address.state">
 									</div>
 									
 								</div>
@@ -67,12 +75,12 @@
 							<div class="row">
 								<div class="col-md-6 p-0">
 									<div class="form-group mr-1">
-										<input type="text" placeholder="Country" class="form-control">
+										<input type="text" placeholder="Country" class="form-control" [(ngModel)]="model.address.country">
 									</div>									
 								</div>
 								<div class="col-md-6 p-0">
 									<div class="form-group ml-1">
-										<input type="text" placeholder="PIN" class="form-control">
+										<input type="text" placeholder="PIN" class="form-control" [(ngModel)]="model.address.pin">
 									</div>
 									
 								</div>
@@ -80,12 +88,12 @@
 						</div>
 						<div class="form-group">
 							<label for="">Mobile Number</label>
-							<input type="text" placeholder="Enter Your Mobile Number" class="form-control">
+							<input type="text" placeholder="Enter Your Mobile Number" class="form-control" [(ngModel)]="model.mobileNo">
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="modal-footer">
+			<div class="modal-footer" (click)="addAddress()">
 				Add Address
 			</div>
 		</div>

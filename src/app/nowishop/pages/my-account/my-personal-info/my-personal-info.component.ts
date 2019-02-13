@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../../services/http.service';
 import { NowishopService } from '../../../../services/nowishop.service';
 import { Router } from '@angular/router';
+declare let $: any;
 
 @Component({
   selector: 'app-my-personal-info',
@@ -18,6 +19,17 @@ export class MyPersonalInfoComponent implements OnInit {
   	) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewChecked(){
+    $('.datetimepicker').datetimepicker({ 
+        allowInputToggle: false,
+        inline: false,
+        sideBySide: true,
+        keepOpen: false,
+        debug: false,
+        format: 'YYYY-MM-DD',
+    });
   }
 
 }

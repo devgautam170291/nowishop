@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../../services/http.service';
 import { NowishopService } from '../../../../services/nowishop.service';
 import { Router } from '@angular/router';
+import { MyShippingModel } from './my-shipping-model';
 declare let $: any;
 
 @Component({
@@ -12,6 +13,9 @@ declare let $: any;
 })
 export class MyShippingAddressComponent implements OnInit {
 
+  addressList: any = [];
+  model: any;
+
   constructor(
   	private http: HttpClient, 
     private dataService: HttpService,
@@ -19,10 +23,21 @@ export class MyShippingAddressComponent implements OnInit {
   	) { }
 
   ngOnInit() {
+    this.loadModel();
+  }
+
+  loadModel(){
+    this.model = new MyShippingModel();
+  }
+
+  openAddressModal(){
+  	$('#addAddressModal').modal('show');
   }
 
   addAddress(){
-  	$('#addAddressModal').modal('show');
+    debugger;
+    this.addressList.push(this.model);
+    this.loadModel();
   }
 
 }
