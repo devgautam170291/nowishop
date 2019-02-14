@@ -1,0 +1,11 @@
+.my-cart-container thead {
+	background: var(--nowishop-blue) !important;
+}
+
+.my-cart-container thead tr th {
+	color: #fff !important;
+}
+
+.my-cart-container table {
+	border: none;
+}

@@ -1,0 +1,67 @@
+.profile-pic .fa {
+    color: var(--nowishop-blue);
+    font-size: 85px;
+}
+
+.user-option-logo {
+    width: 100%;
+    height: 60px;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+}
+
+.user-options .col-md-4 {
+    border: 2px solid #e7e7e7;
+}
+
+.user-options .col-md-4:first-child {
+    border-right: none;
+}
+
+.user-options .col-md-4:last-child {
+	border-left: none;
+}
+
+.user-option-title {
+    text-align: center;
+    font-size: 15px;
+    font-family: futura-light;
+    color: #000;
+    padding: 10px 0px;
+}
+
+.details h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.details .info {
+    font-family: futura-light;
+}
+
+.pending {
+    margin: 40px 0px;
+}
+
+.pending h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.show-list table td {
+    vertical-align: middle;
+}
+
+.show-list table {
+    height: 100%;
+    margin: 0px;
+    background: #e7e7e7;
+    text-align: center;
+    font-family: futura-light;
+    min-height: 200px;
+}
+
+.address-info {
+    padding: 10px 0px;
+    background: #e7e7e7;
+}
