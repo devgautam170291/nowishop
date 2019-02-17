@@ -85,9 +85,12 @@ export class LoginComponent implements OnInit {
     userInfo.userRoleId = res['UserRoleId'];
     userInfo.userRoleName = res['UserRoleName'];
     userInfo.emailId = res['EmailId'];
-    userInfo.phNumner = res['TelephoneNo'];
+    userInfo.phNumber = res['TelephoneNo'];
     userInfo.address = res['Address'];
     userInfo.authToken = res['AuthToken'];
+    userInfo.memberShipId = res['MemberShipID'];
+    userInfo.memberShipName = res['MemberShipName'];
+
 
     // if(this.remember){
     //   localStorage.setItem('userInfo', JSON.stringify(userInfo));

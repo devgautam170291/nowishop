@@ -26,6 +26,7 @@ export class SearchResultComponent implements OnInit {
   showDummy: any = true;
   categoryList: any = [];
   searchObj: any = [];
+  brandList: any = [];
 
   ngOnInit() {
     this.laodModel();
@@ -33,6 +34,7 @@ export class SearchResultComponent implements OnInit {
     this.getCategoryList();  	
   	this.getSearchResult();
     this.loadDummyProducts();
+    this.getBrandList();
   }
 
   laodModel(){
@@ -61,6 +63,15 @@ export class SearchResultComponent implements OnInit {
     ];
   }
 
+  getBrandList(){
+    this.http.get(this.dataService.baseUrl + 'Brand/GetAllBrand').subscribe(
+      res=>{
+        debugger
+        this.brandList = res['Data'];
+      }
+    )
+  }
+
   getCategoryList(){
     this.http.get(this.dataService.baseUrl + 'Home/HomeCategory').subscribe(
         res => {
@@ -78,6 +89,7 @@ export class SearchResultComponent implements OnInit {
       searchObj.ColumnName = columnName;
       if(e.currentTarget.value.includes('|')){
         var operator = e.currentTarget.value.split('|')[0].trim().toLowerCase();
+        searchObj.ColumnValue = e.currentTarget.value.split('|')[1];
         switch (operator) {
           case "less":
              searchObj.Operator = 8;
@@ -97,6 +109,14 @@ export class SearchResultComponent implements OnInit {
       else {
         searchObj.Operator = 1;
         searchObj.ColumnValue = e.currentTarget.value;
+      }
+
+      if(columnName.toLowerCase() == 'price'){
+        this.searchObj.forEach((data,i)=>{
+          if(data.ColumnName.toLowerCase() == 'price'){
+            this.searchObj.splice(i, 1);
+          }
+        })
       }
 
       this.searchObj.push(searchObj);

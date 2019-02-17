@@ -8,8 +8,8 @@
 			</tr>
 			<tr>
 				<td>Email Verification</td>
-				<td class="text-center" width="400px">Email ID is not verified</td>
-				<td class="text-center"><span>Verify</span></td>
+				<td class="text-center" width="400px">Email ID is verified</td>
+				<td class="text-center"><span>Verified</span></td>
 			</tr>
 			<tr>
 				<td>Mobile Verification</td>
@@ -32,20 +32,10 @@
 						<div class="customer-email-container ">
 							<div class="field-container">
 								<div class="row">
-									<div class="col-md-4 p-0">Current Password</div>
-									<div class="col-md-8 p-0">
-										<div class="form-group">
-											<input type="text" class="form-control">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="field-container">
-								<div class="row">
 									<div class="col-md-4 p-0">New Password</div>
 									<div class="col-md-8 p-0">
 										<div class="form-group">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" [(ngModel)]="model.NewPassword">
 										</div>
 									</div>
 								</div>
@@ -55,7 +45,7 @@
 									<div class="col-md-4 p-0">Re-enter Password</div>
 									<div class="col-md-8 p-0">
 										<div class="form-group">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" [(ngModel)]="model.confirmPassword">
 										</div>
 									</div>
 								</div>
@@ -65,9 +55,9 @@
 									<div class="col-md-4 p-0">Security Code</div>
 									<div class="col-md-8 p-0">
 										<div class="form-group">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" [(ngModel)]="model.OTP">
 										</div>
-										<div class="note">Security code is send to your registerd email address.</div>
+										<div class="note">**Security code is send to your registerd email address.</div>
 									</div>
 								</div>
 							</div>
@@ -75,7 +65,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal-footer">
+				<div class="modal-footer" (click)="resetPassword()">
 					Change Password
 				</div>
 			</div>

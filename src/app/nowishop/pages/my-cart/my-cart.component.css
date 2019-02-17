@@ -71,6 +71,10 @@ thead th {
     font-family: 'Montserrat', sans-serif;
 }
 
+thead th{
+    color: #fff;
+}
+
 .item-size,
 .item-variation {
     font-family: futura-light;
@@ -91,7 +95,7 @@ thead th {
 }
 
 .my-cart-container thead {
-    background: #e7e7e7;
+    background: var(--nowishop-blue);
 }
 
 .clear-button .btn {
@@ -121,6 +125,5 @@ tr td {
 }
 
 .my-cart-container {
-    border: 2px solid #e7e7e7;
     margin-bottom: 20px;
 }

@@ -22,7 +22,7 @@
                                                     <div class="cat-name"> {{category.CategoryName}}</div>
                                                     <ul class="first-level-cat" *ngIf="category.FirstLevelSubCategory.length">
                                                         <li *ngFor="let firstLevelCat of category.FirstLevelSubCategory">
-                                                            <input type="checkbox" value="{{firstLevelCat.CategorySlug}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
+                                                            <input type="checkbox" value="{{firstLevelCat.CategoryId}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
                                                             <!-- <ul class="second-level-cat" *ngIf="firstLevelCat.secondLevelSubCategories.length">
                                                                 <li *ngFor="let secondLevelCat of firstLevelCat.secondLevelSubCategories">
                                                                     <input type="checkbox" value="{{secondLevelCat.CategorySlug}}"> {{secondLevelCat.CategoryName}}
@@ -35,10 +35,11 @@
                                         </li>
                                         <li class="sidebar-single-list">
                                             <h2>Brands</h2>
-                                            <ul>
-                                                <li><input type="checkbox"> Adidas</li>
-                                                <li><input type="checkbox"> Fast Track</li>
-                                                <li><input type="checkbox"> Fila</li>
+                                            <ul *ngIf="brandList.length">
+                                                <li *ngFor="let brand of brandList">
+                                                    <input type="checkbox"  (click)="handleSearchParams('BrandID', $event)" value="{{brand.ID}}"> 
+                                                    {{brand.BrandName}}                                               
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="sidebar-single-list">

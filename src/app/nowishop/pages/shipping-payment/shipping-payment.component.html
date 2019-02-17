@@ -28,16 +28,51 @@
 				<div class="title-with-line">
 					<h3>Shipping address</h3>
 				</div>
+				<div class="section-content">
+					<div class="row">
+						<div class="col-md-4 address-wrapper" *ngFor="let address of addressList">
+							<div class="address-info">
+								<div class="row">
+									<div class="col-md-2">
+										<input type="radio" value="" name="shippingAdd">
+									</div>
+									<div class="col-md-10">
+										<div class="addressDetail">
+											<div class="name">{{address.name}}</div>
+											<div class="country">{{address.ShippingAddress.country}}</div>
+											<div class="address">
+												<div>{{address.ShippingAddress.line1}}, {{address.ShippingAddress.line2}}</div>
+												<div>{{address.ShippingAddress.city}}, {{address.ShippingAddress.state}}</div>
+												<div>{{address.ShippingAddress.country}}, {{address.ShippingAddress.pin}}</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 address-wrapper">
+							<div class="address-info add-new-address" (click)="openAddressModal()">
+								<div class="d-table full-dimention">
+									<div class="add-address d-table-cell full-dimention">
+										<i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Address
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="section">
 				<div class="row">
-					<div class="col-md-9">
+					<div class="col-md-10">
 						<div class="title-with-line">
-							<h3>Shipping address</h3>
+							<h3>Your Order</h3>
 						</div>
 					</div>
-					<div class="col-md-3">
-						Return to my cart
+					<div class="col-md-2">
+						<div class="return-to-cart" routerLink="/cart">
+							<i class="fa fa-undo" aria-hidden="true"></i> Return to my cart
+						</div>
 					</div>
 				</div>
 				<div class="section-content">
@@ -48,7 +83,7 @@
 									<th scope="col">Items</th>
 									<th class="text-center" scope="col">Price</th>
 									<th class="text-center" scope="col">Quantity</th>
-									<th scope="col"></th>
+									<th scope="col">Shipping Details</th>
 								</tr>
 							</thead>
 							<tbody *ngIf="cartList.length > 0">
@@ -80,34 +115,41 @@
 										</div>
 									</td>
 									<td>
-										<div class="quantity-raiser">
-											<div class="d-inline-block quantity-decrease" (click)="decreaseQuantity(product)"><i class="fa fa-minus" aria-hidden="true"></i></div>
+										<div class="text-center">
 											<div class="d-inline-block quantity-val">{{product.ProductCount}}</div>
-											<div class="d-inline-block quantity-increase" (click)="increaseQuantity(product)"><i class="fa fa-plus" aria-hidden="true"></i></div>
 										</div>
 									</td>
-									<td style="width: 50px;">
-										<div class="remove-item" (click)="removeFromCart(i)">
-											<i class="fa fa-trash" aria-hidden="true"></i>
-										</div>
+									<td style="width: 250px;">
+										
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										<div class="clear-button" (click)="clearCart()">
-											<button class="btn">Clear Cart</button>
+										<div class="apply-coupon">
+											<h4>USE COUPON</h4>
+											<div class="subscribe">
+												<div class="input-group mb-3">
+													<input type="text" class="form-control" aria-describedby="subscribe">
+													<div class="input-group-append">
+														<button class="btn btn-outline-secondary" type="button" id="subscribe" >Submit</button>
+													</div>
+												</div>
+											</div>
 										</div>
 									</td>
 									<td colspan="2">
 										<div class="cart-total text-right">
 											<div>
-												<span>Discount</span>: <span class="discount-price">3,100</span>
+												<b>Subtotal</b>: <span class="discount-price">3,100</span>
 											</div>
 											<div>
-												<span>Total</span>: <span>1 item</span>
+												<b>Discount</b>: <span>1 item</span>
 											</div>
 											<div>
-												<span>Add Point</span>: <span>21 point</span>
+												<b>Shipping</b>: <span>21 point</span>
+											</div>
+											<div>
+												<b>Total</b>: <span>21 point</span>
 											</div>
 										</div>
 									</td>
@@ -124,7 +166,74 @@
 					</div>
 				</div>
 			</div>
+			<div class="proceed-checkout text-center">
+				<button class="btn" (click)="checkout()">Proceed to checkout</button>
+			</div>
 		</div>
 	</div>
-	
+</div>
+<div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="customerCareModal" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>Add New Address</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="customer-modal-container text-left">
+					<div class="customer-email-container ">
+						<div class="form-group">
+							<label for="">Name</label>
+							<input type="text" class="form-control" [(ngModel)]="model.name">
+						</div>
+						<div class="form-group">
+							<label for="">Address Details</label>
+							<input type="text" placeholder="Address Line 1" class="form-control" [(ngModel)]="model.ShippingAddress.line1">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Address Line 2" class="form-control" [(ngModel)]="model.ShippingAddress.line2">
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group mr-1">
+									<input type="text" placeholder="City" class="form-control" [(ngModel)]="model.ShippingAddress.city">
+								</div>
+								
+							</div>
+							<div class="col-md-6">
+								<div class="form-group ml-1">
+									<input type="text" placeholder="State" class="form-control" [(ngModel)]="model.ShippingAddress.state">
+								</div>
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 ">
+								<div class="form-group mr-1">
+									<input type="text" placeholder="Country" class="form-control" [(ngModel)]="model.ShippingAddress.country">
+								</div>
+							</div>
+							<div class="col-md-6 ">
+								<div class="form-group ml-1">
+									<input type="text" placeholder="PIN" class="form-control" [(ngModel)]="model.ShippingAddress.pin">
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="">Mobile Number</label>
+						<input type="text" placeholder="Enter Your Mobile Number" class="form-control" [(ngModel)]="model.PhoneNo">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer" (click)="addAddress()">
+				Add Address
+			</div>
+		</div>
+		
+	</div>
 </div>

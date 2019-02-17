@@ -8,3 +8,8 @@
 .notification-list.active div {
     color: var(--nowishop-red);
 }
+
+.notification-list tr td {
+    font-family: futura-light;
+    font-size: 14px;
+}

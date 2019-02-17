@@ -1,12 +1,14 @@
 export class MyShippingModel {
 	"name": any;
-	"address": any;
-	"mobileNo": any;
+	"ShippingAddressID": any;
+	"ShippingAddress": any;
+	"UserID": any;
+	"PhoneNo": any;
 
 	constructor(){
 		this.name = "";
-		this.address = [new AddressDetails()];
-		this.mobileNo = "";
+		this.ShippingAddress = new AddressDetails() ;
+		this.PhoneNo = "";
 	}
 }
 

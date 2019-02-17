@@ -122,9 +122,9 @@
                     </div>
                     <div class="subscribe">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter your email & get the latest discount" aria-describedby="subscribe">
+                            <input type="text" class="form-control" placeholder="Enter your email & get the latest discount" aria-describedby="subscribe" [(ngModel)]="subscribeEmail">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="subscribe">Subscribe</button>
+                                <button class="btn btn-outline-secondary" type="button" id="subscribe" (click)="subscribe()">Subscribe</button>
                             </div>
                         </div>
                     </div>

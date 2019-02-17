@@ -6,6 +6,102 @@
 	color: #fff !important;
 }
 
-.my-cart-container table {
-	border: none;
+.my-cart-container table, .my-cart-container {
+	border: none !important;
+}
+
+.return-to-cart {
+    color: #bfbfbf;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: right;
+}
+
+.quantity-val {
+    font-weight: bold;
+}
+
+.subscribe[_ngcontent-c3] .input-group-append button {
+    background: var(--nowishop-blue);
+    border: 1px solid var(--nowishop-blue);
+    color: #fff !important;
+}
+
+.subscribe .btn {
+    background: var(--nowishop-blue) !important;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.subscribe {
+    max-width: 350px;
+}
+
+.apply-coupon h4 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 18px;
+    margin-bottom: 10px !important;
+}
+
+.title-with-line, .return-to-cart {
+    margin: 20px 0px;
+}
+
+.address-info {
+    background: #e7e7e7;
+    padding: 15px;
+    border: 1px solid #ccc;
+    height: 100%;
+}
+
+.address-info input[type=radio] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.country {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.address {
+    font-family: futura-light;
+    font-size: 14px;
+}
+
+.full-dimention {
+	width: 100%;
+	height: 100%;
+}
+
+.add-address {
+    vertical-align: middle;
+    text-align: center;
+    color: #9a9a9a;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.add-new-address {
+    cursor: pointer;
+}
+
+.address-wrapper {
+    margin-bottom: 25px;
+    min-height: 150px;
+}
+
+.proceed-checkout .btn {
+    background: var(--nowishop-red);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.proceed-checkout.text-center {
+    padding: 20px 0px;
 }

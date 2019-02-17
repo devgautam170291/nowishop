@@ -35,10 +35,11 @@
                                         </li>
                                         <li class="sidebar-single-list">
                                             <h2>Brands</h2>
-                                            <ul>
-                                                <li><input type="checkbox"> Adidas</li>
-                                                <li><input type="checkbox"> Fast Track</li>
-                                                <li><input type="checkbox"> Fila</li>
+                                            <ul *ngIf="brandList.length">
+                                                <li *ngFor="let brand of brandList">
+                                                    <input type="checkbox"  (click)="handleSearchParams('BrandID', $event)" value="{{brand.ID}}"> 
+                                                    {{brand.BrandName}}                                               
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="sidebar-single-list">

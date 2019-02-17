@@ -7,8 +7,11 @@
 				</div>
 			</div>
 			<div class="col-md-8 p-0">
-				<div class="profile-pic">
+				<div class="profile-pic" *ngIf="!model.ProfilePic">
 					<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+				</div>
+				<div class="profile-pic" *ngIf="model.ProfilePic">
+					<img src="{{model.ProfilePic}}" alt="">
 				</div>
 			</div>
 		</div>
@@ -40,12 +43,12 @@
 				<div class="row">
 					<div class="col-md-6 p-0">
 						<div class="form-group mr-1">
-							<input type="text" placeholder="First Name" class="form-control">
+							<input type="text" [(ngModel)]="model.FirstName" placeholder="First Name" class="form-control">
 						</div>
 					</div>
 					<div class="col-md-6 p-0">
 						<div class="form-group ml-1">
-							<input type="text" placeholder="Last Name" class="form-control">
+							<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="model.LastName">
 						</div>
 					</div>
 				</div>
@@ -62,8 +65,10 @@
 			</div>
 			<div class="col-md-8 p-0">
 				<div class="form-group">
-					<select name="" id="" class="form-control">
-						<option value="">Choose Country</option>
+					<select name="" id="" class="form-control" [(ngModel)]="model.CountryCode">
+						<option *ngFor="let info of countryList" value="{{info.CountryCode}}">
+							{{info.CountryName}}
+						</option>
 					</select>
 				</div>
 			</div>
@@ -81,13 +86,13 @@
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-4 p-0 d-inline-block">
-							<input type="radio" name="gender" class=""> Male
+							<input type="radio" name="gender" class="" value="male" (click)="selectGender('male')" [(ngModel)]="model.Gender"> Male
 						</div>
 						<div class="col-md-4 p-0 d-inline-block">
-							<input type="radio" name="gender" class=""> Female
+							<input type="radio" name="gender" class="" value="female" (click)="selectGender('female')" [(ngModel)]="model.Gender"> Female
 						</div>
 						<div class="col-md-4 p-0 d-inline-block">
-							<input type="radio" name="gender" class=""> Secret
+							<input type="radio" name="gender" class="" value="secret" (click)="selectGender('secret')" [(ngModel)]="model.Gender"> Secret
 						</div>
 					</div>
 				</div>
@@ -104,7 +109,7 @@
 			</div>
 			<div class="col-md-8 p-0">
 				<div class="input-group datetimepicker" >
-					<input id='endtime' type="text" class="form-control input-sm" />
+					<input id='endtime' type="text" class="form-control input-sm" [(ngModel)]="model.DateOfBirth"/>
 					<span class="input-group-addon calendar">
 						<span class="fa fa-calendar"></span>
 					</span>
@@ -122,7 +127,7 @@
 			</div>
 			<div class="col-md-8 p-0">
 				<div class="form-group">
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" [(ngModel)]="model.Email">
 				</div>
 			</div>
 		</div>
@@ -137,7 +142,7 @@
 			</div>
 			<div class="col-md-8 p-0">
 				<div class="form-group">
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" [(ngModel)]="model.MobileNo">
 				</div>
 			</div>
 		</div>
@@ -150,14 +155,26 @@
 				</div>
 				
 			</div>
-			<div class="col-md-8 p-0"></div>
+			<div class="col-md-8 p-0">
+				<div class="row">
+					<div class="col-md-8 p-0"><input type="text" class="form-control" [(ngModel)]="singleHobby"></div>
+					<div class="col-md-4">
+						<button class="btn" (click)="addHobby()">Add Hobby</button>
+					</div>
+				</div>
+				<div class="list-hobby">
+					<span class="single-hobby" *ngFor="let hobby of hobbyArray">
+						{{hobby}}
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="field-container">
 		<div class="row">
 			<div class="col-md-4 p-0"></div>
 			<div class="col-md-8 p-0">
-				<button class="btn account-btn">Save Information</button>
+				<button class="btn account-btn" (click)="saveUserInfo()">Save Information</button>
 			</div>
 		</div>
 	</div>

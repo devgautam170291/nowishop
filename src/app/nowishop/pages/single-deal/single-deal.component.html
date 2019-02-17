@@ -22,7 +22,7 @@
                                                     <div class="cat-name"> {{category.CategoryName}}</div>
                                                     <ul class="first-level-cat" *ngIf="category.FirstLevelSubCategory.length">
                                                         <li *ngFor="let firstLevelCat of category.FirstLevelSubCategory">
-                                                            <input type="checkbox" value="{{firstLevelCat.CategorySlug}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
+                                                            <input type="checkbox" value="{{firstLevelCat.CategoryId}}" (click)="handleSearchParams('ProductCategoryId', $event)"> {{firstLevelCat.CategoryName}}
                                                             <!-- <ul class="second-level-cat" *ngIf="firstLevelCat.secondLevelSubCategories.length">
                                                                 <li *ngFor="let secondLevelCat of firstLevelCat.secondLevelSubCategories">
                                                                     <input type="checkbox" value="{{secondLevelCat.CategorySlug}}"> {{secondLevelCat.CategoryName}}
@@ -35,21 +35,22 @@
                                         </li>
                                         <li class="sidebar-single-list">
                                             <h2>Brands</h2>
-                                            <ul>
-                                                <li><input type="checkbox"> Adidas</li>
-                                                <li><input type="checkbox"> Fast Track</li>
-                                                <li><input type="checkbox"> Fila</li>
+                                            <ul *ngIf="brandList.length">
+                                                <li *ngFor="let brand of brandList">
+                                                    <input type="checkbox"  (click)="handleSearchParams('BrandID', $event)" value="{{brand.ID}}"> 
+                                                    {{brand.BrandName}}                                               
+                                                </li>
                                             </ul>
                                         </li>
                                         <li class="sidebar-single-list">
                                             <h2>Price</h2>
                                             <ul>
-                                                <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="less|1000">less than &#8377;1000</li>
-                                                <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|1000 and 5000">between &#8377;1000 and &#8377;5000</li>
-                                                <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|5000 and 15000">between &#8377;5000 and &#8377;15000</li>
-                                                <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|15000 and 25000">between &#8377;15000 and &#8377;25000</li>
-                                                <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="between|25000 and 50000">between &#8377;25000 and &#8377;50000</li>
-                                                <li><input type="checkbox" (click)="handleSearchParams('Price', $event)" value="above|50000"> Above &#8377;50000</li>
+                                                <li><input type="radio" name="price" (click)="handleSearchParams('Price', $event)" value="less|1000">less than &#8377;1000</li>
+                                                <li><input type="radio" name="price"  (click)="handleSearchParams('Price', $event)" value="between|1000 and 5000">between &#8377;1000 and &#8377;5000</li>
+                                                <li><input type="radio" name="price"  (click)="handleSearchParams('Price', $event)" value="between|5000 and 15000">between &#8377;5000 and &#8377;15000</li>
+                                                <li><input type="radio" name="price"  (click)="handleSearchParams('Price', $event)" value="between|15000 and 25000">between &#8377;15000 and &#8377;25000</li>
+                                                <li><input type="radio" name="price" (click)="handleSearchParams('Price', $event)" value="between|25000 and 50000">between &#8377;25000 and &#8377;50000</li>
+                                                <li><input type="radio" name="price"  (click)="handleSearchParams('Price', $event)" value="above|50000"> Above &#8377;50000</li>
                                             </ul>
                                         </li>
                                     </ul>
