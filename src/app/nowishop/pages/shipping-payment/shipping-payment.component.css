@@ -105,3 +105,34 @@
 .proceed-checkout.text-center {
     padding: 20px 0px;
 }
+
+.payment-form label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+.payment-form {
+    margin: 20px 0px;
+}
+.payment-form input {
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid var(--nowishop-blue);
+    width: 100%;
+}
+
+.payment-form select {
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid var(--nowishop-blue);
+    width: 100%;
+}
+
+.btn.payment-now {
+    background: var(--nowishop-red);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}

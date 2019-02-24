@@ -83,38 +83,6 @@
     right: 100%;
 }
 
-.payment-option-list li {
-    width: 50px;
-    height: 30px;
-    background-size: 85px;
-    background-repeat: no-repeat;
-}
-
-.visa {
-    background: url(/assets/img/icons-white.png);
-    background-position: 0px -525px;
-}
-
-.master-card {
-    background: url(/assets/img/icons-white.png);
-    background-position: 0px -489px;
-}
-
-.maestro {
-    background: url(/assets/img/icons-white.png);
-    background-position: 0px -400px;
-}
-
-.american-express {
-    background: url(/assets/img/icons-white.png);
-    background-position: 0px -444px;
-}
-
-.payment-option-list {
-    position: relative;
-    top: 2px;
-}
-
 .why-choose li {
     font-family: 'Montserrat', sans-serif;
     text-align: center;

@@ -13,7 +13,8 @@ declare let $: any;
 })
 export class MyCartComponent implements OnInit {
 
-  constructor(@Inject(WINDOW) private window: Window, 
+  constructor(
+    @Inject(WINDOW) private window: Window, 
     private http: HttpClient, 
     private dataService: HttpService,
     private nowishopGlobal: NowishopService

@@ -9,7 +9,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
 	{ path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-	{ path:'', loadChildren: './nowishop/nowishop.module#NowishopModule'},
+	{ path: '', loadChildren: './nowishop/nowishop.module#NowishopModule'},
 	// {path: '', component: CommingSoonComponent},
 	{ path: 'login', component: LoginComponent },
 	{ path: 'register', component: RegisterComponent },

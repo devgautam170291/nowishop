@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
 import { Router } from '@angular/router';
 import { MyShippingModel, PaymentModel } from './shipping-payment-model';
 declare let $: any;
+declare let TCO: any;
 
 @Component({
   selector: 'app-shipping-payment',
@@ -13,7 +15,9 @@ declare let $: any;
 })
 export class ShippingPaymentComponent implements OnInit {
 
-  constructor(private http: HttpClient, 
+  constructor(
+    @Inject(WINDOW) private window: Window,
+    private http: HttpClient, 
     private dataService: HttpService,
     private nowishopGlobal: NowishopService) { }
 
@@ -37,15 +41,18 @@ export class ShippingPaymentComponent implements OnInit {
   	this.paymentProgress = [
   		{
   			"name": "shipping",
-  			"active": true
+  			"active": true,
+        "show": true
   		},
   		{
   			"name": "payment",
-  			"active": false
+  			"active": false,
+        "show": false
   		},
   		{
   			"name": "done",
-  			"active": false
+  			"active": false,
+        "show": false
   		}
   	];
     this.model = new MyShippingModel();
@@ -118,25 +125,28 @@ export class ShippingPaymentComponent implements OnInit {
   }
 
   checkout(){
-    var formData = new FormData();
-    formData.append('sid', '901403184');
-    formData.append('mode', '2CO');
-    formData.append('li_0_type', 'product');
-    formData.append('li_0_name', 'Monthly Subscription');
-    formData.append('li_0_quantity', '2');
-    formData.append('li_0_price', '1.00');
-    formData.append('li_1_type', 'product');
-    formData.append('li_1_name', 'Monthly Subscription');
-    formData.append('li_1_price', '1.00');
-    formData.append('li_1_quantity', '1');
-    formData.append('currency_code', 'INR');
-    formData.append('submit', 'Checkout');
+    debugger
+    this.paymentProgress = this.paymentProgress.map((data, i)=>{
+          data.show = false;
+          return data;
+        });
+        this.paymentProgress[1].show = true;
+        this.paymentProgress[1].active = true;
+  }
 
-    this.http.post('https://sandbox.2checkout.com/checkout/purchase', formData).subscribe(
-      res=>{
-        debugger
-      }
-    )
+  submitPayment(){
+    debugger
+    var payWithCard = data => {
+      console.log(data.response.token.token);
+    }
+
+    var error = data => {
+      console.log(data);
+    }
+
+    TCO.loadPubKey("sandbox", ()=>{
+      TCO.requestToken(payWithCard, error, this.paymentModel)
+    })
   }
 
 }
