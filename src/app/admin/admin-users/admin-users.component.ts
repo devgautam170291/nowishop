@@ -49,6 +49,7 @@ export class AdminUsersComponent implements OnInit {
   }
 
   getFilterResult(data){
+    debugger
   	this.model = data;
   }
 
