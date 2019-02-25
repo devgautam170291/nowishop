@@ -1,6 +1,5 @@
 .slider-wrapper {
   position: relative;
-  min-height: 330px;
   background: var(--nowishop-red);
 }
 
@@ -9,9 +8,13 @@
 }
 
 .slider-contaier {
-  float: left;
   width: 100%;
   max-width: 715px;
+}
+
+.slider {
+    display: flex;
+    padding-bottom: 20px;
 }
 
 #homeslider {
@@ -19,8 +22,11 @@
 }
 
 .our-services {
-  float: left;
   width: calc(100% - 715px);
+}
+
+.our-services li:last-child {
+  margin-bottom: 0px;
 }
 
 .our-services li {
