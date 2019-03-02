@@ -47,3 +47,17 @@ export class PaymentModel {
 		this.cvv = "";
 	}
 } 
+
+export class PaymentInfoModel {
+	"TwoCheckOutToken" : any;
+	"UserID" : any;
+	"ShippingAddressID" : any;
+	"TotalAmount" : any;
+
+	constructor(){
+		this.TwoCheckOutToken = "";
+		this.UserID = "";
+		this.ShippingAddressID = 0;
+		this.TotalAmount = "";
+	}
+}

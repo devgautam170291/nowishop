@@ -43,13 +43,15 @@ export class HeaderComponent implements OnInit {
 
   loadJquery(){
     $('.dropdown-toggle.shopbycat').on('click', function (e) {
+      debugger
       $(this).next().toggle();
     });
 
     $('body').click(function(event){
       
-      if ($(event.target).closest('.cat-container').length) {
-      } else {
+      if ($(event.target).closest('.cat-container').length || event.target.id == "shopbycat" ) {
+      } 
+      else {
         $('#shopbycategory').hide();
       }
     });

@@ -31,13 +31,13 @@
 					</div>
 					<div class="section-content">
 						<div class="row">
-							<div class="col-md-4 address-wrapper" *ngFor="let address of addressList">
+							<div class="col-md-4 address-wrapper" *ngFor="let address of addressList; let i = index">
 								<div class="address-info">
 									<div class="row">
 										<div class="col-md-2">
-											<input type="radio" value="" name="shippingAdd">
+											<input type="radio" value="" name="shippingAdd" (click)="setShippingAddress(address)">
 										</div>
-										<div class="col-md-10">
+										<div class="col-md-10" >
 											<div class="addressDetail">
 												<div class="name">{{address.name}}</div>
 												<div class="country">{{address.ShippingAddress.country}}</div>

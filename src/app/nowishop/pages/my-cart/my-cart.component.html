@@ -5,6 +5,7 @@
     </div>
 </div>
 <div class="my-cart page-section">
+    <ngx-loading [show]="loading"></ngx-loading>
     <div class="container">
         <div class="cart-header">
             <div class="row">
@@ -96,7 +97,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="continue-payment text-right">
+        <div class="continue-payment text-right" *ngIf="cartList.length">
             <button class="btn btn-primary" routerLink="/shipping-payment">Continue</button>
         </div>
     </div>

@@ -32,11 +32,9 @@ import { LoyaltyProgramComponent } from './pages/help-center/loyalty-program/loy
 import { HomeSliderComponent } from './pages/home/home-slider/home-slider.component';
 import { DummyProductsComponent } from './components/show-product/dummy-products/dummy-products.component';
 import { SingleProductComponent } from './pages/single-product/single-product.component';
-import { SearchResultComponent } from './pages/search-result/search-result.component';
 import { MyAccountComponent } from './pages/my-account/my-account.component';
 import { MyCartComponent } from './pages/my-cart/my-cart.component';
 import { ShippingPaymentComponent } from './pages/shipping-payment/shipping-payment.component';
-import { SingleCategoryComponent } from './pages/single-category/single-category.component';
 import { ProductImgSliderComponent } from './pages/single-product/product-img-slider/product-img-slider.component';
 import { AboutProductComponent } from './pages/single-product/about-product/about-product.component';
 import { MyNowishopComponent } from './pages/my-account/my-nowishop/my-nowishop.component';
@@ -48,9 +46,9 @@ import { MyPersonalInfoComponent } from './pages/my-account/my-personal-info/my-
 import { MyShippingAddressComponent } from './pages/my-account/my-shipping-address/my-shipping-address.component';
 import { MySecuritySettingComponent } from './pages/my-account/my-security-setting/my-security-setting.component';
 import { MyAccountBindingComponent } from './pages/my-account/my-account-binding/my-account-binding.component';
-import { SingleDealComponent } from './pages/single-deal/single-deal.component';
 import { SellerComponent } from './pages/seller/seller.component';
 import { MyBrowsingHistoryComponent } from './pages/my-account/my-browsing-history/my-browsing-history.component';
+import { ProductListingComponent } from './pages/product-listing/product-listing.component';
 
 @NgModule({
   imports: [
@@ -85,11 +83,9 @@ import { MyBrowsingHistoryComponent } from './pages/my-account/my-browsing-histo
     HomeSliderComponent,
     DummyProductsComponent,
     SingleProductComponent,
-    SearchResultComponent,
     MyAccountComponent,
     MyCartComponent,
     ShippingPaymentComponent,
-    SingleCategoryComponent,
     ProductImgSliderComponent,
     AboutProductComponent,
     MyNowishopComponent,
@@ -101,9 +97,9 @@ import { MyBrowsingHistoryComponent } from './pages/my-account/my-browsing-histo
     MyShippingAddressComponent,
     MySecuritySettingComponent,
     MyAccountBindingComponent,
-    SingleDealComponent,
     SellerComponent,
-    MyBrowsingHistoryComponent
+    MyBrowsingHistoryComponent,
+    ProductListingComponent
   ],
   providers: [
     HttpService,

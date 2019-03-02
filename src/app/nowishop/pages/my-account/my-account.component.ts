@@ -23,7 +23,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   breedcrumb: any;
-  content: any;
+  content: any = "";
   
 
   ngOnInit() {  	
@@ -57,7 +57,7 @@ export class MyAccountComponent implements OnInit {
         "active": false
       },
       {
-        "name": this.content.split('-').join(' '),
+        "name": this.content.includes('-') ? this.content.split('-').join(' ') : this.content,
         "url": "#",
         "active": true
       }

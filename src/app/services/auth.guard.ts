@@ -23,9 +23,9 @@ export class AuthGuard implements CanActivate {
 
   	if(this.checkLoginStatus()){
       if(this.checkUserPermission(state)){
-
+        return true;
       }
-  		return true;
+  		return false;
   	}
     
     this.router.navigate(['/login'], { queryParams: { returnTo: state.url }});
@@ -48,7 +48,7 @@ export class AuthGuard implements CanActivate {
   	if(state.url.includes('admin') && parseInt(this.userInfo['userRoleId']) != 101){
   		return true;
   	}
-  	else if(state.url.includes('account')) {
+  	else if(state.url.includes('account') || state.url.includes('cart') || state.url.includes('payment')) {
   		return true;
   	}
     else {

@@ -118,23 +118,23 @@ export class LoginComponent implements OnInit {
         break;
 
       // For Customer
-      case 2: 
+      case 101: 
         if(this.returnUrl.toLowerCase().includes('admin')){
-          notAllowed();
+          this.notAllowed();
         }
-
-        this.router.navigate([this.returnUrl]);
+        else{
+          this.router.navigate([this.returnUrl]);
+        }
         break;
       
       default:
-        notAllowed();
+        this.notAllowed();
         break;
-    }
+    }   
+  }
 
-    function notAllowed(){
+  notAllowed(){
       this.router.navigate(['/']);
-    }
-   
   }
 
 }

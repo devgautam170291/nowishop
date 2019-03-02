@@ -20,7 +20,7 @@ export class MyCartComponent implements OnInit {
     private nowishopGlobal: NowishopService
   ) { }
   breedcrumb: any;
-  // quantity: any = 1;
+  loading: any = false;
   cartList: any = [];
 
   ngOnInit() {
@@ -45,9 +45,11 @@ export class MyCartComponent implements OnInit {
 
   getMyCart(){
     var userId = this.nowishopGlobal.getUserInfo().userId;
+    this.loading = true;
     this.http.get(this.dataService.baseUrl + 'UserAccount/GetUserCardList/' + userId).subscribe(
       res=>{
         this.cartList = res['Data'];
+        this.loading = false;
         this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
       }
     )
@@ -72,8 +74,10 @@ export class MyCartComponent implements OnInit {
       "ProductSizeID":this.cartList[i].ProductSizeID,
     };
 
+    this.loading = true;
     this.http.post(this.dataService.baseUrl + 'UserAccount/RemoveUserCard',model).subscribe(
       res => {
+        this.loading = false;
         if(res['IsSuccess']){
           this.cartList.splice(i, 1);
           this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
@@ -84,8 +88,10 @@ export class MyCartComponent implements OnInit {
 
   clearCart(){
     var userId = this.nowishopGlobal.getUserInfo().userId;
+    this.loading = true;
     this.http.get(this.dataService.baseUrl + 'UserAccount/RemoveAllformUserCard/'+userId).subscribe(
       res=>{
+        this.loading = false;
         if(res['IsSuccess']){
           this.cartList = [];
           this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);

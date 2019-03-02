@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
-import { SingleCategoryModel, SearchParams } from './single-category-model';
+import { SearchResultModel, SearchParams } from './product-listing-model';
 declare let $: any;
 
 @Component({
-  selector: 'app-single-category',
-  templateUrl: './single-category.component.html',
-  styleUrls: ['./single-category.component.css']
+  selector: 'app-product-listing',
+  templateUrl: './product-listing.component.html',
+  styleUrls: ['./product-listing.component.css']
 })
-export class SingleCategoryComponent implements OnInit {
+export class ProductListingComponent implements OnInit {
 
   constructor(private http: HttpClient, private dataService: HttpService, 
     private route: ActivatedRoute,
@@ -22,30 +22,63 @@ export class SingleCategoryComponent implements OnInit {
   breedcrumb: any;
   dataRequestModel: any;
   productList: any = [];
-  showDummy: any = true;
   dummyProducts: any = [];
+  showDummy: any = true;
   categoryList: any = [];
   searchObj: any = [];
   brandList: any = [];
+  calledFrom: any;
+  title: any;
 
   ngOnInit() {
     this.laodModel();
-  	this.showBreedcrumb();  
-    this.getCategoryList();	
-  	this.getCategoryInfo();
+  	this.showBreedcrumb();
+    this.getCategoryList();  	
+  	this.getSearchResult();
     this.loadDummyProducts();
     this.getBrandList();
   }
 
   laodModel(){
-  	this.dataRequestModel = new SingleCategoryModel();
-    this.dataRequestModel.CategorySlug = this.route.snapshot.params.cat_slug;
+    this.dataRequestModel = new SearchResultModel();
+
+    var url = this.router.url;
+    if(url.includes('category')){
+      this.calledFrom = "category";
+      this.title = this.route.snapshot.params.cat_slug;
+      this.dataRequestModel.CategorySlug = this.route.snapshot.params.cat_slug;
+    }
+    else if(url.includes('deal')){
+      this.calledFrom = "deal";
+      this.title = this.route.snapshot.params.deal_slug;
+      this.dataRequestModel.DealSlug = this.route.snapshot.params.deal_slug;
+    }
+    else if(url.includes('search')){
+      this.calledFrom = "search";
+      this.title = this.route.snapshot.params.search_value;
+      this.dataRequestModel.SearchBar = this.route.snapshot.params.search_value;
+    } 	    
   }
 
   loadDummyProducts(){
     for(let i=0; i<18; i++){
       this.dummyProducts.push({"dummy": true});
     }
+  }
+
+  showBreedcrumb(){
+    this.breedcrumb = [
+      {
+        "name": "Home",
+        "url": "/",
+        "active": false
+      },
+      {
+        "name": this.dataRequestModel.SearchBar ? this.dataRequestModel.SearchBar.split('_').join(' ') : 'Loading...',
+        "url": "#",
+        "active": true
+      }
+    ];
   }
 
   getBrandList(){
@@ -67,23 +100,7 @@ export class SingleCategoryComponent implements OnInit {
       )
   }
 
-  showBreedcrumb(){
-    this.breedcrumb = [
-      {
-        "name": "Home",
-        "url": "/",
-        "active": false
-      },
-      {
-        "name": this.dataRequestModel.CategorySlug ? this.dataRequestModel.CategorySlug.split('_').join(' ') : 'Loading...',
-        "url": "#",
-        "active": true
-      }
-    ];
-  }
-
   handleSearchParams(columnName, e){
-    debugger
     if(e.currentTarget.checked){
       var searchObj = new SearchParams();
       searchObj.ColumnName = columnName;
@@ -131,13 +148,29 @@ export class SingleCategoryComponent implements OnInit {
         })
       }
     }
-    this.getCategoryInfo();
+    this.getSearchResult();
   }
 
-  getCategoryInfo(){
+  getSearchResult(){
     this.dataRequestModel.PageSize = 30;
     this.dataRequestModel.Search = this.searchObj;
-  	this.http.post(this.dataService.baseUrl + 'Home/CategoryWiseProductList', this.dataRequestModel).subscribe(
+    var url = "";
+    switch (this.calledFrom) {
+      case "category":
+        url = "Home/CategoryWiseProductList";
+        break;
+      case "deal":
+        url = "Home/DealWiseProductList";
+        break;
+      case "search":
+        url = "Home/SearchBarProductWithFilter";
+        break;
+          
+      default:
+        // code...
+        break;
+    }
+  	this.http.post(this.dataService.baseUrl + url, this.dataRequestModel).subscribe(
         res=>{
             this.productList = res['Dt'];
             this.showDummy = false;

@@ -65,8 +65,12 @@ export class AdminSearchComponent implements OnInit {
         break;
 
       case "notification":
-        url = "Product/SearchNotificationList";
+        url = "UserAccount/SearchNotificationList";
         break;  
+
+      case "order":
+        url = "";
+        break;
       
       default:
         // code...

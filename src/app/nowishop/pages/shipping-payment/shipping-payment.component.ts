@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
 import { NowishopService } from '../../../services/nowishop.service';
 import { Router } from '@angular/router';
-import { MyShippingModel, PaymentModel } from './shipping-payment-model';
+import { MyShippingModel, PaymentModel, PaymentInfoModel } from './shipping-payment-model';
 declare let $: any;
 declare let TCO: any;
 
@@ -28,6 +28,8 @@ export class ShippingPaymentComponent implements OnInit {
   model: any;
   userInfo: any;
   paymentModel:any;
+  savePaymentModel: any;
+  selectedAddressId: any;
 
   ngOnInit() {
   	this.loadModel();
@@ -85,6 +87,11 @@ export class ShippingPaymentComponent implements OnInit {
     }
   }
 
+  setShippingAddress(address){
+    debugger
+    this.selectedAddressId = address.ShippingAddressID;
+  }
+
   openAddressModal(){
     $('#addAddressModal').modal('show');
   }
@@ -138,6 +145,7 @@ export class ShippingPaymentComponent implements OnInit {
     debugger
     var payWithCard = data => {
       console.log(data.response.token.token);
+      this.getTotalCost(data.response.token.token);
     }
 
     var error = data => {
@@ -147,6 +155,28 @@ export class ShippingPaymentComponent implements OnInit {
     TCO.loadPubKey("sandbox", ()=>{
       TCO.requestToken(payWithCard, error, this.paymentModel)
     })
+  }
+
+  getTotalCost(token){
+    this.http.get(this.dataService.baseUrl + 'PaymentGateway/UserTotalCost/' + this.userInfo.userId).subscribe(
+      res => {
+        this.savePaymentModel = new PaymentInfoModel();
+        this.savePaymentModel.TwoCheckOutToken = token;
+        this.savePaymentModel.UserID = this.userInfo.userId;
+        this.savePaymentModel.ShippingAddressID = this.selectedAddressId;
+
+        this.savePaymentInfo(this.savePaymentModel);
+      }
+    ) 
+  }
+
+  savePaymentInfo(model){
+    this.http.post(this.dataService.baseUrl + 'PaymentGateway/TwoCheckoutPayment', model).subscribe(
+      res => {
+        debugger
+        // Thats it make it complete
+      }
+    )    
   }
 
 }
