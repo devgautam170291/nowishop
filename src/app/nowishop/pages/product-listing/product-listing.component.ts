@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
-import { SearchResultModel, SearchParams } from './search-result.model';
+import { SearchResultModel, SearchParams } from './product-listing-model';
 declare let $: any;
 
 @Component({
-  selector: 'app-search-result',
-  templateUrl: './search-result.component.html',
-  styleUrls: ['./search-result.component.css']
+  selector: 'app-product-listing',
+  templateUrl: './product-listing.component.html',
+  styleUrls: ['./product-listing.component.css']
 })
-export class SearchResultComponent implements OnInit {
+export class ProductListingComponent implements OnInit {
 
   constructor(private http: HttpClient, private dataService: HttpService, 
     private route: ActivatedRoute,
@@ -26,6 +26,9 @@ export class SearchResultComponent implements OnInit {
   showDummy: any = true;
   categoryList: any = [];
   searchObj: any = [];
+  brandList: any = [];
+  calledFrom: any;
+  title: any;
 
   ngOnInit() {
     this.laodModel();
@@ -33,11 +36,28 @@ export class SearchResultComponent implements OnInit {
     this.getCategoryList();  	
   	this.getSearchResult();
     this.loadDummyProducts();
+    this.getBrandList();
   }
 
   laodModel(){
-  	this.dataRequestModel = new SearchResultModel();
-    this.dataRequestModel.SearchBar = this.route.snapshot.params.search_value;
+    this.dataRequestModel = new SearchResultModel();
+
+    var url = this.router.url;
+    if(url.includes('category')){
+      this.calledFrom = "category";
+      this.title = this.route.snapshot.params.cat_slug;
+      this.dataRequestModel.CategorySlug = this.route.snapshot.params.cat_slug;
+    }
+    else if(url.includes('deal')){
+      this.calledFrom = "deal";
+      this.title = this.route.snapshot.params.deal_slug;
+      this.dataRequestModel.DealSlug = this.route.snapshot.params.deal_slug;
+    }
+    else if(url.includes('search')){
+      this.calledFrom = "search";
+      this.title = this.route.snapshot.params.search_value;
+      this.dataRequestModel.SearchBar = this.route.snapshot.params.search_value;
+    } 	    
   }
 
   loadDummyProducts(){
@@ -61,6 +81,15 @@ export class SearchResultComponent implements OnInit {
     ];
   }
 
+  getBrandList(){
+    this.http.get(this.dataService.baseUrl + 'Brand/GetAllBrand').subscribe(
+      res=>{
+        debugger
+        this.brandList = res['Data'];
+      }
+    )
+  }
+
   getCategoryList(){
     this.http.get(this.dataService.baseUrl + 'Home/HomeCategory').subscribe(
         res => {
@@ -72,12 +101,12 @@ export class SearchResultComponent implements OnInit {
   }
 
   handleSearchParams(columnName, e){
-    debugger
     if(e.currentTarget.checked){
       var searchObj = new SearchParams();
       searchObj.ColumnName = columnName;
       if(e.currentTarget.value.includes('|')){
         var operator = e.currentTarget.value.split('|')[0].trim().toLowerCase();
+        searchObj.ColumnValue = e.currentTarget.value.split('|')[1];
         switch (operator) {
           case "less":
              searchObj.Operator = 8;
@@ -99,6 +128,14 @@ export class SearchResultComponent implements OnInit {
         searchObj.ColumnValue = e.currentTarget.value;
       }
 
+      if(columnName.toLowerCase() == 'price'){
+        this.searchObj.forEach((data,i)=>{
+          if(data.ColumnName.toLowerCase() == 'price'){
+            this.searchObj.splice(i, 1);
+          }
+        })
+      }
+
       this.searchObj.push(searchObj);
     }
     else{
@@ -117,7 +154,23 @@ export class SearchResultComponent implements OnInit {
   getSearchResult(){
     this.dataRequestModel.PageSize = 30;
     this.dataRequestModel.Search = this.searchObj;
-  	this.http.post(this.dataService.baseUrl + 'Home/SearchBarProductWithFilter', this.dataRequestModel).subscribe(
+    var url = "";
+    switch (this.calledFrom) {
+      case "category":
+        url = "Home/CategoryWiseProductList";
+        break;
+      case "deal":
+        url = "Home/DealWiseProductList";
+        break;
+      case "search":
+        url = "Home/SearchBarProductWithFilter";
+        break;
+          
+      default:
+        // code...
+        break;
+    }
+  	this.http.post(this.dataService.baseUrl + url, this.dataRequestModel).subscribe(
         res=>{
             this.productList = res['Dt'];
             this.showDummy = false;

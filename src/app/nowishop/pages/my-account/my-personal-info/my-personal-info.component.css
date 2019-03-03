@@ -23,7 +23,7 @@
 }
 
 .field-container {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 input[type="radio"] {
@@ -31,4 +31,31 @@ input[type="radio"] {
     height: 20px;
     position: relative;
     top: 5px;
+}
+
+.calendar {
+    padding: 5px 10px;
+    background: #e7e7e7;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 0px;
+}
+
+.title-wrapper label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.single-hobby {
+    min-width: 50px;
+    padding: 2px 9px;
+    background: #e7e7e7;
+    margin: 5px 5px 5px 0px;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: left;
 }

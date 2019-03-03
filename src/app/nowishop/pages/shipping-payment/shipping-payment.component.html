@@ -1,3 +1,363 @@
-<p>
-  shipping-payment works!
-</p>
+<div id="shipping">
+	<div class="breedcrumb-wrap">
+		<div class="container">
+			<app-breedcrumb [breedcrumb]="breedcrumb">
+				
+			</app-breedcrumb>
+		</div>
+	</div>
+	<div class="page-section shipping">
+		<div class="container">
+			<div class="title">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="page-title">
+							<h2 class="page-title">Shipping & Payment</h2>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class=" text-right">
+							<app-section-title *ngFor="let progress of paymentProgress" class="d-inline-block mr-2" [titleBg]="progress.active ? '#be1e2d' : '#e7e7e7'" [titleColor]="progress.active ? '#ffffff' : '#444444'" [value]="progress.name" [dimention]="'full'">
+								
+							</app-section-title>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section-wrapper" *ngIf="paymentProgress[0].show">
+				<div class="section">
+					<div class="title-with-line">
+						<h3>Shipping address</h3>
+					</div>
+					<div class="section-content">
+						<div class="row">
+							<div class="col-md-4 address-wrapper" *ngFor="let address of addressList; let i = index">
+								<div class="address-info">
+									<div class="row">
+										<div class="col-md-2">
+											<input type="radio" value="" name="shippingAdd" (click)="setShippingAddress(address)">
+										</div>
+										<div class="col-md-10" >
+											<div class="addressDetail">
+												<div class="name">{{address.name}}</div>
+												<div class="country">{{address.ShippingAddress.country}}</div>
+												<div class="address">
+													<div>{{address.ShippingAddress.line1}}, {{address.ShippingAddress.line2}}</div>
+													<div>{{address.ShippingAddress.city}}, {{address.ShippingAddress.state}}</div>
+													<div>{{address.ShippingAddress.country}}, {{address.ShippingAddress.pin}}</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 address-wrapper">
+								<div class="address-info add-new-address" (click)="openAddressModal()">
+									<div class="d-table full-dimention">
+										<div class="add-address d-table-cell full-dimention">
+											<i class="fa fa-plus-circle" aria-hidden="true"></i> Add New Address
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="title-with-line">
+								<h3>Your Order</h3>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="return-to-cart" routerLink="/cart">
+								<i class="fa fa-undo" aria-hidden="true"></i> Return to my cart
+							</div>
+						</div>
+					</div>
+					<div class="section-content">
+						<div class="my-cart-container">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Items</th>
+										<th class="text-center" scope="col">Price</th>
+										<th class="text-center" scope="col">Quantity</th>
+										<th scope="col">Shipping Details</th>
+									</tr>
+								</thead>
+								<tbody *ngIf="cartList.length > 0">
+									<tr *ngFor="let product of cartList; let i = index;">
+										<td>
+											<div class="img-wrapper d-inline-block">
+												<img src="{{product.ImageURl}}" alt="">
+											</div>
+											<div class="product-desc-container d-inline-block">
+												<div class="item-desc">
+													<div class="item-title">{{product.ProductName}}</div>
+													<div class="item-deal">Flash Deal</div>
+													<div class="item-size">
+														Size: L
+													</div>
+													<div class="item-variation">
+														Color: {{product.ProductSelectedColor}}
+													</div>
+												</div>
+											</div>
+										</td>
+										<td>
+											<div class="item-price" *ngIf="product.DescountPrice">
+												<div class="discount-price">INR {{(product.DescountPrice * product.ProductCount) | currency:'INR'}} </div>
+												<div class="actual-price" *ngIf="product.DescountPrice">INR {{(product.Price * product.ProductCount) | currency:'INR'}}</div>
+											</div>
+											<div class="item-price" *ngIf="!product.DescountPrice">
+												<div class="discount-price">INR {{(product.Price * product.ProductCount) | currency:'INR'}} </div>
+											</div>
+										</td>
+										<td>
+											<div class="text-center">
+												<div class="d-inline-block quantity-val">{{product.ProductCount}}</div>
+											</div>
+										</td>
+										<td style="width: 250px;">
+											
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="apply-coupon">
+												<h4>USE COUPON</h4>
+												<div class="subscribe">
+													<div class="input-group mb-3">
+														<input type="text" class="form-control" aria-describedby="subscribe">
+														<div class="input-group-append">
+															<button class="btn btn-outline-secondary" type="button" id="subscribe" >Submit</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</td>
+										<td colspan="2">
+											<div class="cart-total text-right">
+												<div>
+													<b>Subtotal</b>: <span class="discount-price">3,100</span>
+												</div>
+												<div>
+													<b>Discount</b>: <span>1 item</span>
+												</div>
+												<div>
+													<b>Shipping</b>: <span>21 point</span>
+												</div>
+												<div>
+													<b>Total</b>: <span>21 point</span>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+								<tbody *ngIf="cartList.length == 0">
+									<tr>
+										<td colspan="4" class="text-center">
+											No item in cart
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="proceed-checkout text-center">
+					<button class="btn" (click)="checkout()">Proceed to checkout</button>
+				</div>
+			</div>
+			<div class="section-wrapper" *ngIf="paymentProgress[1].show">
+				<div class="section">
+					<div class="title-with-line">
+						<h3>Credit / Debit Card</h3>
+					</div>
+				</div>
+				<div class="section-content">
+					<div class="payment-option">
+						<div class="d-table">
+							<div class="d-table-cell" style="vertical-align: middle;">
+								<div class="d-table-cell footer-payment">
+									<ul class="d-inline-block payment-option-list">
+										<li class="d-inline-block visa"></li>
+										<li class="d-inline-block master-card"></li>
+										<li class="d-inline-block maestro"></li>
+										<li class="d-inline-block american-express"></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="payment-form">
+						<form id="tcoCCForm">
+							<div class="row">
+								<div class="col-md-3">
+									<label for="">Card Number</label>
+								</div>
+								<div class="col-md-9">
+									<div class="row">
+										<div class="col-md-12">
+											<input id="ccNo" type="number" value="" [(ngModel)]="paymentModel.ccNo" [ngModelOptions]="{standalone: true}" autocomplete="off" required />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<label for="">Name on card</label>
+								</div>
+								<div class="col-md-9">
+									<div class="row">
+										<div class="col-md-6">
+											<input type="text" placeholder="First Name">
+										</div>
+										<div class="col-md-6">
+											<input type="text" placeholder="Last Name">
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<label for="">Expiry Date</label>
+								</div>
+								<div class="col-md-9">
+									<div class="row">
+										<div class="col-md-2">
+											<select name="" id="" [(ngModel)]="paymentModel.expMonth" [ngModelOptions]="{standalone: true}">
+												<option value="01">01</option>
+												<option value="02">02</option>
+												<option value="03">03</option>
+												<option value="04">04</option>
+												<option value="05">05</option>
+												<option value="06">06</option>
+												<option value="07">07</option>
+												<option value="08">08</option>
+												<option value="09">09</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											<select name="" id="" [(ngModel)]="paymentModel.expYear" [ngModelOptions]="{standalone: true}">
+												
+											</select>
+										</div>
+									</div>
+									
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<label for="">CVV/CCV</label>
+								</div>
+								<div class="col-md-9">
+									<div class="row">
+										<div class="col-md-2">
+											<input type="number" [(ngModel)]="paymentModel.cvv" [ngModelOptions]="{standalone: true}">
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-9">
+									<input style="width: auto;" type="checkbox"> Save this card for future use
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-9">
+									<button class="btn payment-now" (click)="submitPayment()">Pay Now</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="section-wrapper" *ngIf="paymentProgress[2].show">
+				<div class="section">
+					<div class="title-with-line">
+						<h3>Hurray! Now your money is mine. Get Lost!!</h3>
+					</div>
+				</div>
+				<div class="section-content">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="customerCareModal" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>Add New Address</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="customer-modal-container text-left">
+					<div class="customer-email-container ">
+						<div class="form-group">
+							<label for="">Name</label>
+							<input type="text" class="form-control" [(ngModel)]="model.name">
+						</div>
+						<div class="form-group">
+							<label for="">Address Details</label>
+							<input type="text" placeholder="Address Line 1" class="form-control" [(ngModel)]="model.ShippingAddress.line1">
+						</div>
+						<div class="form-group">
+							<input type="text" placeholder="Address Line 2" class="form-control" [(ngModel)]="model.ShippingAddress.line2">
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group mr-1">
+									<input type="text" placeholder="City" class="form-control" [(ngModel)]="model.ShippingAddress.city">
+								</div>
+								
+							</div>
+							<div class="col-md-6">
+								<div class="form-group ml-1">
+									<input type="text" placeholder="State" class="form-control" [(ngModel)]="model.ShippingAddress.state">
+								</div>
+								
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 ">
+								<div class="form-group mr-1">
+									<input type="text" placeholder="Country" class="form-control" [(ngModel)]="model.ShippingAddress.country">
+								</div>
+							</div>
+							<div class="col-md-6 ">
+								<div class="form-group ml-1">
+									<input type="text" placeholder="PIN" class="form-control" [(ngModel)]="model.ShippingAddress.pin">
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="">Mobile Number</label>
+						<input type="text" placeholder="Enter Your Mobile Number" class="form-control" [(ngModel)]="model.PhoneNo">
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer" (click)="addAddress()">
+				Add Address
+			</div>
+		</div>
+		
+	</div>
+</div>

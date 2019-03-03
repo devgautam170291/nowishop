@@ -1,3 +1,70 @@
-<p>
-  my-nowishop works!
-</p>
+<div class="account-wrapper">
+	<div class="row">
+		<div class="col-md-6 address-info">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="profile-pic text-center">
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="details">
+						<h4>{{userInfo.firstName}}</h4>
+						<div class="info">
+							Ph: {{userInfo.phNumber}}
+						</div>
+						<div class="info">
+							{{userInfo.emailId}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="user-options">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="user-option-logo" style="background: url(/assets/img/icons.png) 17px 6px;"></div>
+						<div class="user-option-title">My Coupons</div>
+					</div>
+					<div class="col-md-4">
+						<div class="user-option-logo" style="background: url(/assets/img/icons.png) 17px -156px;"></div>
+						<div class="user-option-title">Notifications</div>
+					</div>
+					<div class="col-md-4">
+						<div class="user-option-logo" style="background: url(/assets/img/icons.png) 17px -96px;"></div>
+						<div class="user-option-title">Write Reviews</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pending">
+		<h4>My Pending Orders</h4>
+		<div class="show-list">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							No Pending Orders
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="pending">
+		<h4>My Wishlist</h4>
+		<div class="show-list">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							No Pending Orders
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

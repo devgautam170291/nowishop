@@ -14,7 +14,7 @@ export class MyBrowsingHistoryComponent implements OnInit {
   constructor(
   	private http: HttpClient, 
     private dataService: HttpService,
-    private nowishopGlobal: NowishopService
+    public nowishopGlobal: NowishopService
   	) { }
 
   ngOnInit() {

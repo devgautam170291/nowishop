@@ -50,6 +50,7 @@ export class HttpService {
   post(url: string, Data: any) {
     return this.http.post(`${this.baseUrl}` + url, Data, { headers: this.getHeaders() }).pipe(
       map(res=>{
+        debugger
         if(res['status'] == 200){
           return res;
         }        

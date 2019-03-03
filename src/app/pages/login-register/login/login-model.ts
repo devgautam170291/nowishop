@@ -31,9 +31,11 @@ export class UserLoginInfo{
 	userRoleId: any;
 	userRoleName: any;
 	emailId: any;
-	phNumner: any;
+	phNumber: any;
 	address: any;
 	authToken: any;
+	memberShipId: any;
+	memberShipName: any;
 
 	constructor(){
 		this.userId = "";
@@ -44,8 +46,10 @@ export class UserLoginInfo{
 		this.userRoleId = "";
 		this.userRoleName = "";
 		this.emailId = "";
-		this.phNumner = "";
+		this.phNumber = "";
 		this.address = "";
 		this.authToken = "";
+		this.memberShipId = 0;
+		this.memberShipName = "";
 	}
 }

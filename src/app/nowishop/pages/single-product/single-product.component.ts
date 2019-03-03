@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
+import { Component, OnInit , Inject} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../../services/http.service';
@@ -13,11 +14,11 @@ declare let $: any;
 })
 export class SingleProductComponent implements OnInit {
 
-  constructor(
+  constructor(@Inject(WINDOW) private window: Window, 
     private http: HttpClient, 
     private dataService: HttpService, 
     private route: ActivatedRoute,
-    private nowishopGlobal: NowishopService,
+    public nowishopGlobal: NowishopService,
     private router: Router
     ) {
 
@@ -205,7 +206,7 @@ export class SingleProductComponent implements OnInit {
           if(res['IsSuccess']){
             debugger
             $(".alert").css("display", "block");
-            window.setTimeout(function() {
+            this.window.setTimeout(function() {
                 $(".alert").fadeTo(500, 0).slideUp(500, function(){
                     $(this).css("display", "none");
                 });

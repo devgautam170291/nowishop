@@ -12,12 +12,26 @@ import { Router } from '@angular/router';
 export class FooterComponent implements OnInit {
   
   @Input() categoryList;
+  subscribeEmail: any;
   constructor(
     private http: HttpClient, 
     private dataService: HttpService,
     private nowishopGlobal: NowishopService ) { }
 
   ngOnInit() {
+  }
+
+  subscribe(){
+    if(this.subscribeEmail){
+      var model = {
+        "SubscriberEmail": this.subscribeEmail
+      }
+      this.http.post(this.dataService.baseUrl + 'Home/UsersSubscription', model).subscribe(
+        res=>{
+          debugger
+        }
+      )
+    }
   }
 
 }

@@ -52,4 +52,44 @@ export class AdminNotificationComponent implements OnInit {
     this.model = data;
   }
 
+  refreshNotificationList(){
+    this.search.resetSearchFilter();
+  }
+
+  deleteNotiication(id){
+    swal({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.loading = true;
+        this.dataService.get('UserAccount/DeleteNotification/'+id).subscribe(
+            res=>{
+              this.loading = false;
+              if(res['IsSuccess']){
+                swal(
+                  'Deleted!',
+                  'Notification has been deleted.',
+                  'success'
+                )
+                this.refreshNotificationList();
+              }
+              else {
+                swal(
+                  'OOPS...',
+                  'Something went wrong!',
+                  'error'
+                )
+              }
+            }
+          )
+      }
+    })
+  }
+
 }

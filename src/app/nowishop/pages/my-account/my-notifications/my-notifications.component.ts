@@ -18,26 +18,35 @@ export class MyNotificationsComponent implements OnInit {
   	) { }
 
   notificationOptions: any = [];
+  notificationList: any = [];
+  userInfo: any;
 
   ngOnInit() {
   	this.loadModel();
+    this.getUserInfo();
+  }
+
+  getUserInfo(){
+    if(this.nowishopGlobal.isUserInfo()){
+      this.userInfo = this.nowishopGlobal.getUserInfo();
+    }
   }
 
   loadModel(){
   	this.notificationOptions = [
   		{
   			"name": "Important Messages",
-  			"value": "important-messages",
+  			"value": "1",
   			"active": true
   		},
   		{
   			"name": "Promotions",
-  			"value": "promotions",
+  			"value": "2",
   			"active": false
   		},
   		{
   			"name": "Coupons",
-  			"value": "coupons",
+  			"value": "3",
   			"active": false
   		}
   	];
@@ -48,6 +57,11 @@ export class MyNotificationsComponent implements OnInit {
   		this.notificationOptions.forEach((notification)=>{
   			if(notification.value == val){
   				notification.active = true;
+          this.http.get(this.dataService.baseUrl + 'UserAccount/GetNotification/1/'+val).subscribe(
+            res => {
+              this.notificationList = res['Data'];
+            }
+          )
   			}
   			else{
   				notification.active = false;

@@ -74,6 +74,10 @@
   height: 38px;
 }
 
+.input-group-prepend, .nav-search input, .input-group-prepend div {
+  height: 100%;
+}
+
 .social,
 .user-profile {
   display: table;

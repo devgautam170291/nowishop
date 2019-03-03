@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
+import { Component, OnInit, HostListener , Inject} from '@angular/core';
 import { LoginModel, UserLoginInfo, ValidationModel } from './login-model';
 import { HttpClient } from  '@angular/common/http';
 import { HttpService } from './../../../services/http.service';
@@ -13,7 +14,7 @@ declare let $: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any, 
   		private http: HttpClient, 
       private dataService: HttpService, 
       private router: Router,
@@ -84,9 +85,12 @@ export class LoginComponent implements OnInit {
     userInfo.userRoleId = res['UserRoleId'];
     userInfo.userRoleName = res['UserRoleName'];
     userInfo.emailId = res['EmailId'];
-    userInfo.phNumner = res['TelephoneNo'];
+    userInfo.phNumber = res['TelephoneNo'];
     userInfo.address = res['Address'];
     userInfo.authToken = res['AuthToken'];
+    userInfo.memberShipId = res['MemberShipID'];
+    userInfo.memberShipName = res['MemberShipName'];
+
 
     // if(this.remember){
     //   localStorage.setItem('userInfo', JSON.stringify(userInfo));
@@ -114,23 +118,23 @@ export class LoginComponent implements OnInit {
         break;
 
       // For Customer
-      case 2: 
+      case 101: 
         if(this.returnUrl.toLowerCase().includes('admin')){
-          notAllowed();
+          this.notAllowed();
         }
-
-        this.router.navigate([this.returnUrl]);
+        else{
+          this.router.navigate([this.returnUrl]);
+        }
         break;
       
       default:
-        notAllowed();
+        this.notAllowed();
         break;
-    }
+    }   
+  }
 
-    function notAllowed(){
+  notAllowed(){
       this.router.navigate(['/']);
-    }
-   
   }
 
 }

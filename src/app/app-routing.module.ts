@@ -9,7 +9,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
 	{ path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-	{ path:'', loadChildren: './nowishop/nowishop.module#NowishopModule'},
+	{ path: '', loadChildren: './nowishop/nowishop.module#NowishopModule'},
 	// {path: '', component: CommingSoonComponent},
 	{ path: 'login', component: LoginComponent },
 	{ path: 'register', component: RegisterComponent },
@@ -20,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,  {scrollPositionRestoration: 'enabled'})],
+  imports: [RouterModule.forRoot(routes,  {scrollPositionRestoration: 'enabled', useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

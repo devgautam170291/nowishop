@@ -138,6 +138,40 @@ body .mobile {
     display: none;
 }
 
+/*------- Payment icons --------*/
+
+.payment-option-list li {
+    width: 50px;
+    height: 30px;
+    background-size: 85px;
+    background-repeat: no-repeat;
+}
+
+.visa {
+    background: url(/assets/img/icons-white.png);
+    background-position: 0px -525px;
+}
+
+.master-card {
+    background: url(/assets/img/icons-white.png);
+    background-position: 0px -489px;
+}
+
+.maestro {
+    background: url(/assets/img/icons-white.png);
+    background-position: 0px -400px;
+}
+
+.american-express {
+    background: url(/assets/img/icons-white.png);
+    background-position: 0px -444px;
+}
+
+.payment-option-list {
+    position: relative;
+    top: 2px;
+}
+
 /*-----------------------------------*/
 /*------ Dashboard ------------------*/
 
@@ -253,7 +287,7 @@ li.sidebar-single-list li {
     margin-right: 0px !important;
 }
 
-.sidebar-single-list input[type=checkbox] {
+.sidebar-single-list input[type=checkbox], .sidebar-single-list input[type=radio] {
     width: 15px;
     height: 15px;
     margin-right: 10px;
@@ -351,6 +385,103 @@ li.sidebar-single-list li {
 
 .container .social.mobile {
     display: none;
+}
+
+/*----------Modal POP-UP--------*/
+
+.modal-dialog {
+  width: 100%;
+  max-width: 600px;
+}
+
+.close {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 15px;
+    z-index: 9999;
+}
+
+.close span {
+  bottom: 16px !important;
+  position: relative;
+  right: 8px !important;
+}
+
+.modal-content {
+  border-radius: 0px !important;
+}
+
+.modal-dialog {
+    position: relative;
+    top: 30px !important;
+}
+
+.modal-footer {
+  padding: 6px 0px;
+  border: none;
+  background: var(--nowishop-red);
+  text-align: center !important;
+  color: #fff;
+  font-size: 16px;
+  display: block !important;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+
+.modal-header {
+  border: none;
+  background: var(--nowishop-blue);
+  border-radius: 0px;
+  border-radius: 0px !important;
+}
+
+.modal-header h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    background: var(--nowishop-blue);
+    color: #fff;
+    border: none !important;
+    position: relative;
+    width: 100%;
+    margin: 0px;
+    z-index: 9999;
+    padding-left: 10px;
+    bottom: 10px;
+}
+
+.modal-content:before {
+  content: '';
+  width: 280px;
+  left: 0px;
+  height: 50px;
+  position: absolute;
+  top: -50px;
+  z-index: 9999;
+  background: var(--nowishop-blue);
+  border-left: 1px solid rgba(0, 0, 0, .2) !important;
+}
+
+.modal-content:after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 40px;
+  top: -27px;
+  left: 253px;
+  -webkit-transform: rotate(47deg);
+  transform: rotate(47deg);
+  background: var(--nowishop-blue);
+}
+
+.modal-body label {
+    font-family: 'Montserrat', sans-serif;
 }
 
 /*------------------------------*/

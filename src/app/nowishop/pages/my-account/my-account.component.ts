@@ -23,22 +23,16 @@ export class MyAccountComponent implements OnInit {
   }
 
   breedcrumb: any;
-  content: any;
-  fullStar: any = [];
-  emptyStar: any = [];
+  content: any = "";
+  
 
   ngOnInit() {  	
-    this.loadDefault();
+    
   	this.checkParams();
     this.showBreedcrumb();
   }
 
-  loadDefault(){
-    debugger
-    for(let i=0; i<5; i++){
-      this.emptyStar.push(new Object());
-    }
-  }
+  
 
   checkParams(){
     var val = this.route.snapshot.params.name;
@@ -63,7 +57,7 @@ export class MyAccountComponent implements OnInit {
         "active": false
       },
       {
-        "name": this.content.split('-').join(' '),
+        "name": this.content.includes('-') ? this.content.split('-').join(' ') : this.content,
         "url": "#",
         "active": true
       }

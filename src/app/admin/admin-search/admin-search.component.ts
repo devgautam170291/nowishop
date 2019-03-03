@@ -41,6 +41,7 @@ export class AdminSearchComponent implements OnInit {
   }
 
   searchFilter(){
+    debugger
     var url = '';
     switch (this.calledFrom) {
       case "category":
@@ -64,8 +65,12 @@ export class AdminSearchComponent implements OnInit {
         break;
 
       case "notification":
-        url = "";
+        url = "UserAccount/SearchNotificationList";
         break;  
+
+      case "order":
+        url = "";
+        break;
       
       default:
         // code...
@@ -77,6 +82,7 @@ export class AdminSearchComponent implements OnInit {
     this.loading = true;
     this.dataService.post( url, this.searchParameter).subscribe(
       res => {
+        debugger
         this.loading = false;
         if(res['IsSuccess']){
           this.totalRecords = res['TotalRecords'];

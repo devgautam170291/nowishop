@@ -25,14 +25,14 @@
             <td>{{row.BrandName}}</td>
             <td>{{row.CreatedDate | date:long}}</td>
             <td class="text-right">
-              <button class="btn btn-primary mr-1" [routerLink]="['editbrand', row.ID]"><i class="fa fa-edit"></i> Edit</button>
+              <!-- <button class="btn btn-primary mr-1" [routerLink]="['editbrand', row.NotificationID]"><i class="fa fa-edit"></i> Edit</button>
               <span *ngIf="row.Status">
-                <button class="btn btn-success mr-1" (click)="changeBrandStatus(row.ID)"><i class="fa fa-check"></i> Deactive</button>
+                <button class="btn btn-success mr-1" (click)="changeBrandStatus(row.NotificationID)"><i class="fa fa-check"></i> Deactive</button>
               </span>
               <span *ngIf="!row.Status">
-                <button class="btn btn-warning text-light mr-1" (click)="changeBrandStatus(row.ID)"><i class="fa fa-question-circle"></i> Active</button>
-              </span>
-              <button class="btn btn-danger mr-1" (click)="deleteBrand(row.ID)"><i class="fa fa-trash"></i> Delete</button>
+                <button class="btn btn-warning text-light mr-1" (click)="changeBrandStatus(row.NotificationID)"><i class="fa fa-question-circle"></i> Active</button>
+              </span> -->
+              <button class="btn btn-danger mr-1" (click)="deleteNotiication(row.NotificationID)"><i class="fa fa-trash"></i> Delete</button>
             </td>
           </tr>
         </tbody>

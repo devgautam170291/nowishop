@@ -1,0 +1,38 @@
+.profile-pic .fa {
+    color: var(--nowishop-blue);
+    font-size: 85px;
+}
+
+.details .info {
+    font-family: futura-light;
+}
+
+.details h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.point-wrapper {
+    padding: 20px 0px;
+    margin-top: 50px;
+    border: 4px solid #e7e7e7;
+}
+
+.redeem.text-center .btn {
+    position: relative;
+    bottom: 25px;
+}
+
+.points span:last-child {
+    font-size: 24px;
+    color: var(--nowishop-red);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.points span:first-child {
+    font-size: 20px;
+}
+
+.membership-logo {
+    min-height: 40px;
+}

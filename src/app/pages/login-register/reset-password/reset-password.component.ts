@@ -47,12 +47,6 @@ export class ResetPasswordComponent implements OnInit {
   resetPassword(){
     debugger
   	this.model.UserID = this.userId;
-    this.matchConfirmPassword();
-    // this.validate.checkErrorObject(this.error);
-    // this.error = this.validate.validateRequire(this.model, this.error);
-    console.log('checkerror');
-    console.log(this.error);
-    //if(this.error.valid){
       this.loading = true;
       this.http.post(this.dataService.baseUrl + 'User/UpdatePassword', this.model).subscribe(
         res => {
