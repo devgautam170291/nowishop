@@ -228,6 +228,19 @@ body .mobile {
     margin-bottom: 10px;
 }
 
+.dropdown-item {
+    background-color: #fff !important;
+    border-bottom: 1px solid #ccc !important;
+    border-left: 1px solid #ccc !important;
+    border-right: 1px solid #ccc !important;
+    color: #212529 !important;
+}
+
+.dropdown-item:hover {
+    background: var(--nowishop-blue) !important;
+    color: #fff !important;
+}
+
 .sidebar-title-container {
     border-bottom: 3px solid #fff;
     margin-bottom: 20px;

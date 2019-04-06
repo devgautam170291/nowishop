@@ -22,6 +22,7 @@ export class MyCartComponent implements OnInit {
   breedcrumb: any;
   loading: any = false;
   cartList: any = [];
+  discountedPrice: any = 0;
 
   ngOnInit() {
   	this.showBreedcrumb();
@@ -48,25 +49,28 @@ export class MyCartComponent implements OnInit {
     this.loading = true;
     this.http.get(this.dataService.baseUrl + 'UserAccount/GetUserCardList/' + userId).subscribe(
       res=>{
-        this.cartList = res['Data'];
+        debugger
+        this.cartList = res['Data']['userCard'];
         this.loading = false;
         this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
+        this.showDiscount();
       }
     )
   }
 
   increaseQuantity(obj){
     obj.ProductCount += 1;
+    this.showDiscount();
   }
 
   decreaseQuantity(obj){
     if(obj.ProductCount > 1){
       obj.ProductCount -= 1;
     }
+    this.showDiscount();
   }
 
   removeFromCart(i){
-    debugger
     var model = {
       "UserID": this.cartList[i].UserID,
       "ProductID":this.cartList[i].ProductID,
@@ -81,6 +85,7 @@ export class MyCartComponent implements OnInit {
         if(res['IsSuccess']){
           this.cartList.splice(i, 1);
           this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
+          this.showDiscount();
         }
       }
     )
@@ -106,4 +111,12 @@ export class MyCartComponent implements OnInit {
     )
   }
 
+  showDiscount(){
+    this.discountedPrice = 0;
+    if(this.cartList.length){
+      this.cartList.forEach((cart)=>{
+        this.discountedPrice = this.discountedPrice + cart.TotalDiscountOnProduct * cart.ProductCount;
+      })
+    }
+  }
 }

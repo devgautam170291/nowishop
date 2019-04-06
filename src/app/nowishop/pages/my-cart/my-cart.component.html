@@ -76,10 +76,12 @@
                         <td colspan="2">
                             <div class="cart-total text-right">
                                 <div>
-                                    <span>Discount</span>: <span class="discount-price">3,100</span>
+                                    <span>Discount</span>: <span class="discount-price">
+                                      INR  {{discountedPrice | currency:'INR'}}
+                                    </span>
                                 </div>
                                 <div>
-                                    <span>Total</span>: <span>1 item</span>
+                                    <span>Total</span>: <span>{{cartList.length}} item</span>
                                 </div>
                                 <div>
                                     <span>Add Point</span>: <span>21 point</span>

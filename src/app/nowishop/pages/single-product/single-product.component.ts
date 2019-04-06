@@ -193,28 +193,58 @@ export class SingleProductComponent implements OnInit {
 
   addToCart(){
     
-    if(this.productInfo){
-      this.addToCartModel.ProductID = this.productInfo.productID;
-      this.addToCartModel.ProductVariactionID = this.selectedVariation.ProductVariactionID;
-      this.addToCartModel.ProductSizeID = this.selectedSizeQuantity ? this.selectedSizeQuantity.ProductSizeID : 0;
-      
-      // Save Cart Info Locally
-      this.saveCartInfoLocally(this.addToCartModel)
-
-      this.http.post(this.dataService.baseUrl + 'UserAccount/AddUserCard', this.addToCartModel).subscribe(
-        res => {
-          if(res['IsSuccess']){
-            debugger
-            $(".alert").css("display", "block");
-            this.window.setTimeout(function() {
-                $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                    $(this).css("display", "none");
-                });
-            }, 2000);
-          }
-        }
-      )
+    if(!this.nowishopGlobal.getUserInfo()){
+      let state = this.router.routerState.snapshot;
+      this.router.navigate(['/login'], { queryParams: { returnTo: state.url }});
     }
+    else {
+      if(this.productInfo){
+        this.addToCartModel.ProductID = this.productInfo.productID;
+        this.addToCartModel.ProductVariactionID = this.selectedVariation.ProductVariactionID;
+        this.addToCartModel.ProductSizeID = this.selectedSizeQuantity ? this.selectedSizeQuantity.ProductSizeID : 0;
+        
+        // Save Cart Info Locally
+        this.saveCartInfoLocally(this.addToCartModel)
+
+        this.http.post(this.dataService.baseUrl + 'UserAccount/AddUserCard', this.addToCartModel).subscribe(
+          res => {
+            if(res['IsSuccess']){
+              $(".alert").css("display", "block");
+              this.window.setTimeout(function() {
+                  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                      $(this).css("display", "none");
+                  });
+              }, 2000);
+            }
+          }
+        )
+      }
+    }    
   }
 
+  buyItNow(){
+    if(!this.nowishopGlobal.getUserInfo()){
+      let state = this.router.routerState.snapshot;
+      console.log('check-'+state.url );
+      this.router.navigate(['/login'], { queryParams: { returnTo: state.url }});
+    }
+    else {
+      if(this.productInfo){
+        this.addToCartModel.ProductID = this.productInfo.productID;
+        this.addToCartModel.ProductVariactionID = this.selectedVariation.ProductVariactionID;
+        this.addToCartModel.ProductSizeID = this.selectedSizeQuantity ? this.selectedSizeQuantity.ProductSizeID : 0;
+        
+        // Save Cart Info Locally
+        this.saveCartInfoLocally(this.addToCartModel)
+
+        this.http.post(this.dataService.baseUrl + 'UserAccount/AddUserCard', this.addToCartModel).subscribe(
+          res => {
+            if(res['IsSuccess']){
+              this.router.navigate(['shipping-payment']);
+            }
+          }
+        )
+      }
+    }    
+  }
 }

@@ -30,6 +30,7 @@ export class ShippingPaymentComponent implements OnInit {
   paymentModel:any;
   savePaymentModel: any;
   selectedAddressId: any;
+  totalPrice: any;
 
   ngOnInit() {
   	this.loadModel();
@@ -113,7 +114,8 @@ export class ShippingPaymentComponent implements OnInit {
     var userId = this.nowishopGlobal.getUserInfo().userId;
     this.http.get(this.dataService.baseUrl + 'UserAccount/GetUserCardList/' + userId).subscribe(
       res=>{
-        this.cartList = res['Data'];
+        this.cartList = res['Data']['userCard'];
+        this.totalPrice = res['Data']['TotalCost'];
         this.nowishopGlobal.setInLocalStorage('user-cart', this.cartList);
       }
     )

@@ -1,6 +1,6 @@
 <div class="row" *ngIf="categoriesData.length > 0">
   <div class="col-md-4" *ngFor="let cat of categoriesData">
-    <div class="cat-container">
+    <div class="cat-container" routerLink="/category/{{cat.CategorySlug}}">
       <div class="cat-name"><span [ngStyle]="{'background': cat.color}">{{cat.CategoryName}}</span></div>
       <div class="cat-img" [ngStyle]="{'background': 'url('+cat.CategoryImageUrl+')'}"></div>
       <div class="cat-msg">{{cat.ParentCategoryName | uppercase}}</div>

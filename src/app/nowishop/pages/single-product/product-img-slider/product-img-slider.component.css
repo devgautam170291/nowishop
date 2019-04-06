@@ -26,3 +26,7 @@
     height: 100%;
     padding: 5px;
 }
+
+.carousel-inner {
+    border: 2px solid #ccc;
+}
