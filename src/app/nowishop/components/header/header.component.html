@@ -112,7 +112,7 @@
                             <div id="shopbycategory" class="dropdown-menu" aria-labelledby="shopbycat">
                                 <div class="category-container">
                                     <div class="row" *ngIf="categoryList.length">
-                                        <div class="col-md-3 no-padding-right">
+                                        <div class="col-md-3 no-padding-right" style="border-right: 2px solid #fff;">
                                             <div class="cat-container">
                                                 <ul>
                                                     <li *ngFor="let cat of categoryList; let i = index" [ngClass]="i == '0' ? 'active' : ''" (click)="changeCategory($event, cat)">{{cat.CategoryName}}</li>

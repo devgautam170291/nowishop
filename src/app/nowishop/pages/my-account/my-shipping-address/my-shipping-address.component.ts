@@ -63,15 +63,14 @@ export class MyShippingAddressComponent implements OnInit {
   }
 
   addAddress(){
-
+    debugger
     $('#addAddressModal').modal('hide');
     this.model.ShippingAddress = JSON.stringify(this.model.ShippingAddress);
     this.model.UserID = this.userInfo.userId;
     this.http.post(this.dataService.baseUrl + 'UserAccount/AddUserShippingAddress', this.model).subscribe(
       res=>{
-        debugger
         this.model.ShippingAddress = JSON.parse(this.model.ShippingAddress);
-        if(this.editIndex && this.editIndex != 0){
+        if(this.editIndex || this.editIndex == 0){
           this.addressList.splice(this.editIndex, 1, this.model);
         }
         else {

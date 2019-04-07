@@ -146,6 +146,7 @@ export class ShippingPaymentComponent implements OnInit {
   submitPayment(){
     debugger
     var payWithCard = data => {
+      debugger
       console.log(data.response.token.token);
       this.getTotalCost(data.response.token.token);
     }

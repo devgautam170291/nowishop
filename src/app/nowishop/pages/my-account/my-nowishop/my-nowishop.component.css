@@ -65,3 +65,7 @@
     padding: 10px 0px;
     background: #e7e7e7;
 }
+
+.user-options {
+    cursor: pointer;
+}

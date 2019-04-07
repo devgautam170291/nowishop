@@ -163,8 +163,9 @@
 					</div>
 				</div>
 				<div class="list-hobby">
-					<span class="single-hobby" *ngFor="let hobby of hobbyArray">
-						{{hobby}}
+					<span class="single-hobby" *ngFor="let hobby of hobbyArray; let i = index">
+						<span>{{hobby}}</span>
+						<span class="deleteHobby" (click)="deleteHobby(i)"><i class="fa fa-trash-o"></i></span>
 					</span>
 				</div>
 			</div>

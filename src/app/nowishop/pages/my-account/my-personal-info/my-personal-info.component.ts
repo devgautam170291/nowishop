@@ -92,4 +92,10 @@ export class MyPersonalInfoComponent implements OnInit {
     )
   }
 
+  deleteHobby(index){
+    if(index || index == 0){
+      this.hobbyArray.splice(index, 1);
+    }
+  }
+
 }

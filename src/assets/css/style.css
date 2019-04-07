@@ -108,8 +108,8 @@ h2.page-title {
     box-shadow: none !important;
 }
 
-.col-md-4.product-container:nth-of-type(odd) {
-    background: #f5f5f5;
+.col-md-4.product-container {
+    border: 1px solid #f5f5f5;
 }
 
 .swal2-container.swal2-center.swal2-fade.swal2-shown {
